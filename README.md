@@ -11,3 +11,12 @@ A repository created to hold Patrick Martinez (patrickmartinez77@gmail.com) and 
 
 
 ##Homework 4
+
+
+##Homework 5
+
+
+##Homework 6
+
+
+##Homework 7 (if time permits)
