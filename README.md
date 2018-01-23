@@ -20,3 +20,5 @@ A repository created to hold Patrick Martinez (patrickmartinez77@gmail.com) and 
 
 
 ## Homework 7 (if time permits)
+
+testing some git stuff
