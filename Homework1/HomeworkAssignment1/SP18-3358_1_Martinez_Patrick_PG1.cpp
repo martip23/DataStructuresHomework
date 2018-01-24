@@ -7,6 +7,8 @@
 //
 //  <INSERT DESCRIPTION>
 
+#include <iostream>
+
 using namespace std;
 
 // Prototypes
@@ -17,7 +19,7 @@ using namespace std;
  Returns: nothing
  Inserts a random number from 1 - 12 into each slot for both arrays.
  *******************************************************************/
-void populateArrays(int [][3] array1, int [][3] array2);
+void populateArrays(int array1[][3], int array2[][3]);
 
 /***************************************************************
  displayArray
@@ -25,7 +27,7 @@ void populateArrays(int [][3] array1, int [][3] array2);
  Returns: nothing
  Prints the contents of the array on the screen in a 3 x 3 grid.
  ***************************************************************/
-void displayArray(int [][3] array);
+void displayArray(int array[][3]);
 
 /******************************************************************
  addArrays
@@ -36,7 +38,7 @@ void displayArray(int [][3] array);
  Adds the two arrays together and stores it in the resulting array.
  Prints the resultingArray onto the screen.
  ******************************************************************/
-void addArrays(int [][3] array1, int [][3] array2, int [][3] resultingArray);
+void addArrays(int array1[][3], int array2[][3], int resultingArray[][3]);
 
 /****************************************************************************
  multiplyArrays
@@ -47,7 +49,7 @@ void addArrays(int [][3] array1, int [][3] array2, int [][3] resultingArray);
  Multiplies the arrays together and stores the result in the resulting Array.
  Prints the resultingArray on the screen.
  ****************************************************************************/
-void multiplyArrays( int [][3] array1, int [][3] array2, int [][3] resultingArray);
+void multiplyArrays( int array1[][3], int array2[][3], int resultingArray[][3]);
 
 /****************************************************
  displayTransposedArray
@@ -55,7 +57,7 @@ void multiplyArrays( int [][3] array1, int [][3] array2, int [][3] resultingArra
  Returns: nothing
  Prints the result of flipping the rows into columns.
  ****************************************************/
-void displayTransposedArray(int [][3] array);
+void displayTransposedArray(int array[][3]);
 
 /********************************************************************
  displayDeterminant
@@ -63,7 +65,7 @@ void displayTransposedArray(int [][3] array);
  Returns: nothing
  Calculates the determinant of the array and prints it on the screen.
  ********************************************************************/
-void displayDeterminant(int [][3] array);
+void displayDeterminant(int array[][3]);
 
 /*************************************************************************
  sumArrayRows
@@ -71,7 +73,7 @@ void displayDeterminant(int [][3] array);
  Returns: nothing
  Adds each element in a row and prints the sum on the screen for each row.
  **************************************************************************/
-void sumArrayRows(int [][3] array);
+void sumArrayRows(int array[][3]);
 
 /*******************************************************************************
  sumArrayColumns
@@ -79,7 +81,7 @@ void sumArrayRows(int [][3] array);
  Returns: nothing
  Adds each element in a column and prints the sum on the screen for each column.
  *******************************************************************************/
-void sumArrayColumns(int [][3] array);
+void sumArrayColumns(int array[][3]);
 
 /*************************************************************************
  sumArrayDiagonals
@@ -88,7 +90,7 @@ void sumArrayColumns(int [][3] array);
  Adds each element in a diagonal and prints the sum on the screen for each
  diagonal.
  *************************************************************************/
-void sumArrayDiagonals(int [][3] array);
+void sumArrayDiagonals(int array[][3]);
 
 /***************************************************************************
  isSpecialArray
@@ -96,22 +98,23 @@ void sumArrayDiagonals(int [][3] array);
  Returns: nothing
  Checks to see is the array has nine distinct numbers and prints the result.
  ***************************************************************************/ 
-void isSpecialArray(int [][3] array);
+void isSpecialArray(int array[][3]);
 
 int main()
 {
     int array1[3][3]; // First 3 x 3 array
     int array2[3][3]; // Second 3 x 3 array
+    int array3[3][3]; // Third 3 x 3 array
     // Tells program wether it should repeat the loop or end the program
     bool runProgram = true;
+    // Stores the users answer to determine if the program should continue running
+    char userAnswer; 
 
     do {
         populateArrays(array1, array2); // Populates the arrays with random numbers
 
         displayArray(array1); // Displays array1 on the screen
         displayArray(array2); // Displays array2 on the screen
-    
-        int array3[3][3]; // Third 3 x 3 array
  
         // Adds both arrays and stores the results in array3
         addArrays(array1, array2, array3);
@@ -150,7 +153,7 @@ int main()
         if (userAnswer == 'n')
            runProgram = false;
 
-    } while (runProgram)
+    } while (runProgram);
 
     cout << "Program Terminated";
 }
