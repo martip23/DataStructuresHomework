@@ -97,17 +97,18 @@ int main()
     int array1[3][3]; // First 3 x 3 array
     int array2[3][3]; // Second 3 x 3 array
     int array3[3][3]; // Third 3 x 3 array
-    // Tells program wether it should repeat the loop or end the program
+
+    // Tells program whether it should repeat the loop or end the program
     bool runProgram = true;
     // Stores the users answer to determine if the program should continue running
-    char userAnswer; 
+    char userAnswer;
 
     do {
         populateArrays(array1, array2); // Populates the arrays with random numbers
 
         displayArray(array1); // Displays array1 on the screen
         displayArray(array2); // Displays array2 on the screen
- 
+
         // Adds both arrays and stores the results in array3
         addArrays(array1, array2, array3);
 
