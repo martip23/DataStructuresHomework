@@ -92,55 +92,6 @@ void sumArrayColumns(int array1[][3]);
  *************************************************************************/
 void sumArrayDiagonals(int array1[][3]);
 
-void populateArrays(int array1[][3], int array2[][3])
-{
-
-}
-
-void displayArray(int array1[][3])
-{
-
-}
-
-void addArrays(int array1[][3], int array2[][3], int resultingArray[][3])
-{
-
-}
-
-void multiplyArrays(int array1[][3], int array2[][3], int resultingArray[][3])
-{
-
-}
-
-void displayTransposedArray(int array1[][3])
-{
-
-}
-
-void displayDeterminant(int array1[][3])
-{
-
-}
-
-void sumArrayRows(int array1[][3])
-{
-
-}
-
-void sumArrayColumns(int array1[][3])
-{
-
-}
-
-void sumArrayDiagonals(int array1[][3])
-{
-
-}
-
-void isSpecialArray(int array1[][3])
-{
-
-}
 /*********************************************************************
 isSpecialArray
 Input: array(int [][3] as a 3 x 3 array
@@ -211,3 +162,52 @@ int main()
 }
 
 // Functions
+void populateArrays(int array1[][3], int array2[][3])
+{
+
+}
+
+void displayArray(int array1[][3])
+{
+
+}
+
+void addArrays(int array1[][3], int array2[][3], int resultingArray[][3])
+{
+
+}
+
+void multiplyArrays(int array1[][3], int array2[][3], int resultingArray[][3])
+{
+
+}
+
+void displayTransposedArray(int array1[][3])
+{
+
+}
+
+void displayDeterminant(int array1[][3])
+{
+
+}
+
+void sumArrayRows(int array1[][3])
+{
+
+}
+
+void sumArrayColumns(int array1[][3])
+{
+
+}
+
+void sumArrayDiagonals(int array1[][3])
+{
+
+}
+
+void isSpecialArray(int array1[][3])
+{
+
+}
