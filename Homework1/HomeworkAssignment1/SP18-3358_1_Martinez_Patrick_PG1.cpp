@@ -10,6 +10,93 @@
 using namespace std;
 
 // Prototypes
+/*******************************************************************
+ populateArrays
+ Input: array1 (int [][3]) a 3 x 3 array
+        array2 (int [][3]) a 3 x 3 array
+ Returns: nothing
+ Inserts a random number from 1 - 12 into each slot for both arrays.
+ *******************************************************************/
+void populateArrays(int [][3] array1, int [][3] array2);
+
+/***************************************************************
+ displayArray
+ Input: array (int [][3]) a 3 x 3 array
+ Returns: nothing
+ Prints the contents of the array on the screen in a 3 x 3 grid.
+ ***************************************************************/
+void displayArray(int [][3] array);
+
+/******************************************************************
+ addArrays
+ Input: array1 (int [][3]) as a 3 x 3 array
+        array2 (int [][3]) as a 3 x 3 array
+        resultingArray (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Adds the two arrays together and stores it in the resulting array.
+ Prints the resultingArray onto the screen.
+ ******************************************************************/
+void addArrays(int [][3] array1, int [][3] array2, int [][3] resultingArray);
+
+/****************************************************************************
+ multiplyArrays
+ Input: array1 (int [][3]) as a 3 x 3 array
+        array2 (int [][3]) as a 3 x 3 array
+        resultingArray (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Multiplies the arrays together and stores the result in the resulting Array.
+ Prints the resultingArray on the screen.
+ ****************************************************************************/
+void multiplyArrays( int [][3] array1, int [][3] array2, int [][3] resultingArray);
+
+/****************************************************
+ displayTransposedArray
+ Input: array (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Prints the result of flipping the rows into columns.
+ ****************************************************/
+void displayTransposedArray(int [][3] array);
+
+/********************************************************************
+ displayDeterminant
+ Input: array (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Calculates the determinant of the array and prints it on the screen.
+ ********************************************************************/
+void displayDeterminant(int [][3] array);
+
+/*************************************************************************
+ sumArrayRows
+ Input: array (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Adds each element in a row and prints the sum on the screen for each row.
+ **************************************************************************/
+void sumArrayRows(int [][3] array);
+
+/*******************************************************************************
+ sumArrayColumns
+ Input: array (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Adds each element in a column and prints the sum on the screen for each column.
+ *******************************************************************************/
+void sumArrayColumns(int [][3] array);
+
+/*************************************************************************
+ sumArrayDiagonals
+ Input: array (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Adds each element in a diagonal and prints the sum on the screen for each
+ diagonal.
+ *************************************************************************/
+void sumArrayDiagonals(int [][3] array);
+
+/***************************************************************************
+ isSpecialArray
+ Input: array (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Checks to see is the array has nine distinct numbers and prints the result.
+ ***************************************************************************/ 
+void isSpecialArray(int [][3] array);
 
 int main()
 {
@@ -39,10 +126,10 @@ int main()
         displayArray(array3);
 
         // Transposes array1 and displays the result on the screen
-        transposeArray(array1);
+        displayTransposedArray(array1);
 
         // Calculates the determinant of array1 and displays the result on the screen
-        findDeterminant(array1);
+        displayDeterminant(array1);
 
         // Adds each element in a row for all rows in array1 and displays the result on the screen
         sumArrayRows(array1);
