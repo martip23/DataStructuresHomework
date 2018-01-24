@@ -27,7 +27,7 @@ void populateArrays(int array1[][3], int array2[][3]);
  Returns: nothing
  Prints the contents of the array on the screen in a 3 x 3 grid.
  ***************************************************************/
-void displayArray(int array[][3]);
+void displayArray(int array1[][3]);
 
 /******************************************************************
  addArrays
@@ -57,7 +57,7 @@ void multiplyArrays( int array1[][3], int array2[][3], int resultingArray[][3]);
  Returns: nothing
  Prints the result of flipping the rows into columns.
  ****************************************************/
-void displayTransposedArray(int array[][3]);
+void displayTransposedArray(int array1[][3]);
 
 /********************************************************************
  displayDeterminant
@@ -65,7 +65,7 @@ void displayTransposedArray(int array[][3]);
  Returns: nothing
  Calculates the determinant of the array and prints it on the screen.
  ********************************************************************/
-void displayDeterminant(int array[][3]);
+void displayDeterminant(int array1[][3]);
 
 /*************************************************************************
  sumArrayRows
@@ -73,7 +73,7 @@ void displayDeterminant(int array[][3]);
  Returns: nothing
  Adds each element in a row and prints the sum on the screen for each row.
  **************************************************************************/
-void sumArrayRows(int array[][3]);
+void sumArrayRows(int array1[][3]);
 
 /*******************************************************************************
  sumArrayColumns
@@ -81,7 +81,7 @@ void sumArrayRows(int array[][3]);
  Returns: nothing
  Adds each element in a column and prints the sum on the screen for each column.
  *******************************************************************************/
-void sumArrayColumns(int array[][3]);
+void sumArrayColumns(int array1[][3]);
 
 /*************************************************************************
  sumArrayDiagonals
@@ -90,7 +90,64 @@ void sumArrayColumns(int array[][3]);
  Adds each element in a diagonal and prints the sum on the screen for each
  diagonal.
  *************************************************************************/
-void sumArrayDiagonals(int array[][3]);
+void sumArrayDiagonals(int array1[][3]);
+
+void populateArrays(int array1[][3], int array2[][3])
+{
+
+}
+
+void displayArray(int array1[][3])
+{
+
+}
+
+void addArrays(int array1[][3], int array2[][3], int resultingArray[][3])
+{
+
+}
+
+void multiplyArrays(int array1[][3], int array2[][3], int resultingArray[][3])
+{
+
+}
+
+void displayTransposedArray(int array1[][3])
+{
+
+}
+
+void displayDeterminant(int array1[][3])
+{
+
+}
+
+void sumArrayRows(int array1[][3])
+{
+
+}
+
+void sumArrayColumns(int array1[][3])
+{
+
+}
+
+void sumArrayDiagonals(int array1[][3])
+{
+
+}
+
+void isSpecialArray(int array1[][3])
+{
+
+}
+/*********************************************************************
+isSpecialArray
+Input: array(int [][3] as a 3 x 3 array
+Returns: true or false
+Returns true if array is a Special Array and false otherwise.
+**********************************************************************/
+void isSpecialArray(int array1[][3]);
 
 int main()
 {
@@ -136,7 +193,7 @@ int main()
         // Adds each diagonal element for both diagonals in array1 and displays the result on the screen
         sumArrayDiagonals(array1);
 
-        // Determins if array1 is a special array and displays the result on the screen
+        // Determines if array1 is a special array and displays the result on the screen
         isSpecialArray(array1);
 
         cout << "Do you want to run again? (y/n): ";
@@ -149,6 +206,8 @@ int main()
     } while (runProgram);
 
     cout << "Program Terminated";
+
+    return 0;
 }
 
 // Functions
