@@ -14,7 +14,11 @@
 //  column, row and major diagonals and finally determine whether or not it is
 //  a special array.
 
-#include <iostream>
+#include <iostream> // Provides cout, cin and endl
+#include <iomanip>  // Provides setw for setting output width
+#include <cstdlib>  // Provides srand and rand
+#include <ctime>     // provides time(for random seed)
+
 
 using namespace std;
 
@@ -24,7 +28,7 @@ using namespace std;
 void populateArray(int array1[][3]);
 
 // Displays array on screen
-void displayArray(int array1[][3]);
+void displayArray(int array1[][3], string title);
 
 // Adds array1 and array2 and stores sum in resultArray
 void addArrays(int array1[][3], int array2[][3], int resultArray[][3]);
@@ -52,6 +56,8 @@ void isSpecialArray(int array1[][3]);
 
 int main()
 {
+    srand(time(NULL)); // Seed random generator
+
     int array1[3][3]; // First 3 x 3 array
     int array2[3][3]; // Second 3 x 3 array
     int array3[3][3]; // Third 3 x 3 array
@@ -65,20 +71,20 @@ int main()
         populateArray(array1); // Populates array with random numbers
         populateArray(array2); // Populates array with random numbers
 
-        displayArray(array1); // Displays array1 on the screen
-        displayArray(array2); // Displays array2 on the screen
+        displayArray(array1, "Array 1"); // Displays array1 on the screen
+        displayArray(array2, "Array 2"); // Displays array2 on the screen
 
         // Adds both arrays and stores the results in array3
         addArrays(array1, array2, array3);
 
         // Displays array3 onto the screen
-        displayArray(array3);
+        displayArray(array3, "Sum of Array 1 and Array 2");
 
         // Multiplies array1 and array2 and stores the results in array3
         multiplyArrays(array1, array2, array3);
 
         // Displays array3 onto the screen
-        displayArray(array3);
+        displayArray(array3, "Product of Array 1 and Array 2");
 
         // Transposes array1 and displays the result on the screen
         displayTransposedArray(array1);
@@ -119,20 +125,69 @@ int main()
  Returns: nothing
  Inserts a random number from 1 - 12 into each slot for an array.
  *******************************************************************/
-void populateArray(int array1[][3], int array2[][3])
+void populateArray(int array1[][3])
 {
 
+    int randNums[9]; // A 1D array to hold random numbers generated
+    int     numbersAdded = 0;   // A counter to determine how many numbers
+                                // have successfully been added
+
+
+    // Add a random integer between 1-12 to randNums[0]
+    randNums[numbersAdded] = rand()%12 + 1;
+    numbersAdded++; // increment numbersAdded
+
+    while (numbersAdded < 9) {
+        bool alreadyInList = false; // Boolean to catch duplicate random number
+        int randNum = rand()%12 + 1;// Int to temporarily store random number
+
+        // Check if number is already in array
+        for (int i = 0; i < numbersAdded; i++) {
+            if (randNum == randNums[i])
+                alreadyInList = true;
+        }
+
+        // Only add randNum if it is not in list
+        if (!alreadyInList) {
+            randNums[numbersAdded] = randNum;
+            numbersAdded++; // increment numbersAdded ONLY if it's a new
+                            // distinct number
+        }
+    }
+
+    // Add the numbers in the randNums array to array1
+    int index = 0; // Used to iterate through randNums array
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            array1[i][j] = randNums[index];
+            index++;
+        }
+    }
 }
 
 /***************************************************************
  displayArray
  Input: array (int [][3]) a 3 x 3 array
+        string title - The title for the table
  Returns: nothing
- Prints the contents of the array on the screen in a 3 x 3 grid.
+ Prints the title of the table over the
+ contents of the array on the screen in a 3 x 3 grid.
  ***************************************************************/
-void displayArray(int array1[][3])
+void displayArray(int array1[][3], string title)
 {
+    const int TABLE_WIDTH = 3; // Set the distance between table cells
 
+    // Print 2 empty lines, then title:
+    cout << endl << endl;
+    cout << title << ": " << endl << endl;
+
+    // Print each element in a table of 3 by 3
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << setw(TABLE_WIDTH) << array1[i][j];
+        }
+        cout << endl << endl;
+    }
 }
 
 /******************************************************************
