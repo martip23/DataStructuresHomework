@@ -1,3 +1,5 @@
+//  Roster Numbers: 24, ??
+//
 //  Authors: Patrick Martinez, Blake Hillier
 //  Due Date: Monday 2/5/2018
 //  Programming Assignment Number 1
@@ -5,7 +7,12 @@
 //
 //  Instructor: Hussain Gholoom
 //
-//  <INSERT DESCRIPTION>
+//  This program fulfills the homework requirements for assignment one.
+//  This program will create 2 arrays of size 3x3, populate them with distince
+//  numbers, add and multiply these arrays, and display results. It will then
+//  display the transpose and determinate of array1. Then the sum of each
+//  column, row and major diagonals and finally determine whether or not it is
+//  a special array.
 
 #include <iostream>
 
@@ -49,7 +56,7 @@ void addArrays(int array1[][3], int array2[][3], int resultingArray[][3]);
  Multiplies the arrays together and stores the result in the resulting Array.
  Prints the resultingArray on the screen.
  ****************************************************************************/
-void multiplyArrays( int array1[][3], int array2[][3], int resultingArray[][3]);
+void multiplyArrays( int array1[][3], int array2[][3], int resultArray[][3]);
 
 /****************************************************
  displayTransposedArray
@@ -75,12 +82,12 @@ void displayDeterminant(int array1[][3]);
  **************************************************************************/
 void sumArrayRows(int array1[][3]);
 
-/*******************************************************************************
+/******************************************************************************
  sumArrayColumns
  Input: array (int [][3]) as a 3 x 3 array
  Returns: nothing
- Adds each element in a column and prints the sum on the screen for each column.
- *******************************************************************************/
+ Adds each element in a column and prints the sum on the screen for each column
+ *****************************************************************************/
 void sumArrayColumns(int array1[][3]);
 
 /*************************************************************************
