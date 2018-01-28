@@ -8,7 +8,7 @@
 //  Instructor: Hussain Gholoom
 //
 //  This program fulfills the homework requirements for assignment one.
-//  This program will create 2 arrays of size 3x3, populate them with distince
+//  This program will create 2 arrays of size 3x3, populate them with distinct
 //  numbers, add and multiply these arrays, and display results. It will then
 //  display the transpose and determinate of array1. Then the sum of each
 //  column, row and major diagonals and finally determine whether or not it is
@@ -58,11 +58,11 @@ int main()
 
     // Tells program whether it should repeat the loop or end the program
     bool runProgram = true;
-    // Stores the users answer to determine if the program should continue running
+    // Stores user input to determine whether to continue program or not
     char userAnswer;
 
     do {
-        populateArrays(array1, array2); // Populates the arrays with random numbers
+        populateArrays(array1, array2); // Populates arrays with random numbers
 
         displayArray(array1); // Displays array1 on the screen
         displayArray(array2); // Displays array2 on the screen
@@ -73,7 +73,7 @@ int main()
         // Displays array3 onto the screen
         displayArray(array3);
 
-        // Multiplies array1 and array2 together and stores the results in array3
+        // Multiplies array1 and array2 and stores the results in array3
         multiplyArrays(array1, array2, array3);
 
         // Displays array3 onto the screen
@@ -82,19 +82,19 @@ int main()
         // Transposes array1 and displays the result on the screen
         displayTransposedArray(array1);
 
-        // Calculates the determinant of array1 and displays the result on the screen
+        // Calculates and displays determinant of array1
         displayDeterminant(array1);
 
-        // Adds each element in a row for all rows in array1 and displays the result on the screen
+        // Sums up every row in array1 and displays each row results
         sumArrayRows(array1);
 
-        // Adds each element in a column for all columns in array1 and displays the result on the screen
+        // Sums all columns in array1 and displays each column results
         sumArrayColumns(array1);
 
-        // Adds each diagonal element for both diagonals in array1 and displays the result on the screen
+        // Sums all major diagonals in an array and displays results
         sumArrayDiagonals(array1);
 
-        // Determines if array1 is a special array and displays the result on the screen
+        // Determines if array is a special result and displays result
         isSpecialArray(array1);
 
         cout << "Do you want to run again? (y/n): ";
