@@ -19,92 +19,35 @@
 using namespace std;
 
 // Prototypes
-/*******************************************************************
- populateArrays
- Input: array1 (int [][3]) a 3 x 3 array
-        array2 (int [][3]) a 3 x 3 array
- Returns: nothing
- Inserts a random number from 1 - 12 into each slot for both arrays.
- *******************************************************************/
+
+// Populates the arrays with random numbers
 void populateArrays(int array1[][3], int array2[][3]);
 
-/***************************************************************
- displayArray
- Input: array (int [][3]) a 3 x 3 array
- Returns: nothing
- Prints the contents of the array on the screen in a 3 x 3 grid.
- ***************************************************************/
+// Displays array on screen
 void displayArray(int array1[][3]);
 
-/******************************************************************
- addArrays
- Input: array1 (int [][3]) as a 3 x 3 array
-        array2 (int [][3]) as a 3 x 3 array
-        resultingArray (int [][3]) as a 3 x 3 array
- Returns: nothing
- Adds the two arrays together and stores it in the resulting array.
- Prints the resultingArray onto the screen.
- ******************************************************************/
-void addArrays(int array1[][3], int array2[][3], int resultingArray[][3]);
+// Adds array1 and array2 and stores sum in resultArray
+void addArrays(int array1[][3], int array2[][3], int resultArray[][3]);
 
-/****************************************************************************
- multiplyArrays
- Input: array1 (int [][3]) as a 3 x 3 array
-        array2 (int [][3]) as a 3 x 3 array
-        resultingArray (int [][3]) as a 3 x 3 array
- Returns: nothing
- Multiplies the arrays together and stores the result in the resulting Array.
- Prints the resultingArray on the screen.
- ****************************************************************************/
+// Multiplies array1 and array2 and stores in resultArray
 void multiplyArrays( int array1[][3], int array2[][3], int resultArray[][3]);
 
-/****************************************************
- displayTransposedArray
- Input: array (int [][3]) as a 3 x 3 array
- Returns: nothing
- Prints the result of flipping the rows into columns.
- ****************************************************/
+// Transposes and displays array1
 void displayTransposedArray(int array1[][3]);
 
-/********************************************************************
- displayDeterminant
- Input: array (int [][3]) as a 3 x 3 array
- Returns: nothing
- Calculates the determinant of the array and prints it on the screen.
- ********************************************************************/
+// Calculates and displays determinant of array1
 void displayDeterminant(int array1[][3]);
 
-/*************************************************************************
- sumArrayRows
- Input: array (int [][3]) as a 3 x 3 array
- Returns: nothing
- Adds each element in a row and prints the sum on the screen for each row.
- **************************************************************************/
+// Sums up every row in array1 and displays results
 void sumArrayRows(int array1[][3]);
 
-/******************************************************************************
- sumArrayColumns
- Input: array (int [][3]) as a 3 x 3 array
- Returns: nothing
- Adds each element in a column and prints the sum on the screen for each column
- *****************************************************************************/
+// Sums all columns in array1 and displays results
 void sumArrayColumns(int array1[][3]);
 
-/*************************************************************************
- sumArrayDiagonals
- Input: array (int [][3]) as a 3 x 3 array
- Returns: nothing
- Adds each element in a diagonal and prints the sum on the screen for each
- diagonal.
- *************************************************************************/
+// Sums all major diagonals in an array and displays results
 void sumArrayDiagonals(int array1[][3]);
 
-/*********************************************************************
-isSpecialArray
-Input: array(int [][3] as a 3 x 3 array
-Returns: true or false
-Returns true if array is a Special Array and false otherwise.
-**********************************************************************/
+// Determines if array is a special result and displays result
 void isSpecialArray(int array1[][3]);
 
 int main()
@@ -169,51 +112,110 @@ int main()
 }
 
 // Functions
+/*******************************************************************
+ populateArrays
+ Input: array1 (int [][3]) a 3 x 3 array
+        array2 (int [][3]) a 3 x 3 array
+ Returns: nothing
+ Inserts a random number from 1 - 12 into each slot for both arrays.
+ *******************************************************************/
 void populateArrays(int array1[][3], int array2[][3])
 {
 
 }
-
+/***************************************************************
+ displayArray
+ Input: array (int [][3]) a 3 x 3 array
+ Returns: nothing
+ Prints the contents of the array on the screen in a 3 x 3 grid.
+ ***************************************************************/
 void displayArray(int array1[][3])
 {
 
 }
-
+/******************************************************************
+ addArrays
+ Input: array1 (int [][3]) as a 3 x 3 array
+        array2 (int [][3]) as a 3 x 3 array
+        resultingArray (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Adds the two arrays together and stores it in the resulting array.
+ Prints the resultingArray onto the screen.
+ ******************************************************************/
 void addArrays(int array1[][3], int array2[][3], int resultingArray[][3])
 {
 
 }
-
+/****************************************************************************
+ multiplyArrays
+ Input: array1 (int [][3]) as a 3 x 3 array
+        array2 (int [][3]) as a 3 x 3 array
+        resultingArray (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Multiplies the arrays together and stores the result in the resulting Array.
+ Prints the resultingArray on the screen.
+ ****************************************************************************/
 void multiplyArrays(int array1[][3], int array2[][3], int resultingArray[][3])
 {
 
 }
-
+/****************************************************
+ displayTransposedArray
+ Input: array (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Prints the result of flipping the rows into columns.
+ ****************************************************/
 void displayTransposedArray(int array1[][3])
 {
 
 }
-
+/********************************************************************
+ displayDeterminant
+ Input: array (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Calculates the determinant of the array and prints it on the screen.
+ ********************************************************************/
 void displayDeterminant(int array1[][3])
 {
 
 }
-
+/*************************************************************************
+ sumArrayRows
+ Input: array (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Adds each element in a row and prints the sum on the screen for each row.
+ **************************************************************************/
 void sumArrayRows(int array1[][3])
 {
 
 }
-
+/******************************************************************************
+ sumArrayColumns
+ Input: array (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Adds each element in a column and prints the sum on the screen for each column
+ *****************************************************************************/
 void sumArrayColumns(int array1[][3])
 {
 
 }
-
+/*************************************************************************
+ sumArrayDiagonals
+ Input: array (int [][3]) as a 3 x 3 array
+ Returns: nothing
+ Adds each element in a diagonal and prints the sum on the screen for each
+ diagonal.
+ *************************************************************************/
 void sumArrayDiagonals(int array1[][3])
 {
 
 }
-
+/*********************************************************************
+isSpecialArray
+Input: array(int [][3] as a 3 x 3 array
+Returns: true or false
+Returns true if array is a Special Array and false otherwise.
+**********************************************************************/
 void isSpecialArray(int array1[][3])
 {
 
