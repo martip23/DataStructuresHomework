@@ -20,8 +20,8 @@ using namespace std;
 
 // Prototypes
 
-// Populates the arrays with random numbers
-void populateArrays(int array1[][3], int array2[][3]);
+// Populates an array with random numbers
+void populateArray(int array1[][3]);
 
 // Displays array on screen
 void displayArray(int array1[][3]);
@@ -62,7 +62,8 @@ int main()
     char userAnswer;
 
     do {
-        populateArrays(array1, array2); // Populates arrays with random numbers
+        populateArray(array1); // Populates array with random numbers
+        populateArray(array2); // Populates array with random numbers
 
         displayArray(array1); // Displays array1 on the screen
         displayArray(array2); // Displays array2 on the screen
@@ -113,16 +114,16 @@ int main()
 
 // Functions
 /*******************************************************************
- populateArrays
+ populateArray
  Input: array1 (int [][3]) a 3 x 3 array
-        array2 (int [][3]) a 3 x 3 array
  Returns: nothing
- Inserts a random number from 1 - 12 into each slot for both arrays.
+ Inserts a random number from 1 - 12 into each slot for an array.
  *******************************************************************/
-void populateArrays(int array1[][3], int array2[][3])
+void populateArray(int array1[][3], int array2[][3])
 {
 
 }
+
 /***************************************************************
  displayArray
  Input: array (int [][3]) a 3 x 3 array
@@ -133,6 +134,7 @@ void displayArray(int array1[][3])
 {
 
 }
+
 /******************************************************************
  addArrays
  Input: array1 (int [][3]) as a 3 x 3 array
@@ -146,6 +148,7 @@ void addArrays(int array1[][3], int array2[][3], int resultingArray[][3])
 {
 
 }
+
 /****************************************************************************
  multiplyArrays
  Input: array1 (int [][3]) as a 3 x 3 array
@@ -159,6 +162,7 @@ void multiplyArrays(int array1[][3], int array2[][3], int resultingArray[][3])
 {
 
 }
+
 /****************************************************
  displayTransposedArray
  Input: array (int [][3]) as a 3 x 3 array
@@ -169,6 +173,7 @@ void displayTransposedArray(int array1[][3])
 {
 
 }
+
 /********************************************************************
  displayDeterminant
  Input: array (int [][3]) as a 3 x 3 array
@@ -179,6 +184,7 @@ void displayDeterminant(int array1[][3])
 {
 
 }
+
 /*************************************************************************
  sumArrayRows
  Input: array (int [][3]) as a 3 x 3 array
@@ -189,6 +195,7 @@ void sumArrayRows(int array1[][3])
 {
 
 }
+
 /******************************************************************************
  sumArrayColumns
  Input: array (int [][3]) as a 3 x 3 array
@@ -199,6 +206,7 @@ void sumArrayColumns(int array1[][3])
 {
 
 }
+
 /*************************************************************************
  sumArrayDiagonals
  Input: array (int [][3]) as a 3 x 3 array
@@ -210,6 +218,7 @@ void sumArrayDiagonals(int array1[][3])
 {
 
 }
+
 /*********************************************************************
 isSpecialArray
 Input: array(int [][3] as a 3 x 3 array
