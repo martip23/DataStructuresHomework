@@ -46,7 +46,7 @@ void displayDeterminant(int array[][3]);
 void sumArrayRows(int array[][3]);
 
 // Sums all columns in array1 and displays results
-void sumArrayColumns(int array1[][3]);
+void sumArrayColumns(int array[][3]);
 
 // Sums all major diagonals in an array and displays results
 void sumArrayDiagonals(int array1[][3]);
@@ -291,9 +291,31 @@ void sumArrayRows(int array[][3])
  Returns: nothing
  Adds each element in a column and prints the sum on the screen for each column
  *****************************************************************************/
-void sumArrayColumns(int array1[][3])
+void sumArrayColumns(int array[][3])
 {
+    int column1 = 0;
+    int column2 = 0;
+    int column3 = 0; 
 
+    for (int i = 0; i < 3; i++)
+    {
+        column1 += array[i][0];
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        column2 += array[i][1];
+    }
+
+
+    for (int i = 0; i < 3; i++)
+    {
+        column3 += array[i][2];
+    }
+
+    cout << "Sum of numbers in Column # 1 in Array 1 = " << column1 << endl;
+    cout << "Sum of numbers in Column # 2 in Array 1 = " << column2 << endl;
+    cout << "Sum of numbers in Column # 3 in Array 1 = " << column3 << endl;
 }
 
 /*************************************************************************
