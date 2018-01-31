@@ -113,7 +113,7 @@ int main()
 
     } while (runProgram);
 
-    cout << "Program Terminated";
+    cout << "Program Terminated" << endl;
 
     return 0;
 }
@@ -129,8 +129,8 @@ void populateArray(int array1[][3])
 {
 
     int randNums[9]; // A 1D array to hold random numbers generated
-    int     numbersAdded = 0;   // A counter to determine how many numbers
-                                // have successfully been added
+    int numbersAdded = 0; // A counter to determine how many numbers
+                          // have successfully been added
 
 
     // Add a random integer between 1-12 to randNums[0]
@@ -201,7 +201,13 @@ void displayArray(int array1[][3], string title)
  ******************************************************************/
 void addArrays(int array1[][3], int array2[][3], int resultingArray[][3])
 {
-
+    for (int r = 0; r < 3; r++)
+    {
+        for (int c = 0; c < 3; c++)
+        {
+            resultingArray[r][c] = array1[r][c] + array2[r][c];
+        }
+    }
 }
 
 /****************************************************************************
