@@ -40,13 +40,13 @@ void multiplyArrays( int array1[][3], int array2[][3], int resultArray[][3]);
 void displayTransposedArray(int array1[][3]);
 
 // Calculates and displays determinant of array1
-void displayDeterminant(int array[][3]);
+void displayDeterminant(int array1[][3]);
 
 // Sums up every row in array1 and displays results
-void sumArrayRows(int array[][3]);
+void sumArrayRows(int array1[][3]);
 
 // Sums all columns in array1 and displays results
-void sumArrayColumns(int array[][3]);
+void sumArrayColumns(int array1[][3]);
 
 // Sums all major diagonals in an array and displays results
 void sumArrayDiagonals(int array1[][3]);
@@ -167,7 +167,7 @@ void populateArray(int array1[][3])
 
 /***************************************************************
  displayArray
- Input: array (int [][3]) a 3 x 3 array
+ Input: array1 (int [][3]) a 3 x 3 array
         string title - The title for the table
  Returns: nothing
  Prints the title of the table over the
@@ -226,7 +226,7 @@ void multiplyArrays(int array1[][3], int array2[][3], int resultingArray[][3])
 
 /****************************************************
  displayTransposedArray
- Input: array (int [][3]) as a 3 x 3 array
+ Input: array (int [][3]) as a 3 x 3 array1
  Returns: nothing
  Prints the result of flipping the rows into columns.
  ****************************************************/
@@ -237,28 +237,28 @@ void displayTransposedArray(int array1[][3])
 
 /********************************************************************
  displayDeterminant
- Input: array (int [][3]) as a 3 x 3 array
+ Input: array1 (int [][3]) as a 3 x 3 array1
  Returns: nothing
- Calculates the determinant of the array and prints it on the screen.
+ Calculates the determinant of the array1 and prints it on the screen.
  ********************************************************************/
-void displayDeterminant(int array[][3])
+void displayDeterminant(int array1[][3])
 {
-    double determinant = array[0][0] * (array[1][1] * array[2][2] - array[1][2] 
-                         * array[2][1]) - array[0][1] * (array[1][0] * 
-                         array[2][2] - array[1][2] * array[2][0]) + array[0][2]
-                         * (array[1][0] * array[2][1] - array[1][1] * 
-                         array[2][0]);
+    double determinant = array1[0][0] * (array1[1][1] * array1[2][2] - array1[1][2] 
+                         * array1[2][1]) - array1[0][1] * (array1[1][0] * 
+                         array1[2][2] - array1[1][2] * array1[2][0]) + array1[0][2]
+                         * (array1[1][0] * array1[2][1] - array1[1][1] * 
+                         array1[2][0]);
 
     cout << "Determinant of Array 1 = " << determinant << endl;
 }
 
 /*************************************************************************
  sumArrayRows
- Input: array (int [][3]) as a 3 x 3 array
+ Input: array1 (int [][3]) as a 3 x 3 array1
  Returns: nothing
  Adds each element in a row and prints the sum on the screen for each row.
  **************************************************************************/
-void sumArrayRows(int array[][3])
+void sumArrayRows(int array1[][3])
 {
     int row1 = 0;
     int row2 = 0;
@@ -266,18 +266,18 @@ void sumArrayRows(int array[][3])
 
     for (int i = 0; i < 3; i++)
     {
-        row1 += array[0][i];
+        row1 += array1[0][i];
     }
 
     for (int i = 0; i < 3; i++)
     {
-        row2 += array[1][i];
+        row2 += array1[1][i];
     }
 
 
     for (int i = 0; i < 3; i++)
     {
-        row3 += array[2][i];
+        row3 += array1[2][i];
     }
 
     cout << "Sum of numbers in Row # 1 in Array 1 = " << row1 << endl;
@@ -287,11 +287,11 @@ void sumArrayRows(int array[][3])
 
 /******************************************************************************
  sumArrayColumns
- Input: array (int [][3]) as a 3 x 3 array
+ Input: array1 (int [][3]) as a 3 x 3 array1
  Returns: nothing
  Adds each element in a column and prints the sum on the screen for each column
  *****************************************************************************/
-void sumArrayColumns(int array[][3])
+void sumArrayColumns(int array1[][3])
 {
     int column1 = 0;
     int column2 = 0;
@@ -299,18 +299,18 @@ void sumArrayColumns(int array[][3])
 
     for (int i = 0; i < 3; i++)
     {
-        column1 += array[i][0];
+        column1 += array1[i][0];
     }
 
     for (int i = 0; i < 3; i++)
     {
-        column2 += array[i][1];
+        column2 += array1[i][1];
     }
 
 
     for (int i = 0; i < 3; i++)
     {
-        column3 += array[i][2];
+        column3 += array1[i][2];
     }
 
     cout << "Sum of numbers in Column # 1 in Array 1 = " << column1 << endl;
@@ -320,7 +320,7 @@ void sumArrayColumns(int array[][3])
 
 /*************************************************************************
  sumArrayDiagonals
- Input: array (int [][3]) as a 3 x 3 array
+ Input: array1 (int [][3]) as a 3 x 3 array1
  Returns: nothing
  Adds each element in a diagonal and prints the sum on the screen for each
  diagonal.
@@ -332,11 +332,11 @@ void sumArrayDiagonals(int array1[][3])
 
 /*********************************************************************
 isSpecialArray
-Input: array(int [][3] as a 3 x 3 array
+Input: array1(int [][3] as a 3 x 3 array1
 Returns: true or false
-Returns true if array is a Special Array and false otherwise.
+Returns true if array1 is a Special Array and false otherwise.
 **********************************************************************/
-void isSpecialArray(int array1[][3])
+void isSpecialArray(int array11[][3])
 {
 
 }
