@@ -40,10 +40,10 @@ void multiplyArrays( int array1[][3], int array2[][3], int resultArray[][3]);
 void displayTransposedArray(int array1[][3]);
 
 // Calculates and displays determinant of array1
-void displayDeterminant(int array1[][3]);
+void displayDeterminant(int array[][3]);
 
 // Sums up every row in array1 and displays results
-void sumArrayRows(int array1[][3]);
+void sumArrayRows(int array[][3]);
 
 // Sums all columns in array1 and displays results
 void sumArrayColumns(int array1[][3]);
@@ -258,9 +258,31 @@ void displayDeterminant(int array[][3])
  Returns: nothing
  Adds each element in a row and prints the sum on the screen for each row.
  **************************************************************************/
-void sumArrayRows(int array1[][3])
+void sumArrayRows(int array[][3])
 {
+    int row1 = 0;
+    int row2 = 0;
+    int row3 = 0; 
 
+    for (int i = 0; i < 3; i++)
+    {
+        row1 += array[0][i];
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        row2 += array[1][i];
+    }
+
+
+    for (int i = 0; i < 3; i++)
+    {
+        row3 += array[2][i];
+    }
+
+    cout << "Sum of numbers in Row # 1 in Array 1 = " << row1 << endl;
+    cout << "Sum of numbers in Row # 2 in Array 1 = " << row2 << endl;
+    cout << "Sum of numbers in Row # 3 in Array 1 = " << row3 << endl;
 }
 
 /******************************************************************************
