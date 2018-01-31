@@ -235,9 +235,15 @@ void displayTransposedArray(int array1[][3])
  Returns: nothing
  Calculates the determinant of the array and prints it on the screen.
  ********************************************************************/
-void displayDeterminant(int array1[][3])
+void displayDeterminant(int array[][3])
 {
+    double determinant = array[0][0] * (array[1][1] * array[2][2] - array[1][2] 
+                         * array[2][1]) - array[0][1] * (array[1][0] * 
+                         array[2][2] - array[1][2] * array[2][0]) + array[0][2]
+                         * (array[1][0] * array[2][1] - array[1][1] * 
+                         array[2][0]);
 
+    cout << "Determinant of Array 1 = " << determinant << endl;
 }
 
 /*************************************************************************
