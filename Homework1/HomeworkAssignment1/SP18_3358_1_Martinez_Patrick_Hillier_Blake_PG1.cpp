@@ -1,4 +1,4 @@
-//  Roster Numbers: 24, 20 
+//  Roster Numbers: 24, 20
 //
 //  Authors: Patrick Martinez, Blake Hillier
 //  Due Date: Monday 2/5/2018
@@ -221,7 +221,7 @@ void addArrays(int array1[][3], int array2[][3], int resultingArray[][3])
  ****************************************************************************/
 void multiplyArrays(int array1[][3], int array2[][3], int resultingArray[][3])
 {
-
+    //I will do this one. Debug line.
 }
 
 /****************************************************
@@ -232,7 +232,7 @@ void multiplyArrays(int array1[][3], int array2[][3], int resultingArray[][3])
  ****************************************************/
 void displayTransposedArray(int array1[][3])
 {
-
+   //I will do this one. Debug line.
 }
 
 /********************************************************************
@@ -243,10 +243,10 @@ void displayTransposedArray(int array1[][3])
  ********************************************************************/
 void displayDeterminant(int array[][3])
 {
-    double determinant = array[0][0] * (array[1][1] * array[2][2] - array[1][2] 
-                         * array[2][1]) - array[0][1] * (array[1][0] * 
+    double determinant = array[0][0] * (array[1][1] * array[2][2] - array[1][2]
+                         * array[2][1]) - array[0][1] * (array[1][0] *
                          array[2][2] - array[1][2] * array[2][0]) + array[0][2]
-                         * (array[1][0] * array[2][1] - array[1][1] * 
+                         * (array[1][0] * array[2][1] - array[1][1] *
                          array[2][0]);
 
     cout << "Determinant of Array 1 = " << determinant << endl;
@@ -262,7 +262,7 @@ void sumArrayRows(int array[][3])
 {
     int row1 = 0;
     int row2 = 0;
-    int row3 = 0; 
+    int row3 = 0;
 
     for (int i = 0; i < 3; i++)
     {
@@ -295,7 +295,7 @@ void sumArrayColumns(int array[][3])
 {
     int column1 = 0;
     int column2 = 0;
-    int column3 = 0; 
+    int column3 = 0;
 
     for (int i = 0; i < 3; i++)
     {
