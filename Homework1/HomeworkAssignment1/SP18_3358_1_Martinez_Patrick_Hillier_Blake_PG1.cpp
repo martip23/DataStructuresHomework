@@ -327,7 +327,21 @@ void sumArrayColumns(int array1[][3])
  *************************************************************************/
 void sumArrayDiagonals(int array1[][3])
 {
+    int diagonal1 = 0;
+    int diagonal2 = 0;
 
+    for (int i = 0; i < 3; i++)
+    {
+        diagonal1 += array1[i][i];
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        diagonal2 += array1[i][2-i];
+    }
+
+    cout << "Sum of numbers in first diagonal in array 1 = " << diagonal1 << endl;
+    cout << "Sum of numbers in second diagonal in array 1 = " <<  diagonal2 << endl;
 }
 
 /*********************************************************************
