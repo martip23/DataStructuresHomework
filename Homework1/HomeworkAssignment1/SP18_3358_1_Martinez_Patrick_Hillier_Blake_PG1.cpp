@@ -66,6 +66,8 @@ int main()
     bool runProgram = true;
     // Stores user input to determine whether to continue program or not
     char userAnswer;
+    // Tells if the userAnswer is valid or not
+    bool validChoice;
 
     do {
         populateArray(array1); // Populates array with random numbers
@@ -104,16 +106,27 @@ int main()
         // Determines if array is a special result and displays result
         isSpecialArray(array1);
 
-        cout << "Do you want to run again? (Y or y for yes. N or n for no): ";
-        cin >> userAnswer;
+        // Ask until a valid input is received
+        do {
+            cout << "Do you want to run again? [Y|y] for yes. [N|n] for no: ";
+            cin >> userAnswer;
 
-        // If user answered 'n', then the loop will end
-        if (userAnswer == ('n' | 'N'))
-           runProgram = false;
+            // If user answered 'n' or 'N', then the loop will end
+            if ((userAnswer == 'n') | (userAnswer == 'N')) {
+                validChoice = true;
+                runProgram = false;
+            } else if ((userAnswer == 'y') | (userAnswer == 'Y')) {
+                validChoice = true;
+            } else {
+                cout << "Error *** Invalid Choice - Must enter [Y|y] [N|n]"
+                << endl << endl;
+                validChoice = false;
+            }
+        } while (!validChoice); // If input invalid, do again.
 
     } while (runProgram);
 
-    cout << "Program implemented by Patrick Martinez and Blake Hillier."
+    cout << endl << "Program implemented by Patrick Martinez and Blake Hillier."
     << endl;
 
     return 0;
@@ -450,5 +463,5 @@ void isSpecialArray(int array1[][3])
     if (isSpecialNumber)
         cout << "The above is a Special Array." << endl;
     else
-        cout << "The above is not a Special Array." << endl;
+        cout << "The above is not a Special Array." << endl << endl;
 }
