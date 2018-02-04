@@ -31,7 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="SP18-3358_1_Martinez_Patrick_PG1.cpp" />
+		<Unit filename="SP18_3358_1_Martinez_Patrick_Hillier_Blake_PG1.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

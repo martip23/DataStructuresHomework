@@ -113,7 +113,7 @@ int main()
 
     } while (runProgram);
 
-    cout << "Program Terminated" << endl;
+    cout << "Program implemented by Patrick Martinez and Blake Hillier." << endl;
 
     return 0;
 }
@@ -221,7 +221,13 @@ void addArrays(int array1[][3], int array2[][3], int resultingArray[][3])
  ****************************************************************************/
 void multiplyArrays(int array1[][3], int array2[][3], int resultingArray[][3])
 {
-    //I will do this one. Debug line.
+      for (int r = 0; r < 3; r++)
+    {
+        for (int c = 0; c < 3; c++)
+        {
+            resultingArray[r][c] = array1[r][c] * array2[r][c];
+        }
+    }
 }
 
 /****************************************************
@@ -232,7 +238,7 @@ void multiplyArrays(int array1[][3], int array2[][3], int resultingArray[][3])
  ****************************************************/
 void displayTransposedArray(int array1[][3])
 {
-   //I will do this one. Debug line.
+
 }
 
 /********************************************************************
@@ -243,10 +249,10 @@ void displayTransposedArray(int array1[][3])
  ********************************************************************/
 void displayDeterminant(int array1[][3])
 {
-    double determinant = array1[0][0] * (array1[1][1] * array1[2][2] - array1[1][2] 
-                         * array1[2][1]) - array1[0][1] * (array1[1][0] * 
+    double determinant = array1[0][0] * (array1[1][1] * array1[2][2] - array1[1][2]
+                         * array1[2][1]) - array1[0][1] * (array1[1][0] *
                          array1[2][2] - array1[1][2] * array1[2][0]) + array1[0][2]
-                         * (array1[1][0] * array1[2][1] - array1[1][1] * 
+                         * (array1[1][0] * array1[2][1] - array1[1][1] *
                          array1[2][0]);
 
     cout << "Determinant of Array 1 = " << determinant << endl;
@@ -366,12 +372,12 @@ void isSpecialArray(int array1[][3])
 
     cout << "The special number for Array 1 is 15." << endl;
 
-    // Finds sums for each row/column/diagonal 
+    // Finds sums for each row/column/diagonal
     for (int i = 0; i < 3; i++)
     {
         row1 += array1[0][i];
     }
- 
+
     for (int i = 0; i < 3; i++)
     {
         row2 += array1[1][i];
