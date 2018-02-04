@@ -104,16 +104,17 @@ int main()
         // Determines if array is a special result and displays result
         isSpecialArray(array1);
 
-        cout << "Do you want to run again? (y/n): ";
+        cout << "Do you want to run again? (Y or y for yes. N or n for no): ";
         cin >> userAnswer;
 
         // If user answered 'n', then the loop will end
-        if (userAnswer == 'n')
+        if (userAnswer == ('n' | 'N'))
            runProgram = false;
 
     } while (runProgram);
 
-    cout << "Program implemented by Patrick Martinez and Blake Hillier." << endl;
+    cout << "Program implemented by Patrick Martinez and Blake Hillier."
+    << endl;
 
     return 0;
 }
@@ -178,7 +179,6 @@ void displayArray(int array1[][3], string title)
     const int TABLE_WIDTH = 5; // Set the distance between table cells
 
     // Print 2 empty lines, then title:
-    cout << endl << endl;
     cout << title << ": " << endl << endl;
 
     // Print each element in a table of 3 by 3
@@ -197,7 +197,6 @@ void displayArray(int array1[][3], string title)
         resultingArray (int [][3]) as a 3 x 3 array
  Returns: nothing
  Adds the two arrays together and stores it in the resulting array.
- Prints the resultingArray onto the screen.
  ******************************************************************/
 void addArrays(int array1[][3], int array2[][3], int resultingArray[][3])
 {
@@ -217,7 +216,6 @@ void addArrays(int array1[][3], int array2[][3], int resultingArray[][3])
         resultingArray (int [][3]) as a 3 x 3 array
  Returns: nothing
  Multiplies the arrays together and stores the result in the resulting Array.
- Prints the resultingArray on the screen.
  ****************************************************************************/
 void multiplyArrays(int array1[][3], int array2[][3], int resultingArray[][3])
 {
@@ -238,7 +236,13 @@ void multiplyArrays(int array1[][3], int array2[][3], int resultingArray[][3])
  ****************************************************/
 void displayTransposedArray(int array1[][3])
 {
-
+    cout << "Transpose of array 1" << endl << endl;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << setw(5) << array1[j][i];
+        }
+        cout << endl << endl;
+    }
 }
 
 /********************************************************************
@@ -249,13 +253,13 @@ void displayTransposedArray(int array1[][3])
  ********************************************************************/
 void displayDeterminant(int array1[][3])
 {
-    double determinant = array1[0][0] * (array1[1][1] * array1[2][2] - array1[1][2]
-                         * array1[2][1]) - array1[0][1] * (array1[1][0] *
-                         array1[2][2] - array1[1][2] * array1[2][0]) + array1[0][2]
-                         * (array1[1][0] * array1[2][1] - array1[1][1] *
-                         array1[2][0]);
+    double determinant =
+        array1[0][0] * (array1[1][1] * array1[2][2] - array1[1][2]
+        * array1[2][1]) - array1[0][1] * (array1[1][0] * array1[2][2] -
+        array1[1][2] * array1[2][0]) + array1[0][2] * (array1[1][0] *
+        array1[2][1] - array1[1][1] * array1[2][0]);
 
-    cout << "Determinant of Array 1 = " << determinant << endl;
+    cout << "Determinant of Array 1 = " << determinant << endl << endl;
 }
 
 /*************************************************************************
@@ -287,7 +291,7 @@ void sumArrayRows(int array1[][3])
 
     cout << "Sum of numbers in Row # 1 in Array 1 = " << row1 << endl;
     cout << "Sum of numbers in Row # 2 in Array 1 = " << row2 << endl;
-    cout << "Sum of numbers in Row # 3 in Array 1 = " << row3 << endl;
+    cout << "Sum of numbers in Row # 3 in Array 1 = " << row3 << endl << endl;
 }
 
 /******************************************************************************
@@ -320,7 +324,8 @@ void sumArrayColumns(int array1[][3])
 
     cout << "Sum of numbers in Column # 1 in Array 1 = " << column1 << endl;
     cout << "Sum of numbers in Column # 2 in Array 1 = " << column2 << endl;
-    cout << "Sum of numbers in Column # 3 in Array 1 = " << column3 << endl;
+    cout << "Sum of numbers in Column # 3 in Array 1 = " << column3 << endl
+    << endl;
 }
 
 /*************************************************************************
@@ -345,8 +350,10 @@ void sumArrayDiagonals(int array1[][3])
         diagonal2 += array1[i][2-i];
     }
 
-    cout << "Sum of numbers in first diagonal in array 1 = " << diagonal1 << endl;
-    cout << "Sum of numbers in second diagonal in array 1 = " <<  diagonal2 << endl;
+    cout << "Sum of numbers in first diagonal in array 1 = " << diagonal1
+    << endl;
+    cout << "Sum of numbers in second diagonal in array 1 = " <<  diagonal2
+    << endl << endl;
 }
 
 /*********************************************************************
