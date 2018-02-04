@@ -175,7 +175,7 @@ void populateArray(int array1[][3])
  ***************************************************************/
 void displayArray(int array1[][3], string title)
 {
-    const int TABLE_WIDTH = 3; // Set the distance between table cells
+    const int TABLE_WIDTH = 5; // Set the distance between table cells
 
     // Print 2 empty lines, then title:
     cout << endl << endl;
