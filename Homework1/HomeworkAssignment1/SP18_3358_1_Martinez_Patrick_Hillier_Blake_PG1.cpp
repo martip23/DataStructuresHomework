@@ -274,7 +274,6 @@ void sumArrayRows(int array1[][3])
         row2 += array1[1][i];
     }
 
-
     for (int i = 0; i < 3; i++)
     {
         row3 += array1[2][i];
@@ -350,7 +349,93 @@ Input: array1(int [][3] as a 3 x 3 array1
 Returns: true or false
 Returns true if array1 is a Special Array and false otherwise.
 **********************************************************************/
-void isSpecialArray(int array11[][3])
+void isSpecialArray(int array1[][3])
 {
+    const int SPECIAL_NUMBER = 15;
+    // Holds sum for each row/column/diagonal
+    int row1 = 0;
+    int row2 = 0;
+    int row3 = 0;
+    int column1 = 0;
+    int column2 = 0;
+    int column3 = 0;
+    int diagonal1 = 0;
+    int diagonal2 = 0;
+    //if true, array is special
+    bool isSpecialNumber = true;
 
+    cout << "The special number for Array 1 is 15." << endl;
+
+    // Finds sums for each row/column/diagonal 
+    for (int i = 0; i < 3; i++)
+    {
+        row1 += array1[0][i];
+    }
+ 
+    for (int i = 0; i < 3; i++)
+    {
+        row2 += array1[1][i];
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        row3 += array1[2][i];
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        column1 += array1[i][0];
+    }
+
+   for (int i = 0; i < 3; i++)
+    {
+        column2 += array1[i][1];
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        column3 += array1[i][2];
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        diagonal1 += array1[i][i];
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        diagonal2 += array1[i][2-i];
+    }
+
+    // Checks if each row/column/diagonal matches SPECIAL_NUMBER
+    // If they don't match, isSpecialNumber changed to false
+    if (row1 != SPECIAL_NUMBER)
+        isSpecialNumber = false;
+
+    if (row2 != SPECIAL_NUMBER)
+        isSpecialNumber = false;
+
+    if (row3 != SPECIAL_NUMBER)
+        isSpecialNumber = false;
+
+    if (column1 != SPECIAL_NUMBER)
+        isSpecialNumber = false;
+
+    if (column2 != SPECIAL_NUMBER)
+        isSpecialNumber = false;
+
+    if (column3 != SPECIAL_NUMBER)
+        isSpecialNumber = false;
+
+    if (diagonal1 != SPECIAL_NUMBER)
+        isSpecialNumber = false;
+
+    if (diagonal2 != SPECIAL_NUMBER)
+        isSpecialNumber = false;
+
+    // Prints whether array is special or not
+    if (isSpecialNumber)
+        cout << "The above is a Special Array." << endl;
+    else
+        cout << "The above is not a Special Array." << endl;
 }
