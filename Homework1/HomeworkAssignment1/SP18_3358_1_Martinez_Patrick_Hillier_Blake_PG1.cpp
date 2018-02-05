@@ -56,6 +56,19 @@ void isSpecialArray(int array1[][3]);
 
 int main()
 {
+    // Display welcome message
+    cout << "Welcome to the 2D array program. This program will:" << endl << endl
+    << "  1. Create 2 two-dimensional arrays." << endl
+    << "  2. Populate both arrays, then display the results." << endl
+    << "  3. Add array 1 and 2 and display result." << endl
+    << "  4. Multiply array 1 and 2 and display result." << endl
+    << "  5. Display the transpose of array1." << endl
+    << "  6. Display the determinate of array1." << endl
+    << "  7. Display the sums of columns, rows and diagonals of array1." <<endl
+    << "  8. Determine if array1 is a special array." << endl
+    << "  9. Finally, ask if the user wants to continue or not." << endl
+    << endl;
+
     srand(time(NULL)); // Seed random generator
 
     int array1[3][3]; // First 3 x 3 array
