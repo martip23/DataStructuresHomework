@@ -15,6 +15,7 @@
 // Libraries
 #include <iostream> // Provides cout, cin and other io stream operations
 #include <vector>   // Provides vector type to hold grades
+#include <iomanip>  // Provides setw and
 
 using namespace std;
 
@@ -29,9 +30,10 @@ myGrades class
 ***********************************************/
 class myGrades {
 
-    private:
-    vector<double> programGrades;  // Vector to hold program grades
-    vector<double> testGrades;     // Vector to hold test grades
+    private:    // Homework 2 pdf states grades should be stored in vector
+                // even though only integers could be entered
+        vector<double> programGrades;  // Vector to hold program grades
+        vector<double> testGrades;     // Vector to hold test grades
 
     public:
 
@@ -91,22 +93,38 @@ int main() {
             // If int value is not valid, throw exception with int.
             else if (userChoice < 1 || userChoice > 9 || userChoice == 8)
                 throw userChoice;
+            // This is done to clear the input stream in case decimals are
+            // entered. This was done since decimal handling was talked
+            // about in class, and we were expected to truncate decimals.
+            cin.clear();
+            cin.ignore(256,'\n');
             // Program will only get to this point if input is valid.
             // Calls various functions on Grades based on the user's choice
             switch (userChoice) {
-                case SET_ASSIGNMENT_GRADE: Grades.setProgramGrade();
+
+                case SET_ASSIGNMENT_GRADE:
+                    Grades.setProgramGrade();
                         break;
-                case SET_TEST_GRADE: Grades.setTestGrade();
+                case SET_TEST_GRADE:
+                    Grades.setTestGrade();
                         break;
-                case SHOW_ASSIGNMENT_GRADES: Grades.showProgramGrades();
+                case SHOW_ASSIGNMENT_GRADES:
+                    cout << "\nShow programming grades and average." << endl;
+                    Grades.showProgramGrades();
                         break;
-                case SHOW_TEST_GRADES: Grades.showTestGrades();
+                case SHOW_TEST_GRADES:
+                    cout << "\nShow test grades and average." << endl;
+                    Grades.showTestGrades();
                         break;
-                case SHOW_OVERALL_GRADES: Grades.showOverallGrade();
+                case SHOW_OVERALL_GRADES:
+                    cout << "\nShow all grades." << endl;
+                    Grades.showOverallGrade();
                         break;
-                case DELETE_ASSIGNMENT_GRADE: Grades.deleteProgramGrade();
+                case DELETE_ASSIGNMENT_GRADE:
+                    Grades.deleteProgramGrade();
                         break;
-                case DELETE_TEST_GRADE: Grades.deleteTestGrade();
+                case DELETE_TEST_GRADE:
+                    Grades.deleteTestGrade();
                         break;
                 case EXIT: runProgram = false;
                         break;
@@ -121,7 +139,6 @@ int main() {
             cin.clear();
             cin.ignore(256,'\n');
         }
-
     } while (runProgram);
 
     cout << "Implemented by Patrick Martinez and Blake Hillier. February 2018"
@@ -141,14 +158,18 @@ int main() {
 void myGrades::setProgramGrade() {
     int input;
     cout << endl << "Enter a programming assignment grade: ";
-    if (!(cin >> input))
+    if (!(cin >> input)) {
         cout << "\nError *** Incorrect input - You entered a character!\n";
+    }
     else if (input < 0 || input > 10)
-        cout << "Error *** Invalid value - Enter a value between 0 and 10.";
+        cout << "Error *** Invalid value - Enter a value between 0 and 10.\n";
     else
         programGrades.push_back(input);
+        cin.clear();
+        cin.ignore(256,'\n');
 
     cout << endl;
+
 }
 /*******************************************************************
  setTestGrade
@@ -157,7 +178,26 @@ void myGrades::setProgramGrade() {
  Displays a prompt for an int from 1-25 and passes it to the test grades array
  *******************************************************************/
 void myGrades::setTestGrade() {
-    cout << "\nSET TEST GRADE CALLED\n" << endl;
+    int input;
+
+    if (testGrades.size() >= 2)
+        cout << endl << "Error *** No more test grades can be added.";
+    else {
+        cout << endl << "Enter a test grade: ";
+        if (!(cin >> input)) {
+            cout << "\nError *** Incorrect input - You entered a character!\n";
+            cin.clear();
+            cin.ignore(256,'\n');
+        }
+        else if (input < 0 || input > 25)
+            cout << "Error *** Invalid value - Enter a value between 0 and 25.";
+        else
+            testGrades.push_back(input);
+            cin.clear();
+            cin.ignore(256,'\n');
+    }
+    cout << endl;
+
 }
 /*******************************************************************
  showProgramGrades
@@ -166,16 +206,48 @@ void myGrades::setTestGrade() {
  Shows program grades and program grades average out of 10.
  *******************************************************************/
 void const myGrades::showProgramGrades() {
-    cout << "\nSHOW PROGRAM GRADE CALLED\n" << endl;
+    double average = 0;
+    if (programGrades.empty())
+        cout << "\nNo programming  grades are recorded.\n" << endl;
+    else {
+        cout << "\nProgramming assignment grades:" << endl;
+        for (int i = 0; i < programGrades.size(); i++) {
+            cout << setw(6) << setprecision(2) << fixed << programGrades[i];
+            average += programGrades[i];
+        }
+        average = (average * 2 / programGrades.size());
+        cout << "\nAverage programming assignment grades are "
+        << setprecision(2) << fixed << average << " out of 20";
+        cout << endl << endl;
+    }
 }
 /*******************************************************************
  showTestGrades
  Input: none
  Returns: none
- Shows test grades and test grades average out of 20.
+ Shows test grades and test grades average out of 20 or 45.
  *******************************************************************/
 void const myGrades::showTestGrades() {
-    cout << "\nSHOW TEST GRADE CALLED\n" << endl;
+    double average = 0;
+    if (testGrades.empty())
+        cout << "\nNo test grades are recorded.\n" << endl;
+    else {
+        cout << "\nTest grades:" << endl;
+        for (int i = 0; i < testGrades.size(); i++) {
+            cout << setw(6) << setprecision(2) << fixed << testGrades[i];
+            average += testGrades[i];
+        };
+        if (testGrades.size() == 1) {
+            cout << "\nAverage test grades are "
+            << setprecision(2) << fixed << average << " out of 20";
+            cout << endl << endl;
+        }
+        else if (testGrades.size() == 2) {
+            cout << "\nAverage test grades are "
+            << setprecision(2) << fixed << average << " out of 45";
+            cout << endl << endl;
+        }
+    }
 }
 /*******************************************************************
  showOverallGrade
