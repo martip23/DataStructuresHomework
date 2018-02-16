@@ -30,8 +30,8 @@ myGrades class
 class myGrades {
 
     private:
-    vector<int> programGrades;  // Vector to hold program grades
-    vector<int> testGrades;     // Vector to hold test grades
+    vector<double> programGrades;  // Vector to hold program grades
+    vector<double> testGrades;     // Vector to hold test grades
 
     public:
 
@@ -54,6 +54,7 @@ class myGrades {
 int main() {
     cout << "Welcome to Patrick and Blake's grades program.\n" << endl;
 
+    // Sets constants for menu options
     enum menuOptions {
            SET_ASSIGNMENT_GRADE = 1,
            SET_TEST_GRADE,
@@ -82,16 +83,14 @@ int main() {
         cout << "7. Delete A Test Grade" << endl;
         cout << "9. Exit The Program" << endl;
         cout << endl;
-        cout << "Enter your choice ---> ";
-        cin >> userChoice;
 
         try {
-            // Checks if userChoice contains an integer 1-7 or 9
-            if (false) {
-                cout << "ERROR: Invalid Choice\n Input needs to be an integer";
-                cout << endl;
-            } else
-                cout << "ERROR: Invalid Choice" << endl;
+            cout << "Enter your choice ---> ";
+            if(!(cin >> userChoice))
+                throw "Invalid input";
+            // If int value is not valid, throw exception with int.
+            else if (userChoice < 1 || userChoice > 9 || userChoice == 8)
+                throw userChoice;
 
             // Calls various functions on Grades based on the user's choice
             switch (userChoice) {
@@ -111,12 +110,16 @@ int main() {
                         break;
                 case EXIT: runProgram = false;
                         break;
-                default: cout << "ERROR: Invalid Choice\n Input needs to be from 1-7";
-                         cout << " or 9" << endl;
             }// End Switch
         }
-        catch (...) {
-         // we might have to work on the structure of our try-catchs
+        catch (int x) {
+            cout << "\nError *** " << x << " is an invalid choice.\n" << endl;
+        }
+        catch (char const*) {
+            cout << "\nError *** Incorrect input - You entered a character!\n"
+            << endl;
+            cin.clear();
+            cin.ignore(256,'\n');
         }
 
     } while (runProgram);
@@ -133,7 +136,7 @@ int main() {
  array.
  *******************************************************************/
 void myGrades::setProgramGrade() {
-    cout << "SET PROGRAM GRADE CALLED" << endl;
+    cout << "\nSET PROGRAM GRADE CALLED\n" << endl;
 }
 /*******************************************************************
  setTestGrade
@@ -142,7 +145,7 @@ void myGrades::setProgramGrade() {
  Displays a prompt for an int from 1-25 and passes it to the test grades array
  *******************************************************************/
 void myGrades::setTestGrade() {
-    cout << "SET TEST GRADE CALLED" << endl;
+    cout << "\nSET TEST GRADE CALLED\n" << endl;
 }
 /*******************************************************************
  showProgramGrades
@@ -151,7 +154,7 @@ void myGrades::setTestGrade() {
  Shows program grades and program grades average out of 10.
  *******************************************************************/
 void const myGrades::showProgramGrades() {
-    cout << "SHOW PROGRAM GRADE CALLED" << endl;
+    cout << "\nSHOW PROGRAM GRADE CALLED\n" << endl;
 }
 /*******************************************************************
  showTestGrades
@@ -160,7 +163,7 @@ void const myGrades::showProgramGrades() {
  Shows test grades and test grades average out of 20.
  *******************************************************************/
 void const myGrades::showTestGrades() {
-    cout << "SHOW TEST GRADE CALLED" << endl;
+    cout << "\nSHOW TEST GRADE CALLED\n" << endl;
 }
 /*******************************************************************
  showOverallGrade
@@ -169,7 +172,7 @@ void const myGrades::showTestGrades() {
  Shows all grades, average for each, and an overall total.
  *******************************************************************/
 void const myGrades::showOverallGrade() {
-    cout << "SHOW OVERALL GRADE CALLED" << endl;
+    cout << "\nSHOW OVERALL GRADE CALLED\n" << endl;
 }
 /*******************************************************************
  deleteProgramGrade
@@ -178,7 +181,7 @@ void const myGrades::showOverallGrade() {
  Prompts for a grade to delete. Deletes grade equal to input.
  *******************************************************************/
 void myGrades::deleteProgramGrade() {
-    cout << "DELETE PROGRAM CALLED" << endl;
+    cout << "\nDELETE PROGRAM CALLED\n" << endl;
 }
 /*******************************************************************
  deleteTestGrade
@@ -187,5 +190,5 @@ void myGrades::deleteProgramGrade() {
  Prompts for a grade to delete. Deletes grade equal to input.
  *******************************************************************/
 void myGrades::deleteTestGrade() {
-    cout << "DELETE TEST CALLED" << endl;
+    cout << "\nDELETE TEST CALLED\n" << endl;
 }
