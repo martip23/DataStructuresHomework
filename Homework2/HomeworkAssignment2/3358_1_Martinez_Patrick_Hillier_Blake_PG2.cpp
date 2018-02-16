@@ -54,6 +54,16 @@ class myGrades {
 int main() {
     cout << "Welcome to Patrick and Blake's grades program.\n" << endl;
 
+    enum menuOptions {
+           SET_ASSIGNMENT_GRADE = 1,
+           SET_TEST_GRADE,
+           SHOW_ASSIGNMENT_GRADES,
+           SHOW_TEST_GRADES,
+           SHOW_OVERALL_GRADES,
+           DELETE_ASSIGNMENT_GRADE,
+           DELETE_TEST_GRADE,
+           EXIT = 9
+    };
     // Creates new myGrades object
     myGrades Grades;
     // If true, tells loop to run again
@@ -63,12 +73,12 @@ int main() {
 
     // Allows user to interact with the Grades object
     do {
-        cout << "1. Set a Programming Assingment Grade" << endl;
+        cout << "1. Set a Programming Assignment Grade" << endl;
         cout << "2. Set A Test Grade" << endl;
-        cout << "3. Show All Programming Assingment Grades" << endl;
+        cout << "3. Show All Programming Assignment Grades" << endl;
         cout << "4. Show All Test Grades" << endl;
         cout << "5. Show Overall Grades" << endl;
-        cout << "6. Delete A Programming Assingment Grade" << endl;
+        cout << "6. Delete A Programming Assignment Grade" << endl;
         cout << "7. Delete A Test Grade" << endl;
         cout << "9. Exit The Program" << endl;
         cout << endl;
@@ -85,21 +95,21 @@ int main() {
 
             // Calls various functions on Grades based on the user's choice
             switch (userChoice) {
-                case 1: Grades.setProgramGrade();
+                case SET_ASSIGNMENT_GRADE: Grades.setProgramGrade();
                         break;
-                case 2: Grades.setTestGrade();
+                case SET_TEST_GRADE: Grades.setTestGrade();
                         break;
-                case 3: Grades.showProgramGrades();
+                case SHOW_ASSIGNMENT_GRADES: Grades.showProgramGrades();
                         break;
-                case 4: Grades.showTestGrades();
+                case SHOW_TEST_GRADES: Grades.showTestGrades();
                         break;
-                case 5: Grades.showOverallGrade();
+                case SHOW_OVERALL_GRADES: Grades.showOverallGrade();
                         break;
-                case 6: Grades.deleteProgramGrade();
+                case DELETE_ASSIGNMENT_GRADE: Grades.deleteProgramGrade();
                         break;
-                case 7: Grades.deleteTestGrade();
+                case DELETE_TEST_GRADE: Grades.deleteTestGrade();
                         break;
-                case 9: runProgram = false;
+                case EXIT: runProgram = false;
                         break;
                 default: cout << "ERROR: Invalid Choice\n Input needs to be from 1-7";
                          cout << " or 9" << endl;
@@ -123,7 +133,7 @@ int main() {
  array.
  *******************************************************************/
 void myGrades::setProgramGrade() {
-
+    cout << "SET PROGRAM GRADE CALLED" << endl;
 }
 /*******************************************************************
  setTestGrade
@@ -132,7 +142,7 @@ void myGrades::setProgramGrade() {
  Displays a prompt for an int from 1-25 and passes it to the test grades array
  *******************************************************************/
 void myGrades::setTestGrade() {
-
+    cout << "SET TEST GRADE CALLED" << endl;
 }
 /*******************************************************************
  showProgramGrades
@@ -141,7 +151,7 @@ void myGrades::setTestGrade() {
  Shows program grades and program grades average out of 10.
  *******************************************************************/
 void const myGrades::showProgramGrades() {
-
+    cout << "SHOW PROGRAM GRADE CALLED" << endl;
 }
 /*******************************************************************
  showTestGrades
@@ -150,7 +160,7 @@ void const myGrades::showProgramGrades() {
  Shows test grades and test grades average out of 20.
  *******************************************************************/
 void const myGrades::showTestGrades() {
-
+    cout << "SHOW TEST GRADE CALLED" << endl;
 }
 /*******************************************************************
  showOverallGrade
@@ -159,7 +169,7 @@ void const myGrades::showTestGrades() {
  Shows all grades, average for each, and an overall total.
  *******************************************************************/
 void const myGrades::showOverallGrade() {
-
+    cout << "SHOW OVERALL GRADE CALLED" << endl;
 }
 /*******************************************************************
  deleteProgramGrade
@@ -168,7 +178,7 @@ void const myGrades::showOverallGrade() {
  Prompts for a grade to delete. Deletes grade equal to input.
  *******************************************************************/
 void myGrades::deleteProgramGrade() {
-
+    cout << "DELETE PROGRAM CALLED" << endl;
 }
 /*******************************************************************
  deleteTestGrade
@@ -177,5 +187,5 @@ void myGrades::deleteProgramGrade() {
  Prompts for a grade to delete. Deletes grade equal to input.
  *******************************************************************/
 void myGrades::deleteTestGrade() {
-
+    cout << "DELETE TEST CALLED" << endl;
 }
