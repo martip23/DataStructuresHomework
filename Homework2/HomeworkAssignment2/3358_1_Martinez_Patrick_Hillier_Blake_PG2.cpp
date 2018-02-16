@@ -86,12 +86,12 @@ int main() {
 
         try {
             cout << "Enter your choice ---> ";
-            if(!(cin >> userChoice))
+            if(!(cin >> userChoice)) // If insertion to int fails, throw except.
                 throw "Invalid input";
             // If int value is not valid, throw exception with int.
             else if (userChoice < 1 || userChoice > 9 || userChoice == 8)
                 throw userChoice;
-
+            // Program will only get to this point if input is valid.
             // Calls various functions on Grades based on the user's choice
             switch (userChoice) {
                 case SET_ASSIGNMENT_GRADE: Grades.setProgramGrade();
@@ -112,10 +112,10 @@ int main() {
                         break;
             }// End Switch
         }
-        catch (int x) {
+        catch (int x) { // Catch invalid numbers
             cout << "\nError *** " << x << " is an invalid choice.\n" << endl;
         }
-        catch (char const*) {
+        catch (char const*) { // Catch all other invalid inputs
             cout << "\nError *** Incorrect input - You entered a character!\n"
             << endl;
             cin.clear();
@@ -124,7 +124,10 @@ int main() {
 
     } while (runProgram);
 
-    cout << "Implemented by Patrick Martinez and Blake Hillier" << endl;
+    cout << "Implemented by Patrick Martinez and Blake Hillier. February 2018"
+    << endl;
+
+    return 0;
 }
 
 // Functions
@@ -136,7 +139,16 @@ int main() {
  array.
  *******************************************************************/
 void myGrades::setProgramGrade() {
-    cout << "\nSET PROGRAM GRADE CALLED\n" << endl;
+    int input;
+    cout << endl << "Enter a programming assignment grade: ";
+    if (!(cin >> input))
+        cout << "\nError *** Incorrect input - You entered a character!\n";
+    else if (input < 0 || input > 10)
+        cout << "Error *** Invalid value - Enter a value between 0 and 10.";
+    else
+        programGrades.push_back(input);
+
+    cout << endl;
 }
 /*******************************************************************
  setTestGrade
@@ -172,7 +184,10 @@ void const myGrades::showTestGrades() {
  Shows all grades, average for each, and an overall total.
  *******************************************************************/
 void const myGrades::showOverallGrade() {
-    cout << "\nSHOW OVERALL GRADE CALLED\n" << endl;
+    cout << "\nOverall grades are as follows: \n" << endl;
+    showProgramGrades();
+    showTestGrades();
+    cout << "Overall total -- >" << endl;
 }
 /*******************************************************************
  deleteProgramGrade
