@@ -7,6 +7,7 @@ This introductory homework assignment was to test and refresh our skills on C++.
 
 ## Homework 2
 
+This 2nd homework assignment tested our knowledge of try catch blocks and vectors. We created a class called myGrades to manage a gradebook. It contained two vectors: one for tests and one for programs, and had various functions to either edit the gradebook or view the gradebook. This was done in one .cpp file.
 
 ## Homework 3
 
