@@ -47,7 +47,7 @@ class myGrades {
         void const showTestGrades();
         // Shows all grades and overall total
         void const showOverallGrade();
-        // Displays prompt to remove a program grade equal to input=
+        // Displays prompt to remove a program grade equal to input
         void deleteProgramGrade();
         // Displays prompt to remove a test grade equal to input
         void deleteTestGrade();
@@ -257,10 +257,38 @@ void const myGrades::showTestGrades() {
  Shows all grades, average for each, and an overall total.
  *******************************************************************/
 void const myGrades::showOverallGrade() {
-    cout << "\nOverall grades are as follows: \n" << endl;
+    cout << "\nOverall grades are as follows: " << endl;
     showProgramGrades();
     showTestGrades();
-    cout << "Overall total -- >" << endl;
+
+    // Stores total grade from test and program grades
+    double overallGrade = 0;
+    // Stores maximum grade possible
+    int overallTotal = 0; 
+
+    // Checks if any programs grades.
+    // If no grades, overall total is 0, otherwise it is 20
+    if (!programGrades.empty()) {
+        overallTotal = 20;
+        // Adds all program grades to overallGrade
+        for (int i = 0; i < programGrades.size(); i++) {
+            overallGrade += programGrades[i];
+        }
+        overallGrade = (overallGrade * 2 / programGrades.size());
+    }
+
+    // If 1 grade, adds 20 to overallTotal and the test score to overallGrade
+    // If 2 grades, adds 45 to overallTotal and both test scores to overallGrade
+    if (testGrades.size() == 1) {
+        overallGrade += testGrades[0];
+        overallTotal += 20;
+    } else if (testGrades.size() == 2) {
+        overallGrade += testGrades[0] + testGrades[1]; 
+        overallTotal += 45;
+    }
+
+    cout << "Overall total -- > " << setprecision(2) << fixed << overallGrade;
+    cout <<  " out of " << overallTotal << endl << endl;
 }
 /*******************************************************************
  deleteProgramGrade
@@ -279,9 +307,6 @@ void myGrades::deleteProgramGrade() {
         cout << "\nEnter a program grade to be deleted: ";
         if(!(cin >> grade)) // If input is not an int, throw except.
             throw "Invalid input";
-            // If int value is not valid, throw exception with int.
-        else if (grade < 1 || grade > 9 || grade == 8)
-                throw grade;
 
         for (int i = 0; i < programGrades.size(); i++) {
             if (!gradeDeleted && programGrades[i] == grade) {
@@ -304,5 +329,28 @@ void myGrades::deleteProgramGrade() {
  Prompts for a grade to delete. Deletes grade equal to input.
  *******************************************************************/
 void myGrades::deleteTestGrade() {
-    cout << "\nDELETE TEST CALLED\n" << endl;
+    int grade;
+    bool gradeDeleted = false;
+   
+    // Checks if list is empty before searching for grade 
+    if (testGrades.empty())
+        cout << "\nNo Test Grades are recorded" << endl;
+    else { 
+        cout << "\nEnter a program grade to be deleted: ";
+        if(!(cin >> grade)) // If input is not an int, throw except.
+            throw "Invalid input";
+
+        for (int i = 0; i < testGrades.size(); i++) {
+            if (!gradeDeleted && testGrades[i] == grade) {
+                testGrades.erase(testGrades.begin() + i);
+                gradeDeleted = true;
+            }
+        }
+
+        if (gradeDeleted) {
+            cout << "\nTest grade deleted\n" << endl;
+        } else {
+            cout << "\nTest grade does not exist\n" << endl;
+        }
+    }
 }
