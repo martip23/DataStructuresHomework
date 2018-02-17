@@ -67,6 +67,7 @@ int main() {
            DELETE_TEST_GRADE,
            EXIT = 9
     };
+
     // Creates new myGrades object
     myGrades Grades;
     // If true, tells loop to run again
@@ -268,7 +269,33 @@ void const myGrades::showOverallGrade() {
  Prompts for a grade to delete. Deletes grade equal to input.
  *******************************************************************/
 void myGrades::deleteProgramGrade() {
-    cout << "\nDELETE PROGRAM CALLED\n" << endl;
+    int grade;
+    bool gradeDeleted = false;
+   
+    // Checks if list is empty before searching for grade 
+    if (programGrades.empty())
+        cout << "\nNo Program Grades are recorded" << endl;
+    else { 
+        cout << "\nEnter a program grade to be deleted: ";
+        if(!(cin >> grade)) // If input is not an int, throw except.
+            throw "Invalid input";
+            // If int value is not valid, throw exception with int.
+        else if (grade < 1 || grade > 9 || grade == 8)
+                throw grade;
+
+        for (int i = 0; i < programGrades.size(); i++) {
+            if (!gradeDeleted && programGrades[i] == grade) {
+                programGrades.erase(programGrades.begin() + i);
+                gradeDeleted = true;
+            }
+        }
+
+        if (gradeDeleted) {
+            cout << "\nTest grade deleted\n" << endl;
+        } else {
+            cout << "\nTest grade does not exist\n" << endl;
+        }
+    }
 }
 /*******************************************************************
  deleteTestGrade
