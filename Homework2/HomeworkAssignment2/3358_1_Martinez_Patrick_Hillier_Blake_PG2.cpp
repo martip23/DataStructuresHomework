@@ -302,7 +302,7 @@ void myGrades::deleteProgramGrade() {
    
     // Checks if list is empty before searching for grade 
     if (programGrades.empty())
-        cout << "\nNo Program Grades are recorded" << endl;
+        cout << "\nNo Program Grades are recorded\n" << endl;
     else { 
         cout << "\nEnter a program grade to be deleted: ";
         if(!(cin >> grade)) // If input is not an int, throw except.
@@ -334,7 +334,7 @@ void myGrades::deleteTestGrade() {
    
     // Checks if list is empty before searching for grade 
     if (testGrades.empty())
-        cout << "\nNo Test Grades are recorded" << endl;
+        cout << "\nNo Test Grades are recorded\n" << endl;
     else { 
         cout << "\nEnter a program grade to be deleted: ";
         if(!(cin >> grade)) // If input is not an int, throw except.
