@@ -13,7 +13,8 @@
 
  Description here
  *******************************************/
-
+ 
+#includ <iostream>
 using namespace std;
 
 class NumberList {
@@ -22,7 +23,7 @@ class NumberList {
         ListNode *prv;
         int num;
         ListNode *nxt;
-    }
+    };
 
     // Beginning of list
     ListNode head;
@@ -50,7 +51,7 @@ class NumberList {
         moveElement(int destinationIndex);
         // Sorts the list in increasing number
         sort();
-} 
+}; 
         
 int main() {
     bool run = true;
