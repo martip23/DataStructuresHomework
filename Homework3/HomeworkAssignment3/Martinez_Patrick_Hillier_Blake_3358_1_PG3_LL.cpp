@@ -14,12 +14,12 @@
  Description here
  *******************************************/
  
-#includ <iostream>
+#include <iostream>
 using namespace std;
 
 class NumberList {
     // Contains item in list and pointers to the items in front of and behind it
-    Struct ListNode {
+    struct ListNode {
         ListNode *prv;
         int num;
         ListNode *nxt;
@@ -34,23 +34,23 @@ class NumberList {
         // Creates list with 15 #'s between 1-19
         NumberList();
         // Creates lists based on list1 and then list2
-        NumberList(NumberList list1, NumberList list2);
+        NumberList(NumberList const &list1, NumberList const &list2);
         // Creates list based on list1 with no duplicate numbers
-        NumberList(NumberList list1);
+        NumberList(NumberList const& list1);
         // Deletes all structures in list and points head/tail to null
         ~NumberList();
         // Displays items in list
-        display();
+        void display();
         // Finds number of Occurances for the number at position index
-        numOccurance(int index);
+        void numOccurance(int index);
         // Finds length of list
-        findLength();
+        void findLength();
         // Displays the list backwards
-        displayBackwards();
+        void displayBackwards();
         // Move the last element behind the element at destinationIndex
-        moveElement(int destinationIndex);
+        void moveElement(int destinationIndex);
         // Sorts the list in increasing number
-        sort();
+        void sort();
 }; 
         
 int main() {
@@ -59,8 +59,8 @@ int main() {
 
     do {
         // Creates 2 lists and fills them with 15 #'s 1-19
-        NumberList list_1();
-        NumberList list_2();
+        NumberList list_1;
+        NumberList list_2;
 
         // Displays lists on screen
         list_1.display();
@@ -92,18 +92,18 @@ int main() {
         list_4.display();
 
         // Deletes the list
-        ~list_1();
-        ~list_2();
-        ~list_3();
-        ~list_4();
+        ~list_1;
+        ~list_2;
+        ~list_3;
+        ~list_4;
 
         cout << "Would you like to run this again? (Y/y = yes or N/n = no)" << endl;
         cin >> userChoice;
 
         // Checks user's input to see wether to run program again or not
-        if (userChoice == y || userChoice == Y)
+        if (userChoice == 'y' || userChoice == 'Y')
             run = true;
-        else if (userChoice == n || userChoice == N)
+        else if (userChoice == 'n' || userChoice == 'N')
             run = false;
         else
             cout << "Input not recognized./nTerminating program." << endl;
@@ -121,11 +121,11 @@ NumberList::NumberList() {
 }
 
 // Creates lists based on list1 and then list2
-NumberList::NumberList(NumberList list1, NumberList list2) {
+NumberList::NumberList(NumberList const &list1, NumberList const &list2) {
 }
 
 // Creates list based on list1 with no duplicate numbers
-NumberList::NumberList(NumberList list1) {
+NumberList::NumberList(NumberList const &list1) {
 }
 
 // Deletes all structures in list and points head/tail to null
