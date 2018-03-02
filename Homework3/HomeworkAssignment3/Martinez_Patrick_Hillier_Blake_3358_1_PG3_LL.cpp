@@ -26,9 +26,9 @@ class NumberList {
     };
 
     // Beginning of list
-    ListNode head;
+    ListNode *head;
     // End of list
-    ListNode tail;
+    ListNode *tail;
 
     public:
         // Creates list with 15 #'s between 1-19
@@ -92,10 +92,10 @@ int main() {
         list_4.display();
 
         // Deletes the list
-        ~list_1;
-        ~list_2;
-        ~list_3;
-        ~list_4;
+        list_1.~NumberList();
+        list_2.~NumberList();
+        list_3.~NumberList();
+        list_4.~NumberList();
 
         cout << "Would you like to run this again? (Y/y = yes or N/n = no)" << endl;
         cin >> userChoice;
