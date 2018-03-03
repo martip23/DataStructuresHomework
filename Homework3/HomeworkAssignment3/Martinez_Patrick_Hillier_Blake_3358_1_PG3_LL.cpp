@@ -14,7 +14,11 @@
  Description here
  *******************************************/
  
-#include <iostream>
+#include <cstdlib> // Provides srand and rand
+#include <ctime> // Provides time for random seed
+#include <iomanip> // Provides setw and precision 
+#include <iostream> // Provides cin, cout and endl
+
 using namespace std;
 
 class NumberList {
@@ -118,6 +122,38 @@ int main() {
 
 // Creates list with 15 #'s between 1-19
 NumberList::NumberList() {
+    const int INIT_LENGTH = 15;
+    srand(time(NULL)); // Seed Random Generator
+
+    // Creates first node
+    ListNode * newNode = new ListNode;
+    newNode -> prv = NULL; 
+    newNode -> num = rand()%19 + 1;
+
+    // Points head to the first node
+    head = newNode;
+    // Creates variable prvNode and points it at the first node stored in head
+    ListNode * prvNode = new ListNode; 
+    prvNode = head;
+
+    /************************************************************
+     For each list item: creates a new node
+                         points the previous node to the new node
+                         points the new node to the previous node
+                         creates a number for the new node
+                         points the new node also to null
+                         assigns the new node to prvNode
+     ************************************************************/ 
+    for (int i = 1; i < INIT_LENGTH; i++) {
+        ListNode * newNode = new ListNode;
+        prvNode -> nxt = newNode;
+        newNode -> prv = prvNode;
+        newNode -> num = rand()%19 + 1;
+        newNode -> nxt = NULL; 
+        prvNode = newNode; 
+    }
+    // Points the last node to the tail
+    tail = prvNode;
 }
 
 // Creates lists based on list1 and then list2
