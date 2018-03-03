@@ -109,8 +109,10 @@ int main() {
             run = true;
         else if (userChoice == 'n' || userChoice == 'N')
             run = false;
-        else
+        else {
             cout << "Input not recognized./nTerminating program." << endl;
+            run = false;
+        }
 
     } while (run);
  
@@ -168,11 +170,25 @@ NumberList::NumberList(NumberList const &list1) {
 
 // Deletes all structures in list and points head/tail to null
 void NumberList::clearList() {
+    if (!head) { // TODO: Delete if statement once all constructors have been implemented
+        ListNode * rptr = head;
+        head = NULL;
+        ListNode * nxtptr;
+
+        while (rptr -> nxt) {
+            nxtptr = rptr -> nxt;
+            delete rptr;
+            rptr = nxtptr;
+        }
+
+        delete rptr;
+        rptr = NULL;
+    }
 }
 
 // Displays items in list
 void NumberList::display(string listName) {
-    if (!head) {
+    if (!head) { // TODO: Delete if statement once all constructors have been implemented
     ListNode * newNode = new ListNode;
     newNode -> num = -1;
     newNode -> nxt = NULL;
