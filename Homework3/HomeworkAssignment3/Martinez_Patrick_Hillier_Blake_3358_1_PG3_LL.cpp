@@ -44,7 +44,7 @@ class NumberList {
         // Deletes all structures in list and points head/tail to null
         void clearList();
         // Displays items in list
-        void display();
+        void display(string listName);
         // Finds number of Occurances for the number at position index
         void numOccurance(int index);
         // Finds length of list
@@ -67,19 +67,19 @@ int main() {
         NumberList list_2;
 
         // Displays lists on screen
-        list_1.display();
-        list_2.display();
+        list_1.display("list_1");
+        list_2.display("list_2");
   
         // Creates list from numbers in list_1 and then list_2 and displays it on screen
         NumberList list_3(list_1, list_2);
-        list_3.display();
+        list_3.display("list_3");
 
         // Displays number of times 1st number appears in list
         list_3.numOccurance(1);
 
         // Creates list based off of list_3 with no duplicate numbers and displays it on screen
         NumberList list_4(list_3);
-        list_4.display();
+        list_4.display("list_4");
 
         // Displays number of items in list
         list_4.findLength();
@@ -89,11 +89,11 @@ int main() {
  
         // Moves the last element and places it after the 3rd one and displays it on screen
         list_4.moveElement(3);
-        list_4.display();
+        list_4.display("list_4 after moving last element to the 4th position");
 
         // Sorts list in increasing order and displays it on screen 
         list_4.sort();
-        list_4.display();
+        list_4.display("list_4 sorted");
 
         // Deletes the list
         list_1.clearList();
@@ -158,10 +158,12 @@ NumberList::NumberList() {
 
 // Creates lists based on list1 and then list2
 NumberList::NumberList(NumberList const &list1, NumberList const &list2) {
+    head = NULL;
 }
 
 // Creates list based on list1 with no duplicate numbers
 NumberList::NumberList(NumberList const &list1) {
+    head = NULL;
 }
 
 // Deletes all structures in list and points head/tail to null
@@ -169,7 +171,26 @@ void NumberList::clearList() {
 }
 
 // Displays items in list
-void NumberList::display() {
+void NumberList::display(string listName) {
+    if (!head) {
+    ListNode * newNode = new ListNode;
+    newNode -> num = -1;
+    newNode -> nxt = NULL;
+    newNode -> prv = NULL;
+    head = newNode;
+    }
+
+    // Create tptr, point it to head, and print it's number
+    ListNode * tptr = head;
+    cout << listName << ": " << tptr -> num;
+
+    // If tptr points to another node, assing tptr to that node and print its number
+    while (tptr -> nxt) {
+        tptr = tptr -> nxt;
+        cout << " " << tptr -> num;
+    }
+
+    cout << endl;
 }
 
 // Finds number of Occurances for the number at position index
