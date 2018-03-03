@@ -60,6 +60,7 @@ class NumberList {
 int main() {
     bool run = true;
     char userChoice;
+    srand(time(NULL)); // Seed Random Generator
 
     do {
         // Creates 2 lists and fills them with 15 #'s 1-19
@@ -116,7 +117,7 @@ int main() {
 
     } while (run);
  
-    cout << "This LL Program is Implimented by:/nBlake Hillier and Patrick";
+    cout << "This LL Program is Implimented by:\nBlake Hillier and Patrick";
     cout << "Martinez - March 5th, 2018" << endl;
 }
 
@@ -125,7 +126,6 @@ int main() {
 // Creates list with 15 #'s between 1-19
 NumberList::NumberList() {
     const int INIT_LENGTH = 15;
-    srand(time(NULL)); // Seed Random Generator
 
     // Creates first node
     ListNode * newNode = new ListNode;
