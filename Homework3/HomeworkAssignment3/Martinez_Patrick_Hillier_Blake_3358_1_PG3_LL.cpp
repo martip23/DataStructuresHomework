@@ -29,6 +29,7 @@
 #include <ctime>    // Provides time for random seed
 #include <iomanip>  // Provides setw and precision
 #include <iostream> // Provides cin, cout and endl
+#include <string>
 
 using namespace std;
 
@@ -42,8 +43,6 @@ class NumberList {
 
     // Beginning of list
     ListNode *head;
-    // End of list
-    ListNode *tail;
 
     public:
         // Creates list with 15 #'s between 1-19
@@ -56,7 +55,7 @@ class NumberList {
         void createNode(int val);
         // Function to return the value at index position
         int getValueAt(int index);
-        // Deletes all structures in list and points head/tail to null
+        // Deletes all structures in list and points head to null
         void clearList();
         // Displays items in list
         void display(string listName);
@@ -185,8 +184,6 @@ NumberList::NumberList() {
         newNode -> nxt = NULL;
         prvNode = newNode;
     }
-    // Points the last node to the tail
-    tail = prvNode;
 }
 
 /*******************************************************************
@@ -196,8 +193,30 @@ NumberList::NumberList() {
  Creates new list based on list1 and list2
  *******************************************************************/
 NumberList::NumberList(NumberList const &list1, NumberList const &list2) {
-    // Create first node
     head = NULL;
+
+    ListNode *temp = new ListNode;
+
+    if (list1.head) {
+        head = list1.head;
+
+        while (temp->nxt) {
+            temp = temp -> nxt;
+            createNode(1);
+        }
+    }
+    if (list2.head) {
+        temp = list2.head;
+        if (!head) {
+            head = list2.head;
+        } else {
+            createNode(1);
+        }
+        while (temp->nxt) {
+            temp = temp -> nxt;
+            createNode(1);
+        }
+    }
 }
 
 /*******************************************************************
@@ -221,14 +240,12 @@ void NumberList::createNode(int val) {
     newNode -> num = val;
     newNode -> nxt = NULL;
 
-    // If first element, it will be head & tail
+    // If first element, it will be head
     if (head == NULL) {
         head = newNode;
-        tail = newNode;
     }
     else {
-        tail -> nxt = newNode;
-        tail = newNode;
+
     }
 }
 
@@ -335,7 +352,6 @@ int NumberList::findLength() {
             temp = temp->nxt;
         }
     }
-
     return counter;
 }
 
