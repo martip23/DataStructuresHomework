@@ -52,12 +52,16 @@ class NumberList {
         NumberList(NumberList const &list1, NumberList const &list2);
         // Creates list based on list1 with no duplicate numbers
         NumberList(NumberList const& list1);
+        // Function to create a node at the end of the list
+        void createNode(int val);
+        // Function to return the value at index position
+        int getValueAt(int index);
         // Deletes all structures in list and points head/tail to null
         void clearList();
         // Displays items in list
         void display(string listName);
-        // Finds number of Occurances for the number at position index
-        void numOccurance(int index);
+        // Finds number of Occurrences for the number at position index
+        void numOccurrence(int index);
         // Finds length of list
         void findLength();
         // Displays the list backwards
@@ -88,7 +92,7 @@ int main() {
         list_3.display("list_3");
 
         // Displays number of times 1st number appears in list
-        list_3.numOccurance(1);
+        list_3.numOccurrence(1);
 
         // Creates list based off of list_3 with no duplicate
         // numbers and displays it on screen
@@ -107,7 +111,7 @@ int main() {
         list_4.display("list_4 after moving last element to the 4th position");
 
         // Sorts list in increasing order and displays it on screen
-        list_4.sort();
+        list_4.sortList();
         list_4.display("list_4 sorted");
 
         // Deletes the list
@@ -183,6 +187,7 @@ NumberList::NumberList() {
  Creates new list based on list1 and list2
  *******************************************************************/
 NumberList::NumberList(NumberList const &list1, NumberList const &list2) {
+    // Create first node
     head = NULL;
 }
 
@@ -196,6 +201,37 @@ NumberList::NumberList(NumberList const &list1) {
     head = NULL;
 }
 
+/*******************************************************************
+ createNode
+ Input: value to insert
+ Output: None
+ Adds a value to the end of the list, very valuable for the copy constructors
+ *******************************************************************/
+void NumberList::createNode(int val) {
+    ListNode *newNode = new ListNode;
+    newNode -> num = val;
+    newNode -> nxt = NULL;
+
+    // If first element, will be head & tail
+    if (head == NULL) {
+        head = newNode;
+        tail = newNode;
+    }
+    else {
+        tail -> nxt = newNode;
+        tail = newNode;
+    }
+}
+
+/*******************************************************************
+ getValueAt (index)
+ Input: Index - The index to get the value from
+ Output: Integer at this index
+ Gets the value at whatever index is passed in. Valuable for copy functions.
+ *******************************************************************/
+ int getValueAt(int index) {
+    return 0;
+ }
 /*******************************************************************
  clearList
  Input: None
@@ -235,7 +271,7 @@ void NumberList::display(string listName) {
     }
 
     // Create tptr, point it to head, and print it's number
-    ListNode * tptr = head;
+    ListNode *tptr = head;
     cout << listName << ": " << tptr -> num;
 
     // If tptr points to another node,
@@ -244,8 +280,6 @@ void NumberList::display(string listName) {
         tptr = tptr -> nxt;
         cout << " " << tptr -> num;
     }
-
-    cout << endl;
 }
 
 /*******************************************************************
@@ -254,7 +288,8 @@ void NumberList::display(string listName) {
  Returns: none
  Displays the number of occurrences of for the item at index position.
  *******************************************************************/
-void NumberList::numOccurence(int index) {
+void NumberList::numOccurrence(int index) {
+    cout << "Calling no" << endl;
 }
 
 /*******************************************************************
