@@ -344,6 +344,7 @@ int NumberList::getValueAt(int index) {
         return temp -> num;
     }
 }
+
 /*******************************************************************
  clearList
  Input: None
@@ -465,6 +466,23 @@ void NumberList::displayBackwards() {
  Moves the last element behind the element at destinationIndex
  *******************************************************************/
 void NumberList::moveElement(int destinationIndex) {
+    ListNode * lastPtr = head;
+    ListNode * prvPtr;
+
+    while ( lastPtr -> nxt) {
+        prvPtr = lastPtr;
+        lastPtr = lastPtr -> nxt;
+    }
+
+    prvPtr -> nxt = NULL;
+    ListNode * tmpPtr = head;
+
+    for (int i = 1; i < destinationIndex; i++) {
+       tmpPtr = tmpPtr -> nxt; 
+    }
+
+    lastPtr -> nxt = tmpPtr -> nxt;
+    tmpPtr -> nxt = lastPtr; 
 }
 
 /*******************************************************************
