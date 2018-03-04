@@ -60,7 +60,7 @@ class NumberList {
         // Displays items in list
         void display(string listName);
         // Finds number of Occurrences for the number at position index
-        void numOccurrence(int index);
+        void numOccurrence(int index, string listName);
         // Finds length of list
         int findLength();
         // Displays the list backwards
@@ -85,22 +85,13 @@ int main() {
         list_1.display("list_1");
         list_2.display("list_2");
 
-        /** FOR TESTING PURPOSES **/
-        cout << "\nLength: " << list_1.findLength() << endl;
-        cout << "\nLength: " << list_2.findLength() << endl;
-        cout << "\nGETVALUE@: " << list_1.getValueAt(0) << list_1.getValueAt(2)
-        << list_1.getValueAt(8) << list_1.getValueAt(14) << endl;
-
-        /** END TESTING BLOCK, DELETE BEFORE SUBMISSION **/
-
-
         // Creates list from numbers in list_1 and
         //  then list_2 and displays it on screen
         NumberList list_3(list_1, list_2);
         list_3.display("list_3");
 
         // Displays number of times 1st number appears in list
-        list_3.numOccurrence(1);
+        list_3.numOccurrence(0, "list_3");
 
         // Creates list based off of list_3 with no duplicate
         // numbers and displays it on screen
@@ -336,8 +327,19 @@ void NumberList::display(string listName) {
  Returns: none
  Displays the number of occurrences of for the item at index position.
  *******************************************************************/
-void NumberList::numOccurrence(int index) {
+void NumberList::numOccurrence(int index, string listName) {
+    int item = getValueAt(index);
+    int numOccurrences = 1;
+    ListNode *temp = new ListNode;
+    temp = head;
 
+    while (temp->nxt) {
+        if (item == temp->nxt->num)
+            numOccurrences++;
+        temp = temp->nxt;
+    }
+    cout << item << " appears " << numOccurrences << " times in " << listName
+        << "." << endl;
 }
 
 /*******************************************************************
