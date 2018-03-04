@@ -35,15 +35,12 @@ using namespace std;
 class NumberList {
     // Contains item in list and pointers to the items in front of and behind it
     struct ListNode {
-        ListNode *prv;
         int num;
         ListNode *nxt;
     };
 
     // Beginning of list
     ListNode *head;
-    // End of list
-    ListNode *tail;
 
     public:
         // Creates list with 15 #'s between 1-19
@@ -57,7 +54,7 @@ class NumberList {
         // Displays items in list
         void display(string listName);
         // Finds number of Occurances for the number at position index
-        void numOccurance(int index);
+        void numOccurence(int index);
         // Finds length of list
         void findLength();
         // Displays the list backwards
@@ -88,7 +85,7 @@ int main() {
         list_3.display("list_3");
 
         // Displays number of times 1st number appears in list
-        list_3.numOccurance(1);
+        list_3.numOccurence(1);
 
         // Creates list based off of list_3 with no duplicate
         // numbers and displays it on screen
@@ -107,7 +104,7 @@ int main() {
         list_4.display("list_4 after moving last element to the 4th position");
 
         // Sorts list in increasing order and displays it on screen
-        list_4.sort();
+        list_4.sortList();
         list_4.display("list_4 sorted");
 
         // Deletes the list
@@ -126,14 +123,14 @@ int main() {
         else if (userChoice == 'n' || userChoice == 'N')
             run = false;
         else {
-            cout << "Input not recognized./nTerminating program." << endl;
+            cout << "Input not recognized.\nTerminating program." << endl;
             run = false;
         }
 
     } while (run);
 
-    cout << "This LL Program is Implemented by:\nBlake Hillier and Patrick";
-    cout << "Martinez - March 5th, 2018" << endl;
+    cout << "\nThis LL Program is Implemented by:\nBlake Hillier and Patrick";
+    cout << "Martinez - March 5th, 2018" << endl << endl;
 }
 
 // Functions
@@ -147,14 +144,12 @@ NumberList::NumberList() {
 
     // Creates first node
     ListNode * newNode = new ListNode;
-    newNode -> prv = NULL;
     newNode -> num = rand()%19 + 1;
 
     // Points head to the first node
     head = newNode;
     // Creates variable prvNode and points it at the first node stored in head
-    ListNode * prvNode = new ListNode;
-    prvNode = head;
+    ListNode * prvNode = head; 
 
     /************************************************************
      For each list item: creates a new node
@@ -167,13 +162,10 @@ NumberList::NumberList() {
     for (int i = 1; i < INIT_LENGTH; i++) {
         ListNode * newNode = new ListNode;
         prvNode -> nxt = newNode;
-        newNode -> prv = prvNode;
         newNode -> num = rand()%19 + 1;
         newNode -> nxt = NULL;
         prvNode = newNode;
     }
-    // Points the last node to the tail
-    tail = prvNode;
 }
 
 /*******************************************************************
@@ -230,7 +222,6 @@ void NumberList::display(string listName) {
     ListNode * newNode = new ListNode;
     newNode -> num = -1;
     newNode -> nxt = NULL;
-    newNode -> prv = NULL;
     head = newNode;
     }
 
@@ -285,7 +276,7 @@ void NumberList::moveElement(int destinationIndex) {
 }
 
 /*******************************************************************
- sort
+ sortList
  Input: none
  Returns: none
  Sorts the list in ascending order
