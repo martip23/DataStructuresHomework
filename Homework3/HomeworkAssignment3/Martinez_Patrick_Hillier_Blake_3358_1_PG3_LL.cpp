@@ -63,7 +63,7 @@ class NumberList {
         // Finds number of Occurrences for the number at position index
         void numOccurrence(int index);
         // Finds length of list
-        void findLength();
+        int findLength();
         // Displays the list backwards
         void displayBackwards();
         // Move the last element behind the element at destinationIndex
@@ -85,6 +85,10 @@ int main() {
         // Displays lists on screen
         list_1.display("list_1");
         list_2.display("list_2");
+
+        /** FOR TESTING PURPOSES **/
+        cout << "\nLength: " << list_1.findLength() << endl;
+        cout << "\nLength: " << list_2.findLength() << endl;
 
         // Creates list from numbers in list_1 and
         //  then list_2 and displays it on screen
@@ -280,6 +284,7 @@ void NumberList::display(string listName) {
         tptr = tptr -> nxt;
         cout << " " << tptr -> num;
     }
+    cout << endl;
 }
 
 /*******************************************************************
@@ -298,7 +303,22 @@ void NumberList::numOccurrence(int index) {
  Returns: none
  Displays the length of the list.
  *******************************************************************/
-void NumberList::findLength() {
+int NumberList::findLength() {
+    int counter = 0;
+
+    if (head) {
+        counter++;
+        ListNode *temp = new ListNode;
+        temp = head;
+
+        // If there is a new node to traverse, add 1 and GO
+        while (temp->nxt) {
+            counter++;
+            temp = temp->nxt;
+        }
+    }
+
+    return counter;
 }
 
 /*******************************************************************
