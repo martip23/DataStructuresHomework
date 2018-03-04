@@ -36,7 +36,6 @@ using namespace std;
 class NumberList {
     // Contains item in list and pointers to the items in front of and behind it
     struct ListNode {
-        ListNode *prv;
         int num;
         ListNode *nxt;
     };
@@ -51,8 +50,13 @@ class NumberList {
         NumberList(NumberList const &list1, NumberList const &list2);
         // Creates list based on list1 with no duplicate numbers
         NumberList(NumberList const& list1);
+        // Populates linked list with numbers (Created since an empty list
+        // was useful for displayBackwards)
+        void populateList(int numbers);
         // Function to create a node at the end of the list
         void createNode(int val);
+        // Deletes node with the value passed
+        void deleteNode(int value);
         // Function to return the value at index position
         int getValueAt(int index);
         // Deletes all structures in list and points head to null
@@ -79,7 +83,9 @@ int main() {
     do {
         // Creates 2 lists and fills them with 15 #'s 1-19
         NumberList list_1;
+		list_1.populateList(15);
         NumberList list_2;
+		list_2.populateList(15);
 
         // Displays lists on screen
         list_1.display("list_1");
@@ -118,22 +124,30 @@ int main() {
         list_2.clearList();
         list_3.clearList();
         list_4.clearList();
+        bool validChoice;  // Sentinel value to check valid input
+        do {
+            cout << "Would you like to run this again? (Y/y = yes or N/n = no)"
+                << endl;
+            cin >> userChoice;
 
-        cout << "Would you like to run this again? (Y/y = yes or N/n = no)"
-            << endl;
-        cin >> userChoice;
+            // Checks user's input to see whether to run program again or not
 
-        // Checks user's input to see whether to run program again or not
-        if (userChoice == 'y' || userChoice == 'Y')
-            run = true;
-        else if (userChoice == 'n' || userChoice == 'N')
-            run = false;
-        else {
-            cout << "Input not recognized./nTerminating program." << endl;
-            run = false;
-        }
+            if (userChoice == 'y' || userChoice == 'Y') {
+                run = true;
+                validChoice = true;
+            } else if (userChoice == 'n' || userChoice == 'N') {
+                run = false;
+                validChoice = true;
+            } else {
+                cout << "\nError*** Incorrect input. Type Y/y for yes, N/n "
+                    << "for no." << endl;
+                run = false;
+                validChoice = false;
+            }
+        } while (!validChoice);// Repeat menu options until valid choice
+                        // Similar to previous homework problems although
+    } while (run);      // not an explicit requirement here.
 
-    } while (run);
 
     cout << "This LL Program is Implemented by:\nBlake Hillier and Patrick";
     cout << "Martinez - March 5th, 2018" << endl;
@@ -148,35 +162,7 @@ int main() {
  Creates a list with 15 numbers between 1-19
  *******************************************************************/
 NumberList::NumberList() {
-    const int INIT_LENGTH = 15;
-
-    // Creates first node
-    ListNode * newNode = new ListNode;
-    newNode -> prv = NULL;
-    newNode -> num = rand()%19 + 1;
-
-    // Points head to the first node
-    head = newNode;
-    // Creates variable prvNode and points it at the first node stored in head
-    ListNode * prvNode = new ListNode;
-    prvNode = head;
-
-    /************************************************************
-     For each list item: creates a new node
-                         points the previous node to the new node
-                         points the new node to the previous node
-                         creates a number for the new node
-                         points the new node also to null
-                         assigns the new node to prvNode
-     ************************************************************/
-    for (int i = 1; i < INIT_LENGTH; i++) {
-        ListNode * newNode = new ListNode;
-        prvNode -> nxt = newNode;
-        newNode -> prv = prvNode;
-        newNode -> num = rand()%19 + 1;
-        newNode -> nxt = NULL;
-        prvNode = newNode;
-    }
+    head = NULL;
 }
 
 /*******************************************************************
@@ -214,14 +200,68 @@ NumberList::NumberList(NumberList const &list1, NumberList const &list2) {
 }
 
 /*******************************************************************
- Numberlist Single Paramter constructor
+ Numberlist Single Parameter constructor
  Input: 1 numberList
  Output: None
  Creates list based on list1 with no duplicate values.
  *******************************************************************/
 NumberList::NumberList(NumberList const &list1) {
     head = NULL;
+
+    ListNode *temp = new ListNode;
+
+    if (list1.head) {
+        temp = list1.head;
+        createNode(temp -> num);
+
+        for (int i = 1; temp->nxt; i++) {
+            temp = temp -> nxt;
+
+            bool foundDuplicate = false;
+            for (int j = 0; j < i; j++) {
+				if (temp->num == getValueAt(j)) {
+					foundDuplicate = true;
+					i--;
+				}
+            }
+            if (!foundDuplicate)
+                createNode(temp->num);
+        }
+    }
 }
+
+/*******************************************************************
+ populateList
+ Input: Integers to populate
+ Output: None
+ Populates a new Linked List with random integers from 1-19
+ *******************************************************************/
+ void NumberList::populateList(int numbers) {
+
+    int listLength = numbers;
+
+    // Creates first node
+    ListNode *prvNode = new ListNode;
+    prvNode -> num = rand()%19 + 1;
+
+    // Points head to the first node
+    head = prvNode;
+
+    /************************************************************
+     For each list item: creates a new node
+                         points the previous node to the new node
+                         creates a number for the new node
+                         points the new node also to null
+                         assigns the new node to prvNode
+     ************************************************************/
+    for (int i = 1; i < listLength; i++) {
+        ListNode * newNode = new ListNode;
+        prvNode -> nxt = newNode;
+        newNode -> num = rand()%19 + 1;
+        newNode -> nxt = NULL;
+        prvNode = newNode;
+    }
+ }
 
 /*******************************************************************
  createNode
@@ -249,6 +289,39 @@ void NumberList::createNode(int val) {
 }
 
 /*******************************************************************
+ deleteNode
+ Input: value to delete
+ Output: None
+ Deletes node with the value passed.
+ *******************************************************************/
+void NumberList::deleteNode(int value){
+    if (!head)
+        return;
+
+    ListNode *temp;
+
+    if (head->num == value) {
+        temp = head;
+        head = temp->nxt;
+        delete temp;
+    }
+    else {
+        ListNode *previousNode = new ListNode;
+        temp = head;
+
+        while(temp && temp->num != value){
+            previousNode = temp;
+            temp = temp -> nxt;
+        }
+
+        if (temp) {
+            previousNode -> nxt = temp -> nxt;
+            delete temp;
+        }
+    }
+}
+
+/*******************************************************************
  getValueAt (index)
  Input: Index - The index to get the value from
  Output: Integer at this index
@@ -258,9 +331,10 @@ void NumberList::createNode(int val) {
 int NumberList::getValueAt(int index) {
     if (index >= findLength()) {
         cout << "\n***ERROR***Index out of range!\n" << endl;
+        return -1;
     }
     else {
-        ListNode *temp = new ListNode;
+        ListNode *temp;
         temp = head;
 
         for (int i = 0; i < index; i++) {
@@ -304,7 +378,6 @@ void NumberList::display(string listName) {
         ListNode *newNode = new ListNode;
         newNode -> num = -1;
         newNode -> nxt = NULL;
-        newNode -> prv = NULL;
         head = newNode;
     }
 
@@ -372,7 +445,17 @@ int NumberList::findLength() {
  Displays the list backwards.
  *******************************************************************/
 void NumberList::displayBackwards() {
-    // IDEA: Push onto stack array, then pop to display.
+    if(!head)
+        return;
+
+    // Create temporary empty list.
+    NumberList tempList;
+
+    // Add the last element and iterate backwards.
+    for (int i = 1; i <= findLength(); i++) {
+        tempList.createNode(getValueAt(findLength() - i));
+    }
+    tempList.display("List 4 backwards: ");
 }
 
 /*******************************************************************
