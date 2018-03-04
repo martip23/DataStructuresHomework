@@ -44,13 +44,13 @@ class NumberList {
     ListNode *head;
 
     public:
-        // Creates list with 15 #'s between 1-19
+        // Sets head to null 
         NumberList();
         // Creates lists based on list1 and then list2
         NumberList(NumberList const &list1, NumberList const &list2);
         // Creates list based on list1 with no duplicate numbers
         NumberList(NumberList const& list1);
-        // Populates linked list with numbers (Created since an empty list
+        // Populates linked list with 15 numbers between 1-19 (Created since an empty list
         // was useful for displayBackwards)
         void populateList(int numbers);
         // Function to create a node at the end of the list
@@ -110,8 +110,8 @@ int main() {
         // Displays list backwards on screen
         list_4.displayBackwards();
 
-        // Moves the last element and places it after the 3rd
-        // one and displays it on screen
+        // Moves the last element, places it after the 3rd
+        // element, and displays it on screen
         list_4.moveElement(3);
         list_4.display("list_4 after moving last element to the 4th position");
 
@@ -124,6 +124,7 @@ int main() {
         list_2.clearList();
         list_3.clearList();
         list_4.clearList();
+
         bool validChoice;  // Sentinel value to check valid input
         do {
             cout << "Would you like to run this again? (Y/y = yes or N/n = no)"
@@ -159,7 +160,7 @@ int main() {
 
 /*******************************************************************
  NumberList default constructor
- Creates a list with 15 numbers between 1-19
+ Sets head to null
  *******************************************************************/
 NumberList::NumberList() {
     head = NULL;
