@@ -146,6 +146,8 @@ int main() {
 
     cout << "This LL Program is Implemented by:\nBlake Hillier and Patrick";
     cout << "Martinez - March 5th, 2018" << endl;
+
+    return 0;
 }
 
 // Functions
@@ -198,11 +200,12 @@ NumberList::NumberList(NumberList const &list1, NumberList const &list2) {
     ListNode *temp = new ListNode;
 
     if (list1.head) {
-        head = list1.head;
+        temp = list1.head;
+        createNode(temp -> num);
 
         while (temp->nxt) {
             temp = temp -> nxt;
-            createNode(1);
+            createNode(temp -> num);
         }
     }
     if (list2.head) {
@@ -210,11 +213,11 @@ NumberList::NumberList(NumberList const &list1, NumberList const &list2) {
         if (!head) {
             head = list2.head;
         } else {
-            createNode(1);
+            createNode(temp -> num);
         }
         while (temp->nxt) {
             temp = temp -> nxt;
-            createNode(1);
+            createNode(temp -> num);
         }
     }
 }
@@ -243,9 +246,14 @@ void NumberList::createNode(int val) {
     // If first element, it will be head
     if (head == NULL) {
         head = newNode;
-    }
-    else {
+    } else {
+        ListNode *tempPtr = new ListNode;
+        tempPtr = head;
 
+        while (tempPtr->nxt) {
+            tempPtr = tempPtr -> nxt;
+        }
+        tempPtr -> nxt = newNode;
     }
 }
 
