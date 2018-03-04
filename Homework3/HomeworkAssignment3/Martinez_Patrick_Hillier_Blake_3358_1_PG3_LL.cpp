@@ -89,6 +89,11 @@ int main() {
         /** FOR TESTING PURPOSES **/
         cout << "\nLength: " << list_1.findLength() << endl;
         cout << "\nLength: " << list_2.findLength() << endl;
+        cout << "\nGETVALUE@: " << list_1.getValueAt(0) << list_1.getValueAt(2)
+        << list_1.getValueAt(8) << list_1.getValueAt(14) << endl;
+
+        /** END TESTING BLOCK, DELETE BEFORE SUBMISSION **/
+
 
         // Creates list from numbers in list_1 and
         //  then list_2 and displays it on screen
@@ -104,7 +109,7 @@ int main() {
         list_4.display("list_4");
 
         // Displays number of items in list
-        list_4.findLength();
+        cout << "Length of list 4: " << list_4.findLength() << endl;
 
         // Displays list backwards on screen
         list_4.displayBackwards();
@@ -216,7 +221,7 @@ void NumberList::createNode(int val) {
     newNode -> num = val;
     newNode -> nxt = NULL;
 
-    // If first element, will be head & tail
+    // If first element, it will be head & tail
     if (head == NULL) {
         head = newNode;
         tail = newNode;
@@ -232,10 +237,23 @@ void NumberList::createNode(int val) {
  Input: Index - The index to get the value from
  Output: Integer at this index
  Gets the value at whatever index is passed in. Valuable for copy functions.
+ **STARTS AT 0**
  *******************************************************************/
- int getValueAt(int index) {
-    return 0;
- }
+int NumberList::getValueAt(int index) {
+    if (index >= findLength()) {
+        cout << "\n***ERROR***Index out of range!\n" << endl;
+    }
+    else {
+        ListNode *temp = new ListNode;
+        temp = head;
+
+        for (int i = 0; i < index; i++) {
+            temp = temp -> nxt;
+        }
+
+        return temp -> num;
+    }
+}
 /*******************************************************************
  clearList
  Input: None
@@ -267,11 +285,11 @@ void NumberList::clearList() {
  *******************************************************************/
 void NumberList::display(string listName) {
     if (!head) { // TODO: Delete if statement once all constructors have been implemented
-    ListNode * newNode = new ListNode;
-    newNode -> num = -1;
-    newNode -> nxt = NULL;
-    newNode -> prv = NULL;
-    head = newNode;
+        ListNode *newNode = new ListNode;
+        newNode -> num = -1;
+        newNode -> nxt = NULL;
+        newNode -> prv = NULL;
+        head = newNode;
     }
 
     // Create tptr, point it to head, and print it's number
@@ -294,7 +312,7 @@ void NumberList::display(string listName) {
  Displays the number of occurrences of for the item at index position.
  *******************************************************************/
 void NumberList::numOccurrence(int index) {
-    cout << "Calling no" << endl;
+
 }
 
 /*******************************************************************
@@ -328,6 +346,7 @@ int NumberList::findLength() {
  Displays the list backwards.
  *******************************************************************/
 void NumberList::displayBackwards() {
+    // IDEA: Push onto stack array, then pop to display.
 }
 
 /*******************************************************************
