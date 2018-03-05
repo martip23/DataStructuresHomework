@@ -1,4 +1,4 @@
-/*******************************************
+/******************************************************************************
  Roster Numbers: 20 24
 
  Authors: Blake Hillier and Patrick Martinez
@@ -22,14 +22,12 @@
  g) Move the last element of list4 and place it after the 3rd element in the
     same list, then display
  h) Sort list 4 in ascending order, and display.
-
- *******************************************/
+ ******************************************************************************/
 
 #include <cstdlib>  // Provides srand and rand
 #include <ctime>    // Provides time for random seed
 #include <iomanip>  // Provides setw and precision
 #include <iostream> // Provides cin, cout and endl
-#include <string>
 
 using namespace std;
 
@@ -44,14 +42,14 @@ class NumberList {
     ListNode *head;
 
     public:
-        // Sets head to null 
+        // Sets head to null
         NumberList();
         // Creates lists based on list1 and then list2
         NumberList(NumberList const &list1, NumberList const &list2);
         // Creates list based on list1 with no duplicate numbers
         NumberList(NumberList const& list1);
-        // Populates linked list with 15 numbers between 1-19 (Created since an empty list
-        // was useful for displayBackwards)
+        // Populates linked list with 15 numbers between 1-19 (Created since an
+        // empty list was useful for displayBackwards)
         void populateList(int numbers);
         // Function to create a node at the end of the list
         void createNode(int val);
@@ -154,27 +152,27 @@ int main() {
 
 
     cout << "\nThis LL Program is Implemented by:\nBlake Hillier and Patrick";
-    cout << "Martinez - March 5th, 2018" << endl << endl; 
+    cout << "Martinez - March 5th, 2018" << endl << endl;
 
     return 0;
 }
 
 // Functions
 
-/*******************************************************************
+/******************************
  NumberList default constructor
  Sets head to null
- *******************************************************************/
+ ******************************/
 NumberList::NumberList() {
     head = NULL;
 }
 
-/*******************************************************************
+/*****************************************
  NumberList 2 parameter constructor
  Input: two Number List objects
  Output: None
  Creates new list based on list1 and list2
- *******************************************************************/
+ *****************************************/
 NumberList::NumberList(NumberList const &list1, NumberList const &list2) {
     head = NULL;
 
@@ -203,12 +201,12 @@ NumberList::NumberList(NumberList const &list1, NumberList const &list2) {
     }
 }
 
-/*******************************************************************
+/*****************************************************
  Numberlist Single Parameter constructor
  Input: 1 numberList
  Output: None
  Creates list based on list1 with no duplicate values.
- *******************************************************************/
+ *****************************************************/
 NumberList::NumberList(NumberList const &list1) {
     head = NULL;
 
@@ -234,12 +232,12 @@ NumberList::NumberList(NumberList const &list1) {
     }
 }
 
-/*******************************************************************
+/**********************************************************
  populateList
  Input: Integers to populate
  Output: None
  Populates a new Linked List with random integers from 1-19
- *******************************************************************/
+ **********************************************************/
  void NumberList::populateList(int numbers) {
 
     int listLength = numbers;
@@ -267,12 +265,12 @@ NumberList::NumberList(NumberList const &list1) {
     }
  }
 
-/*******************************************************************
+/****************************************************************************
  createNode
  Input: value to insert
  Output: None
  Adds a value to the end of the list, very valuable for the copy constructors
- *******************************************************************/
+ ****************************************************************************/
 void NumberList::createNode(int val) {
     ListNode *newNode = new ListNode;
     newNode -> num = val;
@@ -292,12 +290,12 @@ void NumberList::createNode(int val) {
     }
 }
 
-/*******************************************************************
+/***********************************
  deleteNode
  Input: value to delete
  Output: None
  Deletes node with the value passed.
- *******************************************************************/
+ ***********************************/
 void NumberList::deleteNode(int value){
     if (!head)
         return;
@@ -325,13 +323,13 @@ void NumberList::deleteNode(int value){
     }
 }
 
-/*******************************************************************
+/***************************************************************************
  getValueAt (index)
  Input: Index - The index to get the value from
  Output: Integer at this index
  Gets the value at whatever index is passed in. Valuable for copy functions.
  **STARTS AT 0**
- *******************************************************************/
+ ***************************************************************************/
 int NumberList::getValueAt(int index) {
     if (index >= findLength()) {
         cout << "\n***ERROR***Index out of range!\n" << endl;
@@ -349,12 +347,12 @@ int NumberList::getValueAt(int index) {
     }
 }
 
-/*******************************************************************
+/****************
  clearList
  Input: None
  Output: None
  Clears the list.
- *******************************************************************/
+ ****************/
 void NumberList::clearList() {
     if (!head) {
         ListNode * rptr = head;
@@ -372,39 +370,33 @@ void NumberList::clearList() {
     }
 }
 
-/*******************************************************************
+/***************************
  Display
  Input: none
  Returns: none
  Displays all items in list.
- *******************************************************************/
+ ***************************/
 void NumberList::display(string listName) {
-    if (!head) { 
-        ListNode *newNode = new ListNode;
-        newNode -> num = -1;
-        newNode -> nxt = NULL;
-        head = newNode;
+    // Create tptr, point it to head, and print it's number
+    ListNode *tptr = head;
+    cout << listName << ": " << tptr -> num;
 
-        // Create tptr, point it to head, and print it's number
-        ListNode *tptr = head;
-        cout << listName << ": " << tptr -> num;
-
-        // If tptr points to another node,
-        // assing tptr to that node and print its number
-        while (tptr -> nxt) {
-            tptr = tptr -> nxt;
-            cout << " " << tptr -> num;
-        }
-        cout << endl << endl;
+    // If tptr points to another node,
+    // assing tptr to that node and print its number
+    while (tptr -> nxt) {
+        tptr = tptr -> nxt;
+        cout << " " << tptr -> num;
     }
+
+    cout << endl << endl;
 }
 
-/*******************************************************************
+/*********************************************************************
  numOccurrence
  Input: index
  Returns: none
  Displays the number of occurrences of for the item at index position.
- *******************************************************************/
+ *********************************************************************/
 void NumberList::numOccurrence(int index, string listName) {
     int item = getValueAt(index);
     int numOccurrences = 1;
@@ -416,16 +408,16 @@ void NumberList::numOccurrence(int index, string listName) {
             numOccurrences++;
         temp = temp->nxt;
     }
-    cout << "The number " << item << " appears " << numOccurrences << " times in " << listName
-        << "." << endl << endl;
+    cout << "The number " << item << " appears " << numOccurrences <<
+            " times in " << listName << "." << endl << endl;
 }
 
-/*******************************************************************
+/********************************
  findLength
  Input: none
  Returns: none
  Displays the length of the list.
- *******************************************************************/
+ ********************************/
 int NumberList::findLength() {
     int counter = 0;
 
@@ -443,15 +435,13 @@ int NumberList::findLength() {
     return counter;
 }
 
-/*******************************************************************
+/****************************
  displayBackwards
  Input: none
  Returns: none
  Displays the list backwards.
- *******************************************************************/
+ ****************************/
 void NumberList::displayBackwards() {
-    if(!head)
-        return;
 
     // Create temporary empty list.
     NumberList tempList;
@@ -463,12 +453,12 @@ void NumberList::displayBackwards() {
     tempList.display("List 4 backwards");
 }
 
-/*******************************************************************
+/*************************************************************
  moveElement
  Input: destinationIndex
  Returns: none
  Moves the last element behind the element at destinationIndex
- *******************************************************************/
+ *************************************************************/
 void NumberList::moveElement(int destinationIndex) {
     ListNode * lastPtr = head;
     ListNode * prvPtr;
@@ -482,23 +472,23 @@ void NumberList::moveElement(int destinationIndex) {
     ListNode * tmpPtr = head;
 
     for (int i = 1; i < destinationIndex; i++) {
-       tmpPtr = tmpPtr -> nxt; 
+       tmpPtr = tmpPtr -> nxt;
     }
 
     lastPtr -> nxt = tmpPtr -> nxt;
-    tmpPtr -> nxt = lastPtr; 
+    tmpPtr -> nxt = lastPtr;
 }
 
-/*******************************************************************
+/*********************************
  sortList
  Input: none
  Returns: none
  Sorts the list in ascending order
- *******************************************************************/
+ *********************************/
 void NumberList::sortList() {
     ListNode * currentPtr = head;
     ListNode * minNumPtr = head;
-    ListNode * tmpPtr = head; 
+    ListNode * tmpPtr = head;
     int length = this -> findLength();
 
     for (int i = 0; i < length; i++) {
