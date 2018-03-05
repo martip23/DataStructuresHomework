@@ -81,6 +81,9 @@ int main() {
     srand(time(NULL)); // Seed Random Generator
 
     do {
+        // Space each run of the program
+        cout << endl;
+
         // Creates 2 lists and fills them with 15 #'s 1-19
         NumberList list_1;
 		list_1.populateList(15);
@@ -105,7 +108,7 @@ int main() {
         list_4.display("list_4");
 
         // Displays number of items in list
-        cout << "Length of list 4: " << list_4.findLength() << endl;
+        cout << "Length of list 4: " << list_4.findLength() << endl << endl;
 
         // Displays list backwards on screen
         list_4.displayBackwards();
@@ -150,8 +153,8 @@ int main() {
     } while (run);      // not an explicit requirement here.
 
 
-    cout << "This LL Program is Implemented by:\nBlake Hillier and Patrick";
-    cout << "Martinez - March 5th, 2018" << endl;
+    cout << "\nThis LL Program is Implemented by:\nBlake Hillier and Patrick";
+    cout << "Martinez - March 5th, 2018" << endl << endl; 
 
     return 0;
 }
@@ -220,10 +223,10 @@ NumberList::NumberList(NumberList const &list1) {
 
             bool foundDuplicate = false;
             for (int j = 0; j < i; j++) {
-				if (temp->num == getValueAt(j)) {
-					foundDuplicate = true;
-					i--;
-				}
+	        if (temp->num == getValueAt(j)) {
+                    foundDuplicate = true;
+                    i--;
+                }
             }
             if (!foundDuplicate)
                 createNode(temp->num);
@@ -393,7 +396,7 @@ void NumberList::display(string listName) {
         tptr = tptr -> nxt;
         cout << " " << tptr -> num;
     }
-    cout << endl;
+    cout << endl << endl;
 }
 
 /*******************************************************************
@@ -413,8 +416,8 @@ void NumberList::numOccurrence(int index, string listName) {
             numOccurrences++;
         temp = temp->nxt;
     }
-    cout << item << " appears " << numOccurrences << " times in " << listName
-        << "." << endl;
+    cout << "The number " << item << " appears " << numOccurrences << " times in " << listName
+        << "." << endl << endl;
 }
 
 /*******************************************************************
@@ -457,7 +460,7 @@ void NumberList::displayBackwards() {
     for (int i = 1; i <= findLength(); i++) {
         tempList.createNode(getValueAt(findLength() - i));
     }
-    tempList.display("List 4 backwards: ");
+    tempList.display("List 4 backwards");
 }
 
 /*******************************************************************
