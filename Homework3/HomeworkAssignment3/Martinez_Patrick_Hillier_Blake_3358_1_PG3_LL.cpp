@@ -487,10 +487,33 @@ void NumberList::moveElement(int destinationIndex) {
 }
 
 /*******************************************************************
- sort
+ sortList
  Input: none
  Returns: none
  Sorts the list in ascending order
  *******************************************************************/
 void NumberList::sortList() {
+    ListNode * currentPtr = head;
+    ListNode * minNumPtr = head;
+    ListNode * tmpPtr = head; 
+    int length = this -> findLength();
+
+    for (int i = 0; i < length; i++) {
+        for (int j = i + 1; j < length; j++) {
+            tmpPtr = tmpPtr -> nxt;
+            if (tmpPtr -> num < minNumPtr -> num)
+                minNumPtr = tmpPtr;
+        }
+        if (minNumPtr != currentPtr) {
+            int temp = minNumPtr -> num;
+            minNumPtr -> num = currentPtr -> num;
+            currentPtr -> num = temp;
+        }
+
+        if (currentPtr -> nxt) {
+            currentPtr = currentPtr -> nxt;
+            tmpPtr = currentPtr;
+            minNumPtr = currentPtr;
+	}
+    }
 }
