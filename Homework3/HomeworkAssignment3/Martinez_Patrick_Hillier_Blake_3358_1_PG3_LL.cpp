@@ -29,7 +29,6 @@
 #include <ctime>    // Provides time for random seed
 #include <iomanip>  // Provides setw and precision
 #include <iostream> // Provides cin, cout and endl
-#include <string>
 
 using namespace std;
 
@@ -44,7 +43,7 @@ class NumberList {
     ListNode *head;
 
     public:
-        // Sets head to null 
+        // Sets head to null
         NumberList();
         // Creates lists based on list1 and then list2
         NumberList(NumberList const &list1, NumberList const &list2);
@@ -154,7 +153,7 @@ int main() {
 
 
     cout << "\nThis LL Program is Implemented by:\nBlake Hillier and Patrick";
-    cout << "Martinez - March 5th, 2018" << endl << endl; 
+    cout << "Martinez - March 5th, 2018" << endl << endl;
 
     return 0;
 }
@@ -482,11 +481,11 @@ void NumberList::moveElement(int destinationIndex) {
     ListNode * tmpPtr = head;
 
     for (int i = 1; i < destinationIndex; i++) {
-       tmpPtr = tmpPtr -> nxt; 
+       tmpPtr = tmpPtr -> nxt;
     }
 
     lastPtr -> nxt = tmpPtr -> nxt;
-    tmpPtr -> nxt = lastPtr; 
+    tmpPtr -> nxt = lastPtr;
 }
 
 /*******************************************************************
@@ -498,7 +497,7 @@ void NumberList::moveElement(int destinationIndex) {
 void NumberList::sortList() {
     ListNode * currentPtr = head;
     ListNode * minNumPtr = head;
-    ListNode * tmpPtr = head; 
+    ListNode * tmpPtr = head;
     int length = this -> findLength();
 
     for (int i = 0; i < length; i++) {
