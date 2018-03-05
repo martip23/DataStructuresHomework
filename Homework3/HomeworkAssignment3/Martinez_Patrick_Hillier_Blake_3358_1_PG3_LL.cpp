@@ -356,7 +356,7 @@ int NumberList::getValueAt(int index) {
  Clears the list.
  *******************************************************************/
 void NumberList::clearList() {
-    if (!head) { // TODO: Delete if statement once all constructors have been implemented
+    if (!head) {
         ListNode * rptr = head;
         head = NULL;
         ListNode * nxtptr;
@@ -379,24 +379,24 @@ void NumberList::clearList() {
  Displays all items in list.
  *******************************************************************/
 void NumberList::display(string listName) {
-    if (!head) { // TODO: Delete if statement once all constructors have been implemented
+    if (!head) { 
         ListNode *newNode = new ListNode;
         newNode -> num = -1;
         newNode -> nxt = NULL;
         head = newNode;
-    }
 
-    // Create tptr, point it to head, and print it's number
-    ListNode *tptr = head;
-    cout << listName << ": " << tptr -> num;
+        // Create tptr, point it to head, and print it's number
+        ListNode *tptr = head;
+        cout << listName << ": " << tptr -> num;
 
-    // If tptr points to another node,
-    // assing tptr to that node and print its number
-    while (tptr -> nxt) {
-        tptr = tptr -> nxt;
-        cout << " " << tptr -> num;
+        // If tptr points to another node,
+        // assing tptr to that node and print its number
+        while (tptr -> nxt) {
+            tptr = tptr -> nxt;
+            cout << " " << tptr -> num;
+        }
+        cout << endl << endl;
     }
-    cout << endl << endl;
 }
 
 /*******************************************************************
