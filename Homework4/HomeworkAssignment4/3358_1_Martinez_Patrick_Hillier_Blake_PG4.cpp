@@ -16,6 +16,13 @@
 
 using namespace std;
 
+class Stack {
+
+};
+
+class Queue {
+};
+
 int main() {
     cout << "*** Welcome to Our Stack / Queue Program ***" << endl << endl;
     cout << "The function of this program is to:" << endl;
@@ -23,7 +30,7 @@ int main() {
     cout << "    2. Use queue to determine wether or not STRING2 is a reverse of STRING1." << endl << endl;
 
     bool run = true;
-    do {   
+    do { 
         cout << "Select from the following menu" << endl;
         cout << "    1. Enter Stack Values." << endl;
         cout << "    2. Enter Queue Values." << endl;
@@ -31,9 +38,16 @@ int main() {
     
         try {
             int userChoice;
-            if (!(cin >> userChoice))// Entering char/string breaks program
+            if(!(cin >> userChoice)) // If insertion to int fails, throw except.
                 throw -1;
- 
+            // If int value is not valid, throw exception with int.
+            else if (userChoice != 1 && userChoice != 2 && userChoice != 9)
+                throw -1;
+            // This is done to clear the input stream in case decimals are
+            // entered. This was done since decimal handling was talked
+            // about in class, and we were expected to truncate decimals.
+            cin.clear();
+            cin.ignore(256,'\n'); 
             switch (userChoice) {
                 case 1:
                     // Use Stack
@@ -50,10 +64,10 @@ int main() {
                     throw -1;
 		    break;
 	    } // End Switch
-       }
-       catch (int x) {
-           cout << "Invalid Option" << endl << endl;
-       }
+        }
+        catch (...) {
+            cout << "Invalid Option" << endl << endl;
+        }
 
     } while (run);
 
