@@ -26,20 +26,24 @@ class Queue {
 int main() {
     cout << "*** Welcome to Our Stack / Queue Program ***" << endl << endl;
     cout << "The function of this program is to:" << endl;
-    cout << "    1. Use stack to determine wether or not two strings are the same." << endl << endl;
-    cout << "    2. Use queue to determine wether or not STRING2 is a reverse of STRING1." << endl << endl;
+    cout << "    1. Use stack to determine whether or not two strings are the same." << endl << endl;
+    cout << "    2. Use queue to determine whether or not STRING2 is a reverse of STRING1." << endl << endl;
 
     bool run = true;
-    do { 
+    do {
         cout << "Select from the following menu" << endl;
         cout << "    1. Enter Stack Values." << endl;
         cout << "    2. Enter Queue Values." << endl;
         cout << "    9. Terminate the program. ";
-    
+
         try {
             int userChoice;
-            if(!(cin >> userChoice)) // If insertion to int fails, throw except.
+            if(!(cin >> userChoice)) { // If insertion to int fails, throw except.
+                // Clear cin error state and recover.
+                cin.clear();
+                cin.ignore(256,'\n');
                 throw -1;
+            }
             // If int value is not valid, throw exception with int.
             else if (userChoice != 1 && userChoice != 2 && userChoice != 9)
                 throw -1;
@@ -47,7 +51,7 @@ int main() {
             // entered. This was done since decimal handling was talked
             // about in class, and we were expected to truncate decimals.
             cin.clear();
-            cin.ignore(256,'\n'); 
+            cin.ignore(256,'\n');
             switch (userChoice) {
                 case 1:
                     // Use Stack
