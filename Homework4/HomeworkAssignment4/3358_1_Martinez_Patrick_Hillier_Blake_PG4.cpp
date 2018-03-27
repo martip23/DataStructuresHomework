@@ -118,11 +118,14 @@ int main() {
                     cout << "Enter Stack Values: ";
                     cin >> stackValues;
 
-                    charStack * stack = new charStack(stackValues.length());
+                    charStack * Stack = new charStack(stackValues.length());
                     for (int i = 0; i < stackValues.length(); i++) {
-                        stack->push(stackValues[i]);
+                        Stack->push(stackValues[i]);
                     } 
-                    
+                   
+                    for (int i = 0; i < stackValues.length(); i++) {
+                        cout << Stack->pop();
+                    } 
                     break;
                 }
                 case 2:
@@ -209,4 +212,10 @@ charStack::charStack(int size) {
 void charStack::push(char c) {
     stackArray[++top] = c;
     numItems++;
+}
+
+// Removes and returns the top element from the stack.
+char charStack::pop() {
+    numItems--;
+    return stackArray[top--];
 }
