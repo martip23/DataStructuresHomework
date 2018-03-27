@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //      Roster Numbers: 24 20
 //      Authors: Patrick Martinez, Blake Hillier
 //      Due Date: 3/28/2018
@@ -7,11 +8,37 @@
 //
 //      Instructor: Husain Gholoom.
 //
-//      Program Description: For this assignment we will implement a stack and queue ADT and
+//      For this assignment we will implement a stack and queue ADT and
 //      use these ADTs to compare strings. We will use a stack to determine
 //      whether two strings are the same and a queue to determine whether two
 //      strings are the reverse of each other. The program will have a terminal
 //      IO for input and output.
+
+class Stack {
+
+};
+
+class Queue {
+
+};
+
+int main () {
+
+return 0;
+=======
+/*******************************************************************************
+ Roster Numbers: 24 20
+
+ Authors: Patrick Martinez and Blake Hillier
+ Due Date: 28 March 2018
+ Program Assignment Number 4
+
+ Spring 2018 - CS 3358 - 261
+
+ Instructor: Hussain Gholoom.
+
+ TODO: Description
+ *******************************************************************************/
 
 #include <iostream>
 
@@ -77,15 +104,7 @@ int main() {
             switch (userChoice) {
                 case 1:
                     // Use Stack
-                    string stackValues;
-                    cout << "Enter Stack Values: ";
-                    cin >> stackValues;
-
-                    charStack stack = new charStack(stackValues.length());
-                    for (int i = 0; i < stackValues.length(); i++) {
-                        charStack.push(stackValues[i]);
-                    }
-
+                    cout << "\nSTACK" << endl;
                     break;
                 case 2:
                     // Use Queue
@@ -108,14 +127,5 @@ int main() {
     cout << "\n*** End of the Program. ***" << endl;
     cout << "*** Written by Patrick Martinez and Blake Hillier ***" << endl;
     cout << "*** March 28 - 2018 ***" << endl << endl;
-}
-     
-// charStack Functions
-
-// Creates the dynamic array of size 'size'.
-charStack::charStack(int size) {
-    stackArray = new char[size];
-    top = 0;
-    numItems = 0;
-    stackSize = size;
+>>>>>>> f0a564e9faeefae56bcd74ff4bf5b4b99659396d
 }
