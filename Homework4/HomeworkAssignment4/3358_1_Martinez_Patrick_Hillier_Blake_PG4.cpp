@@ -76,7 +76,15 @@ int main() {
             switch (userChoice) {
                 case 1:
                     // Use Stack
-                    cout << "\nSTACK" << endl;
+                    string stackValues;
+                    cout << "Enter Stack Values: ";
+                    cin >> stackValues;
+
+                    charStack stack = new charStack(stackValues.length());
+                    for (int i = 0; i < stackValues.length(); i++) {
+                        charStack.push(stackValues[i]);
+                    }
+
                     break;
                 case 2:
                     // Use Queue
@@ -99,4 +107,14 @@ int main() {
     cout << "\n*** End of the Program. ***" << endl;
     cout << "*** Written by Patrick Martinez and Blake Hillier ***" << endl;
     cout << "*** March 28 - 2018 ***" << endl << endl;
+}
+     
+// charStack Functions
+
+// Creates the dynamic array of size 'size'.
+charStack::charStack(int size) {
+    stackArray = new char[size];
+    top = 0;
+    numItems = 0;
+    stackSize = size;
 }
