@@ -55,13 +55,14 @@ A queue implementation meant to use any type. Utilizes a linked list.
 ************/
 template <class ItemType>
 class Queue {
-    ItemType* front;    // Link to front of queue
-    ItemType* back;     // Link to tail of queue
 
     struct Node {
         ItemType data;  // Data held in queue
-        ItemType* next; // Link to next node
+        Node* next; // Link to next node
     };
+
+    Node* front;    // Link to front of queue
+    Node* back;     // Link to tail of queue
 
     /****************
     Class Constructor.
@@ -171,8 +172,16 @@ Input: ch (char) to be put at the back of the line.
 ****************/
 template <class ItemType>
 void Queue<ItemType>::enqueue(ItemType data) {
+    Node *nextNode = new Node;
+    nextNode->data = data;
+    nextNode->next = NULL;
+
     if (isEmpty()) {
-        ItemType* newNode = new ItemType*;
+        front = nextNode;
+        back = nextNode;
+    } else {
+        back->next = nextNode;
+        back = nextNode;
     }
 }
 
