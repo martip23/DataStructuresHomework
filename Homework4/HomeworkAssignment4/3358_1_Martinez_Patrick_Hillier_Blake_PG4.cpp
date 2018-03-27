@@ -16,8 +16,33 @@
 
 using namespace std;
 
-class Stack {
+class charStack {
+    char * stackArray;
+    int stackSize;
+    int numItems;
+    int top;
 
+    public:
+    /*****************************************
+     Constructor
+     input: size (int) as size of the array
+     Creates the dynamic array of size 'size'.
+     *****************************************/
+    charStack(int size);
+
+    /*****************************************************************
+     push
+     Input: c (char) as the character inserted at the top of the stack
+     Inserts c at the top of the stack.
+     *****************************************************************/
+    void push(char c);
+
+    /***************************************************
+     pop
+     Input: none
+     Removes and returns the top element from the stack.
+     ***************************************************/
+    char pop();
 };
 
 class Queue {
@@ -47,11 +72,7 @@ int main() {
             // If int value is not valid, throw exception with int.
             else if (userChoice != 1 && userChoice != 2 && userChoice != 9)
                 throw -1;
-            // This is done to clear the input stream in case decimals are
-            // entered. This was done since decimal handling was talked
-            // about in class, and we were expected to truncate decimals.
-            cin.clear();
-            cin.ignore(256,'\n');
+            
             switch (userChoice) {
                 case 1:
                     // Use Stack
