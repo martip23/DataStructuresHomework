@@ -122,11 +122,8 @@ int main() {
                     charStack * stack = new charStack(stackValues.length());
                     for (int i = 0; i < stackValues.length(); i++) {
                         stack->push(stackValues[i]);
-                    }
-
-                    for (int i = 0; i < stackValues.length(); i++) {
-                    cout << stackValues[i];
-                    }
+                    } 
+                    
                     break;
                 }
                 case 2:
