@@ -1,5 +1,4 @@
 //      Roster Numbers: 24 20
-//      
 //      Authors: Patrick Martinez, Blake Hillier
 //      Due Date: 3/28/2018
 //      Programming Assignment Number: 4
@@ -21,7 +20,7 @@ using namespace std;
 /************
 A stack implementation meant to use char types.
 ************/
-class charStack { //Capitalized class name -Patrick 3.27.18
+class CharStack { //Capitalized class name -Patrick 3.27.18
     char * stackArray;
     int stackSize;
     int numItems;
@@ -33,7 +32,7 @@ class charStack { //Capitalized class name -Patrick 3.27.18
      input: size (int) as size of the array
      Creates the dynamic array of size 'size'.
      *****************************************/
-    charStack(int size);
+    CharStack(int size);
 
     /*****************************************************************
      push
@@ -112,27 +111,22 @@ int main() {
                 throw -1;
 
             switch (userChoice) {
-                case 1: {
+                case 1:
                     // Use Stack
                     string stackValues;
                     cout << "Enter Stack Values: ";
                     cin >> stackValues;
 
-                    charStack * stack = new charStack(stackValues.length());
+                    charStack stack = new charStack(stackValues.length());
                     for (int i = 0; i < stackValues.length(); i++) {
-                        stack->push(stackValues[i]);
+                        charStack.push(stackValues[i]);
                     }
-                    
-                    for (int i = 0; i < stackValues.length(); i++) {
-                    cout << stackValues[i];
-                    }
+
                     break;
-                }
-                case 2: {
+                case 2:
                     // Use Queue
                     cout << "\nQUEUE" << endl;
                     break;
-<<<<<<< HEAD
                 case 9:
                     run = false;
                     break;
@@ -140,18 +134,6 @@ int main() {
                     throw -1;
                     break;
             } // End Switch
-=======
-                }
-		case 9: {
-		    run = false;
-		    break;
-                }
-		default: {
-                    throw -1;
-		    break;
-                }
-	    } // End Switch
->>>>>>> 8b35780be88f9eac11a98f6d0d54c9c4fad81456
         }
         catch (...) {
             cout << "Invalid Option" << endl << endl;
@@ -163,8 +145,12 @@ int main() {
     cout << "*** Written by Patrick Martinez and Blake Hillier ***" << endl;
     cout << "*** March 28 - 2018 ***" << endl << endl;
 }
+<<<<<<< HEAD
 
 /***Function Implementation***/
+
+/** Stack Implementations **/
+
 
 /** Queue Implementations **/
 
@@ -209,19 +195,15 @@ bool Queue<ItemType>::isEmpty(void) {
         return true;
     }
     else return false;
+=======
      
 // charStack Functions
 
 // Creates the dynamic array of size 'size'.
 charStack::charStack(int size) {
     stackArray = new char[size];
-    top = -1;
+    top = 0;
     numItems = 0;
     stackSize = size;
+>>>>>>> 307b93cc1ef25b9f0070658e453797b6f490b8df
 }
-     
-// Inserts c at the top of the stack.
-void charStack::push(char c) {
-    stackArray[++top] = c;
-    numItems++;
-} 
