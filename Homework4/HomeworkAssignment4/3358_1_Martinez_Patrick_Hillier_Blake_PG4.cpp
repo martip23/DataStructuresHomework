@@ -1,4 +1,5 @@
 //      Roster Numbers: 24 20
+//      
 //      Authors: Patrick Martinez, Blake Hillier
 //      Due Date: 3/28/2018
 //      Programming Assignment Number: 4
@@ -111,19 +112,23 @@ int main() {
                 throw -1;
 
             switch (userChoice) {
-                case 1:
+                case 1: {
                     // Use Stack
                     string stackValues;
                     cout << "Enter Stack Values: ";
                     cin >> stackValues;
 
-                    charStack stack = new charStack(stackValues.length());
+                    charStack * stack = new charStack(stackValues.length());
                     for (int i = 0; i < stackValues.length(); i++) {
-                        charStack.push(stackValues[i]);
+                        stack->push(stackValues[i]);
                     }
-
+                    
+                    for (int i = 0; i < stackValues.length(); i++) {
+                    cout << stackValues[i];
+                    }
                     break;
-                case 2:
+                }
+                case 2: {
                     // Use Queue
                     cout << "\nQUEUE" << endl;
                     break;
@@ -134,6 +139,16 @@ int main() {
                     throw -1;
                     break;
             } // End Switch
+                }
+		case 9: {
+		    run = false;
+		    break;
+                }
+		default: {
+                    throw -1;
+		    break;
+                }
+	    } // End Switch
         }
         catch (...) {
             cout << "Invalid Option" << endl << endl;
@@ -197,7 +212,13 @@ bool Queue<ItemType>::isEmpty(void) {
 // Creates the dynamic array of size 'size'.
 charStack::charStack(int size) {
     stackArray = new char[size];
-    top = 0;
+    top = -1;
     numItems = 0;
     stackSize = size;
 }
+     
+// Inserts c at the top of the stack.
+void charStack::push(char c) {
+    stackArray[++top] = c;
+    numItems++;
+} 
