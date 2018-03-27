@@ -1,5 +1,5 @@
 //      Roster Numbers: 24 20
-//      
+//
 //      Authors: Patrick Martinez, Blake Hillier
 //      Due Date: 3/28/2018
 //      Programming Assignment Number: 4
@@ -122,13 +122,13 @@ int main() {
                     for (int i = 0; i < stackValues.length(); i++) {
                         stack->push(stackValues[i]);
                     }
-                    
+
                     for (int i = 0; i < stackValues.length(); i++) {
                     cout << stackValues[i];
                     }
                     break;
                 }
-                case 2: {
+                case 2:
                     // Use Queue
                     cout << "\nQUEUE" << endl;
                     break;
@@ -139,16 +139,6 @@ int main() {
                     throw -1;
                     break;
             } // End Switch
-                }
-		case 9: {
-		    run = false;
-		    break;
-                }
-		default: {
-                    throw -1;
-		    break;
-                }
-	    } // End Switch
         }
         catch (...) {
             cout << "Invalid Option" << endl << endl;
@@ -170,8 +160,8 @@ Sets up linked list for initial use
 ****************/
 template <class ItemType>
 Queue<ItemType>::Queue(void) {
-    front   = nullptr;
-    back    = nullptr;
+    front   = NULL;
+    back    = NULL;
 }
 
 
@@ -202,11 +192,12 @@ Output: True if empty, else false.
 ****************/
 template <class ItemType>
 bool Queue<ItemType>::isEmpty(void) {
-    if (front == nullptr) {
+    if (front == NULL) {
         return true;
     }
     else return false;
-     
+}
+
 // charStack Functions
 
 // Creates the dynamic array of size 'size'.
@@ -216,9 +207,9 @@ charStack::charStack(int size) {
     numItems = 0;
     stackSize = size;
 }
-     
+
 // Inserts c at the top of the stack.
 void charStack::push(char c) {
     stackArray[++top] = c;
     numItems++;
-} 
+}
