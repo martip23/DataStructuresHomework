@@ -87,9 +87,6 @@ int main() {
                         stack->push(stackValues[i]);
                     }
                     
-                    for (int i = 0; i < stackValues.length(); i++) {
-                    cout << stackValues[i];
-                    }
                     break;
                 }
                 case 2: {
