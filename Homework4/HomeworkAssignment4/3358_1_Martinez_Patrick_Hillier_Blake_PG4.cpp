@@ -6,7 +6,7 @@
 //
 //      Spring 2018 - CS 3358 - 251
 //
-//      Instructor: Husain Gholoom.
+//      Instructor: Husain Gholoom
 //
 //      Description: For this assignment we will implement a stack and queue ADT
 //      and use these ADTs to compare strings. We will use a stack to determine
@@ -122,13 +122,30 @@ int main() {
                     charStack * stack = new charStack(stackValues.length());
                     for (int i = 0; i < stackValues.length(); i++) {
                         stack->push(stackValues[i]);
-                    } 
-                    
+                    }
+
                     break;
                 }
-                case 2:
-                    // Use Queue
+                case 2: {
+                    // Use queue
+                    Queue<char> queue;
+                    bool secondSequence = false;
+
                     cout << "\nQUEUE" << endl;
+                    string queueValues;
+                    cout << "Enter Queue Values:\t";
+                    cin >> queueValues;
+
+                    for (int i = 0; queueValues[i]!='\0'; i++) {
+                        if (queueValues[i]!='#' && !secondSequence)
+                            queue.enqueue(queueValues[i])
+                        else if (queueValues[i]=='#')
+                            secondSequence = true;
+                        else (queueValues[i])
+                            continue;
+                    }
+                }
+
                     break;
                 case 9:
                     run = false;
