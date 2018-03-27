@@ -20,7 +20,7 @@ using namespace std;
 /************
 A stack implementation meant to use char types.
 ************/
-class charStack { //Capitalized class name -Patrick 3.27.18
+class CharStack { //Capitalized class name -Patrick 3.27.18
     char * stackArray;
     int stackSize;
     int numItems;
@@ -32,7 +32,7 @@ class charStack { //Capitalized class name -Patrick 3.27.18
      input: size (int) as size of the array
      Creates the dynamic array of size 'size'.
      *****************************************/
-    charStack(int size);
+    CharStack(int size);
 
     /*****************************************************************
      push
@@ -113,15 +113,7 @@ int main() {
             switch (userChoice) {
                 case 1:
                     // Use Stack
-                    string stackValues;
-                    cout << "Enter Stack Values: ";
-                    cin >> stackValues;
-
-                    charStack stack = new charStack(stackValues.length());
-                    for (int i = 0; i < stackValues.length(); i++) {
-                        charStack.push(stackValues[i]);
-                    }
-
+                    cout << "\nSTACK" << endl;
                     break;
                 case 2:
                     // Use Queue
@@ -147,6 +139,9 @@ int main() {
 }
 
 /***Function Implementation***/
+
+/** Stack Implementations **/
+
 
 /** Queue Implementations **/
 
@@ -191,13 +186,4 @@ bool Queue<ItemType>::isEmpty(void) {
         return true;
     }
     else return false;
-     
-// charStack Functions
-
-// Creates the dynamic array of size 'size'.
-charStack::charStack(int size) {
-    stackArray = new char[size];
-    top = 0;
-    numItems = 0;
-    stackSize = size;
 }
