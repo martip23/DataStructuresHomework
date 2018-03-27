@@ -7,8 +7,8 @@
 //
 //      Instructor: Husain Gholoom.
 //
-//      Program Description: For this assignment we will implement a stack and queue ADT and
-//      use these ADTs to compare strings. We will use a stack to determine
+//      Description: For this assignment we will implement a stack and queue ADT
+//      and use these ADTs to compare strings. We will use a stack to determine
 //      whether two strings are the same and a queue to determine whether two
 //      strings are the reverse of each other. The program will have a terminal
 //      IO for input and output.
@@ -17,7 +17,10 @@
 
 using namespace std;
 
-class charStack {
+/************
+A stack implementation meant to use char types.
+************/
+class CharStack { //Capitalized class name -Patrick 3.27.18
     char * stackArray;
     int stackSize;
     int numItems;
@@ -29,7 +32,7 @@ class charStack {
      input: size (int) as size of the array
      Creates the dynamic array of size 'size'.
      *****************************************/
-    charStack(int size);
+    CharStack(int size);
 
     /*****************************************************************
      push
@@ -46,14 +49,47 @@ class charStack {
     char pop();
 };
 
+/************
+A queue implementation meant to use any type. Utilizes a linked list.
+************/
+template <class ItemType>
 class Queue {
+    ItemType* front;    // Link to front of queue
+    ItemType* back;     // Link to tail of queue
+
+    struct Node {
+        ItemType data;  // Data held in queue
+        ItemType* next; // Link to next node
+    };
+
+    /****************
+    Class Constructor.
+    ****************/
+    Queue();
+
+    /****************
+    Used to add a char to the back of the queue
+    ****************/
+    void enqueue(ItemType data);
+
+    /****************
+    Used to remove a char from the front of the queue
+    ****************/
+    ItemType dequeue(void);
+
+    /****************
+    Checks if queue is empty
+    ****************/
+    bool isEmpty(void);
 };
 
 int main() {
     cout << "*** Welcome to Our Stack / Queue Program ***" << endl << endl;
     cout << "The function of this program is to:" << endl;
-    cout << "    1. Use stack to determine whether or not two strings are the same." << endl << endl;
-    cout << "    2. Use queue to determine whether or not STRING2 is a reverse of STRING1." << endl << endl;
+    cout << "    1. Use stack to determine whether or not two strings"
+        << " are the same." << endl;
+    cout << "    2. Use queue to determine whether or not STRING2"
+        << " is a reverse of STRING1." << endl << endl;
 
     bool run = true;
     do {
@@ -64,7 +100,7 @@ int main() {
 
         try {
             int userChoice;
-            if(!(cin >> userChoice)) { // If insertion to int fails, throw except.
+            if(!(cin >> userChoice)) {// If insertion to int fails, throw except.
                 // Clear cin error state and recover.
                 cin.clear();
                 cin.ignore(256,'\n');
@@ -73,7 +109,7 @@ int main() {
             // If int value is not valid, throw exception with int.
             else if (userChoice != 1 && userChoice != 2 && userChoice != 9)
                 throw -1;
-            
+
             switch (userChoice) {
                 case 1:
                     // Use Stack
@@ -83,13 +119,13 @@ int main() {
                     // Use Queue
                     cout << "\nQUEUE" << endl;
                     break;
-		case 9:
-		    run = false;
-		    break;
-		default:
+                case 9:
+                    run = false;
+                    break;
+                default:
                     throw -1;
-		    break;
-	    } // End Switch
+                    break;
+            } // End Switch
         }
         catch (...) {
             cout << "Invalid Option" << endl << endl;
@@ -100,4 +136,54 @@ int main() {
     cout << "\n*** End of the Program. ***" << endl;
     cout << "*** Written by Patrick Martinez and Blake Hillier ***" << endl;
     cout << "*** March 28 - 2018 ***" << endl << endl;
+}
+
+/***Function Implementation***/
+
+/** Stack Implementations **/
+
+
+/** Queue Implementations **/
+
+/****************
+Sets up linked list for initial use
+****************/
+template <class ItemType>
+Queue<ItemType>::Queue(void) {
+    front   = nullptr;
+    back    = nullptr;
+}
+
+
+/****************
+Used to add a char to the back of the queue
+Input: ch (char) to be put at the back of the line.
+****************/
+template <class ItemType>
+void Queue<ItemType>::enqueue(ItemType data) {
+    if (isEmpty()) {
+        ItemType* newNode = new ItemType*;
+    }
+}
+
+/****************
+Used to remove a char from the front of the queue
+Output: Letter that has been dequeued
+****************/
+template <class ItemType>
+ItemType Queue<ItemType>::dequeue(void) {
+    ItemType item;
+    return item;
+}
+
+/****************
+Checks if queue is empty
+Output: True if empty, else false.
+****************/
+template <class ItemType>
+bool Queue<ItemType>::isEmpty(void) {
+    if (front == nullptr) {
+        return true;
+    }
+    else return false;
 }
