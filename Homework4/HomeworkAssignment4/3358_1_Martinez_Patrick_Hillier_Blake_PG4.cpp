@@ -139,9 +139,9 @@ int main() {
                     if (poundIndex == -1)
                         throw -1;
 
-                    // Creates a stack to fit the characters up to the pound symbol
+                    // Creates a stack to fit characters up to the pound symbol
                     CharStack * stack1 = new CharStack(poundIndex);
-                    // Creates a stack to fit the characters after the pound symbol
+                    // Creates a stack to fit characters after the pound symbol
                     CharStack * stack2 = new CharStack(count - poundIndex - 1);
 
                     // Populate Stack1 with characters up to the pound symbol
