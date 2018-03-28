@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="3358_1_Martinez_Patrick_Hillier_Blake_PG4.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

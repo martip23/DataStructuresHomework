@@ -21,7 +21,7 @@ using namespace std;
 /************
 A stack implementation meant to use char types.
 ************/
-class CharStack { 
+class CharStack {
     char * stackArray;
     int stackSize;
     int numItems;
@@ -73,11 +73,13 @@ class Queue {
     struct Node {
         ItemType data;  // Data held in queue
         Node* next; // Link to next node
+        Node* prev;
     };
 
     Node* front;    // Link to front of queue
     Node* back;     // Link to tail of queue
 
+    public:
     /****************
     Class Constructor.
     ****************/
@@ -97,6 +99,11 @@ class Queue {
     Checks if queue is empty
     ****************/
     bool isEmpty(void);
+
+    /**************
+    Destroys linked list
+    *************/
+    ~Queue();
 };
 
 int main() {
@@ -116,7 +123,7 @@ int main() {
 
         try {
             int userChoice;
-            if(!(cin >> userChoice)) {// If insertion to int fails, throw except.
+            if(!(cin >> userChoice)) {// If insertion to int fails, throw except
                 // Clear cin error state and recover.
                 cin.clear();
                 cin.ignore(256,'\n');
@@ -132,8 +139,8 @@ int main() {
                     string stackValues;
                     cout << "\nEnter Stack Values: ";
                     cin >> stackValues;
-                   
-                    // Stores the number of characters in stackValues 
+
+                    // Stores the number of characters in stackValues
                     int count = stackValues.length();
                     // Stores the location of the pound symbol
                     int poundIndex = -1;
@@ -142,14 +149,6 @@ int main() {
                         if (stackValues[i] == '#')
                             poundIndex = i;
                     }
-
-<<<<<<< HEAD
-                    charStack * stack = new charStack(stackValues.length());
-                    for (int i = 0; i < stackValues.length(); i++) {
-                        stack->push(stackValues[i]);
-                    }
-
-=======
                     if (poundIndex == -1)
                         throw -1;
 
@@ -162,7 +161,7 @@ int main() {
                     for (int i = 0; i < poundIndex; i++) {
                         stack1->push(stackValues[i]);
                     }
-                    
+
                     // Populate Stack2 with characters after the pound symbol
                     for (int i = poundIndex + 1; i < count; i++) {
                         stack2->push(stackValues[i]);
@@ -189,29 +188,55 @@ int main() {
 
                     delete stack1;
                     delete stack2;
->>>>>>> 7a5cbaac225a32ec7cc19e59bfcc7cef7de8ff82
                     break;
                 }
                 case 2: {
                     // Use queue
                     Queue<char> queue;
+                    Queue<char> queue2;
                     bool secondSequence = false;
 
                     cout << "\nQUEUE" << endl;
                     string queueValues;
                     cout << "Enter Queue Values:\t";
                     cin >> queueValues;
-
-                    for (int i = 0; queueValues[i]!='\0'; i++) {
-                        if (queueValues[i]!='#' && !secondSequence)
-                            queue.enqueue(queueValues[i])
-                        else if (queueValues[i]=='#')
-                            secondSequence = true;
-                        else (queueValues[i])
-                            continue;
+                    // Stores the number of characters in stackValues
+                    int count = queueValues.length();
+                    // Stores the location of the pound symbol
+                    int poundIndex = -1;
+                    // Finds index of pound symbol in stackValues
+                    for (int i = 0; i < count; i++) {
+                        if (queueValues[i] == '#')
+                            poundIndex = i;
                     }
-                }
+                     if (poundIndex == -1)
+                        throw -1;
 
+                    for (int i = 0; i < poundIndex; i++) {
+                        queue.enqueue(queueValues[i]);
+                    }
+
+                    for (int i = count - 1; i > poundIndex; i--) {
+                        queue2.enqueue(queueValues[i]);
+                    }
+
+                    bool areReverse = true;
+                    while (!queue.isEmpty() && !queue2.isEmpty() && areReverse){
+                        if (queue.dequeue() != queue2.dequeue()) {
+                            areReverse = false;
+                        }
+                    }
+                    if (queue.isEmpty() && queue2.isEmpty())
+                        areReverse = true;
+                    else areReverse = false;
+
+                    if (areReverse) {
+                        cout << "String2 is reverse of String1" << endl << endl;
+                    }
+                    else
+                        cout << "String 2 is not reverse of string1" << endl
+                        << endl;
+                }
                     break;
                 case 9:
                     run = false;
@@ -233,6 +258,14 @@ int main() {
 }
 
 /***Function Implementation***/
+
+/********************
+Creates a queue recursively for reverse comparison with queue
+********************/
+void recursiveQueue (string toReverse) {
+
+
+}
 
 /** Queue Implementations **/
 
@@ -257,9 +290,11 @@ void Queue<ItemType>::enqueue(ItemType data) {
     nextNode->next = NULL;
 
     if (isEmpty()) {
+        nextNode->prev = NULL;
         front = nextNode;
         back = nextNode;
     } else {
+        nextNode->prev = back;
         back->next = nextNode;
         back = nextNode;
     }
@@ -271,8 +306,21 @@ Output: Letter that has been dequeued
 ****************/
 template <class ItemType>
 ItemType Queue<ItemType>::dequeue(void) {
-    ItemType item;
-    return item;
+    if (isEmpty()) {
+        cout << "\nERROR: NO ITEMS TO DEQUE" << endl;
+        throw -1;
+    }
+    ItemType returnVal = front->data;
+    Node* temp = front;
+    if (front->next == NULL) {
+        front = NULL;
+    }
+    else {
+        front = front->next;
+        front->prev = NULL;
+    }
+    delete temp;
+    return returnVal;
 }
 
 /****************
@@ -285,6 +333,15 @@ bool Queue<ItemType>::isEmpty(void) {
         return true;
     }
     else return false;
+}
+
+template <class ItemType>
+Queue<ItemType>::~Queue() {
+    while(!isEmpty()) {
+        dequeue();
+    }
+    delete front;
+    delete back;
 }
 
 // CharStack Functions
