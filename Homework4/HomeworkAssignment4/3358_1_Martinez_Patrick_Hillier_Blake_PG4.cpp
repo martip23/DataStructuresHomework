@@ -182,7 +182,7 @@ int main() {
                     bool secondSequence = false;
 
                     string queueValues;
-                    cout << "Enter Queue Values:\t";
+                    cout << "\nEnter Queue Values:\t";
                     cin >> queueValues;
                     // Stores the number of characters in queueValues
                     int count = queueValues.length();
@@ -215,10 +215,10 @@ int main() {
                     else areReverse = false;
 
                     if (areReverse) {
-                        cout << "String2 is reverse of String1" << endl << endl;
+                        cout << "\nString2 is reverse of String1" << endl << endl;
                     }
                     else
-                        cout << "String 2 is not reverse of string1" << endl
+                        cout << "\nString 2 is not reverse of string1" << endl
                         << endl;
                 }
                     break;
@@ -298,6 +298,7 @@ ItemType Queue<ItemType>::dequeue(void) {
     Node* temp = front;
     if (front->next == NULL) {
         front = NULL;
+        back = NULL;
     }
     else {
         front = front->next;
