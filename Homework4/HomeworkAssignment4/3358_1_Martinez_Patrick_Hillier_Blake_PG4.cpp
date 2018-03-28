@@ -28,32 +28,17 @@ class CharStack {
     int top;
 
     public:
-    /*****************************************
-     Constructor
-     Input: size (int) as size of the array
-     Creates the dynamic array of size 'size'.
-     *****************************************/
+    
+    // Creates the dynamic array of size 'size'.
     CharStack(int size);
 
-    /*******************
-     Destructor
-     Input: none
-     Deletes stackArray.
-     *******************/
+    // Deletes stackArray.
     ~CharStack();
 
-    /*****************************************************************
-     push
-     Input: c (char) as the character inserted at the top of the stack
-     Inserts c at the top of the stack.
-     *****************************************************************/
+    // Inserts c at the top of the stack.
     void push(char c);
 
-    /***************************************************
-     pop
-     Input: none
-     Removes and returns the top element from the stack.
-     ***************************************************/
+    // Removes and returns the top element from the stack.
     char pop();
 
     /**********************
@@ -196,15 +181,14 @@ int main() {
                     Queue<char> queue2;
                     bool secondSequence = false;
 
-                    cout << "\nQUEUE" << endl;
                     string queueValues;
                     cout << "Enter Queue Values:\t";
                     cin >> queueValues;
-                    // Stores the number of characters in stackValues
+                    // Stores the number of characters in queueValues
                     int count = queueValues.length();
                     // Stores the location of the pound symbol
                     int poundIndex = -1;
-                    // Finds index of pound symbol in stackValues
+                    // Finds index of pound symbol in queueValues
                     for (int i = 0; i < count; i++) {
                         if (queueValues[i] == '#')
                             poundIndex = i;
@@ -346,7 +330,11 @@ Queue<ItemType>::~Queue() {
 
 // CharStack Functions
 
-// Creates the dynamic array of size 'size'.
+/*****************************************
+ Constructor
+ Input: size (int) as size of the array
+ Creates the dynamic array of size 'size'.
+ *****************************************/
 CharStack::CharStack(int size) {
     stackArray = new char[size];
     top = -1;
@@ -354,18 +342,30 @@ CharStack::CharStack(int size) {
     stackSize = size;
 }
 
-// Deletes stackArray.
+/*******************
+ Destructor
+ Input: none
+ Deletes stackArray.
+ *******************/
 CharStack::~CharStack() {
     delete stackArray;
 }
 
-// Inserts c at the top of the stack.
+/*****************************************************************
+ push
+ Input: c (char) as the character inserted at the top of the stack
+ Inserts c at the top of the stack.
+ *****************************************************************/
 void CharStack::push(char c) {
     stackArray[++top] = c;
     numItems++;
 }
 
-// Removes and returns the top element from the stack.
+/***************************************************
+ pop
+ Input: none
+ Removes and returns the top element from the stack.
+ ***************************************************/
 char CharStack::pop() {
     numItems--;
     return stackArray[top--];
