@@ -30,10 +30,17 @@ class CharStack {
     public:
     /*****************************************
      Constructor
-     input: size (int) as size of the array
+     Input: size (int) as size of the array
      Creates the dynamic array of size 'size'.
      *****************************************/
     CharStack(int size);
+
+    /*******************
+     Destructor
+     Input: none
+     Deletes stackArray.
+     *******************/
+    ~CharStack();
 
     /*****************************************************************
      push
@@ -169,10 +176,12 @@ int main() {
                     }
 
                     if (isSameString)
-                        cout << "\nStrings are Identical" << endl;
+                        cout << "\nStrings are Identical" << endl << endl;
                     else
-                        cout << "\nStrings are not Identical" << endl;
+                        cout << "\nStrings are not Identical" << endl << endl;
 
+                    delete stack1;
+                    delete stack2;
                     break;
                 }
                 case 2:
@@ -261,6 +270,11 @@ CharStack::CharStack(int size) {
     top = -1;
     numItems = 0;
     stackSize = size;
+}
+
+// Deletes stackArray.
+CharStack::~CharStack() {
+    delete stackArray;
 }
 
 // Inserts c at the top of the stack.
