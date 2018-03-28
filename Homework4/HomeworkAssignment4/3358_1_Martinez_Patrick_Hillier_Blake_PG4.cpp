@@ -21,7 +21,7 @@ using namespace std;
 /************
 A stack implementation meant to use char types.
 ************/
-class charStack { //Capitalized class name -Patrick 3.27.18
+class CharStack { 
     char * stackArray;
     int stackSize;
     int numItems;
@@ -30,10 +30,17 @@ class charStack { //Capitalized class name -Patrick 3.27.18
     public:
     /*****************************************
      Constructor
-     input: size (int) as size of the array
+     Input: size (int) as size of the array
      Creates the dynamic array of size 'size'.
      *****************************************/
-    charStack(int size);
+    CharStack(int size);
+
+    /*******************
+     Destructor
+     Input: none
+     Deletes stackArray.
+     *******************/
+    ~CharStack();
 
     /*****************************************************************
      push
@@ -48,6 +55,13 @@ class charStack { //Capitalized class name -Patrick 3.27.18
      Removes and returns the top element from the stack.
      ***************************************************/
     char pop();
+
+    /**********************
+     getSize
+     Input: none
+     Returns size of stack.
+     **********************/
+    int getSize() { return stackSize; };
 };
 
 /************
@@ -116,14 +130,66 @@ int main() {
                 case 1: {
                     // Use Stack
                     string stackValues;
-                    cout << "Enter Stack Values: ";
+                    cout << "\nEnter Stack Values: ";
                     cin >> stackValues;
+                   
+                    // Stores the number of characters in stackValues 
+                    int count = stackValues.length();
+                    // Stores the location of the pound symbol
+                    int poundIndex = -1;
+                    // Finds index of pound symbol in stackValues
+                    for (int i = 0; i < count; i++) {
+                        if (stackValues[i] == '#')
+                            poundIndex = i;
+                    }
 
+<<<<<<< HEAD
                     charStack * stack = new charStack(stackValues.length());
                     for (int i = 0; i < stackValues.length(); i++) {
                         stack->push(stackValues[i]);
                     }
 
+=======
+                    if (poundIndex == -1)
+                        throw -1;
+
+                    // Creates a stack to fit characters up to the pound symbol
+                    CharStack * stack1 = new CharStack(poundIndex);
+                    // Creates a stack to fit characters after the pound symbol
+                    CharStack * stack2 = new CharStack(count - poundIndex - 1);
+
+                    // Populate Stack1 with characters up to the pound symbol
+                    for (int i = 0; i < poundIndex; i++) {
+                        stack1->push(stackValues[i]);
+                    }
+                    
+                    // Populate Stack2 with characters after the pound symbol
+                    for (int i = poundIndex + 1; i < count; i++) {
+                        stack2->push(stackValues[i]);
+                    }
+
+                    // Checks if stacks are same size
+                    // If true, compare each element
+                    // If false, strings aren't identical
+                    bool isSameString = true;
+                    if (stack1->getSize() != stack2->getSize())
+                        isSameString = false;
+                    else {
+                        for (int i = 0; i < stack1->getSize(); i++) {
+                            if (stack1->pop() != stack2->pop())
+                                // If elements don't match, strings aren't equal
+                                isSameString = false;
+                        }
+                    }
+
+                    if (isSameString)
+                        cout << "\nStrings are Identical" << endl << endl;
+                    else
+                        cout << "\nStrings are not Identical" << endl << endl;
+
+                    delete stack1;
+                    delete stack2;
+>>>>>>> 7a5cbaac225a32ec7cc19e59bfcc7cef7de8ff82
                     break;
                 }
                 case 2: {
@@ -221,18 +287,29 @@ bool Queue<ItemType>::isEmpty(void) {
     else return false;
 }
 
-// charStack Functions
+// CharStack Functions
 
 // Creates the dynamic array of size 'size'.
-charStack::charStack(int size) {
+CharStack::CharStack(int size) {
     stackArray = new char[size];
     top = -1;
     numItems = 0;
     stackSize = size;
 }
 
+// Deletes stackArray.
+CharStack::~CharStack() {
+    delete stackArray;
+}
+
 // Inserts c at the top of the stack.
-void charStack::push(char c) {
+void CharStack::push(char c) {
     stackArray[++top] = c;
     numItems++;
+}
+
+// Removes and returns the top element from the stack.
+char CharStack::pop() {
+    numItems--;
+    return stackArray[top--];
 }
