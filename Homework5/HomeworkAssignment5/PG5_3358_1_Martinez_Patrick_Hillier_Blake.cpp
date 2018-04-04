@@ -13,39 +13,49 @@ Instructor: Husain Gholoom
 ******************************************************************************/
 
 #include <iostream> // For cin/cout statements
-#include <vector>   // For vectors
 #include <ctime>    // For srand, time
 #include <cstdlib>  // For rand
 #include <cassert>  // For debugging
 
 using namespace std;
 
-// Function prototypes
+/*******************************************************************************
+BIG COMMENT FOR CLASS
+*******************************************************************************/
+class OurArray {
 
-// One liner comment
-void populateArray(vector<int> &origArray, int arraySize);
+    int sizeOf;   // Holds size of array to make writing other functions easier
 
-// One liner comment
-void displayFirstTen(vector<int> const &dispArray);
+    // One liner comment
+    OurArray(int size);
 
-// One liner comment
-void displaySquaresToLastNumber(vector<int> const &origArray);
+    // Returns size of array
+    int getSize();
 
-// One liner comment
-void displayRaiseToPower(int base, int power);
+    // One liner comment
+    void populateArray();
 
-// One liner comment
-void displayMaxElement(vector<int> const &origArray);
+    // One liner comment
+    void displayFirstTen();
 
-// One liner comment
-void displayAndStoreQuickSort(vector<int> const &origArray,
-                              vector<int> &sortedArray);
+    // One liner comment
+    void displaySquaresToLastNumber();
 
-// One liner comment
-void displaySumOfDigits(int num);
+    // One liner comment
+    void displayPowerOfFirst(int base, int power);
 
-// One liner comment
-void displayPrimes(vector<int> const &sortedArray);
+    // One liner comment
+    void displayMaxElement();
+
+    // One liner comment
+    void displayAndSort();
+
+    // One liner comment
+    void displaySumOfDigitsOfFirst();
+
+    // One liner comment
+    void displayPrimes();
+};
 
 int main() {
 
@@ -53,8 +63,6 @@ int main() {
     bool again = true; // Whether to continue program, or exit
     int arraySize = -1;// The size of the array to be created
     char choice;       // User input choice
-    vector<int> origArray;  // Holds unsorted array
-    vector<int> sortedArray;// Holds sorted array
 
     cout << "Thinking Recursively\n"
          << "\n"
@@ -77,7 +85,7 @@ int main() {
              << "X.   Terminate The Program.     ";
 
         cin >> choice;              //Get input
-        cin.ignore(INT_MAX, '\n');  //Ignore any additional text
+        cin.ignore(256, '\n');  //Ignore any additional text
 
         if (choice == 'a' || choice == 'A') {
             bool validArray = false;    // Whether the array input is valid
@@ -86,7 +94,7 @@ int main() {
             while (!validArray) {
                 if (!(cin >> arraySize)) {
                     cin.clear();
-                    cin.ignore(INT_MAX, '\n');
+                    cin.ignore(256, '\n');
                     cout << "\n\n***  Invalid Array Size Value  ***\n"
                          << "Enter an integer not a char: ";
                 }
@@ -96,8 +104,9 @@ int main() {
                 }
                 else {
                     validArray = true;
-                    populateArray(origArray, arraySize);
-                    displayFirstTen(origArray);
+                    OurArray ourArray;
+                    ourArray.populateArray();
+                    ourArray.displayFirstTen();
                     displaySquaresToLastNumber(origArray);
                     displayRaiseToPower(origArray[0], 2);
                     displayMaxElement(origArray);
@@ -121,6 +130,14 @@ int main() {
 }
 
 //Function definitions
+OurArray::OurArray(int size) {
+    this->size = size;
+}
+
+int OurArray::getSize() {
+    return size
+}
+
 
 /******************************************************************************
 BIG COMMENT
@@ -193,3 +210,7 @@ BIG COMMENT
 void displayPrimes(vector<int> const &sortedArray) {
 
 };
+
+OurArray::~OurArray(); {
+
+}
