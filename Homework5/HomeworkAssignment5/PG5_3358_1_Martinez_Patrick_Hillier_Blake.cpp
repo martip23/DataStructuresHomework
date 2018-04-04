@@ -1,40 +1,60 @@
 /*******************************************************************************
- Roster Numbers: 20 24
+Roster Numbers: 20 24
 
- Authors: Blake Hillier and Patrick Martinez
- Due Date: April 9, 2018
- Programming Assignment Number 5
+Authors: Blake Hillier and Patrick Martinez
+Due Date: April 9, 2018
+Programming Assignment Number 5
 
- Spring 2018 - CS 3358 - 261
+Spring 2018 - CS 3358 - 261
 
- Instructor: Husain Gholoom
+Instructor: Husain Gholoom
 
- //TODO: Description
- ******************************************************************************/
+//TODO: Description
+******************************************************************************/
 
- #include <iostream>
+#include <iostream>
+#include <vector>
 
- using namespace std;
+using namespace std;
 
- int main() {
+// Function prototypes
 
-     bool again = true;
-     int arraySize = -1;
-     char choice;
 
-     cout << "Thinking Recursively\n"
-          << "\n"
-          << "The function of this program is to\n"
-          << "use recursion in order to perform the following operations   :-\n"
-          << "\n"
-          << "    1. Display squares of integers in ascending order from 1 to\n"
-          << "         the last element in the array\n"
-          << "    2. Raise the first number to a power of 2\n"
-          << "    3. Find the array's max value.\n"
-          << "    4. Sort the array in descending order\n"
-          << "    5. Calculate the sum of digits\n"
-          << "    6. Determine if a number is prime (Processes all array\n"
-          << "         values)\n";
+void populateArray(Vector<int> origArray, int arraySize);
+
+void displayFirstTen(Vector<int> dispArray);
+
+void raiseToPower(int base, int power);
+
+void showMaxElement(Vector<int> origArray);
+
+void quickSort(Vector<int> origArray);
+
+void sumOfDigits(int num);
+
+void checkPrimes(Vector<int> sortedArray);
+
+int main() {
+
+    bool again = true; // Whether to continue program, or exit
+    int arraySize = -1;// The size of the array to be created
+    char choice;       // User input choice
+    vector<int> origArray;
+    vector<int> sortedArray
+
+    cout << "Thinking Recursively\n"
+         << "\n"
+         << "The function of this program is to\n"
+         << "use recursion in order to perform the following operations   :-\n"
+         << "\n"
+         << "    1. Display squares of integers in ascending order from 1 to\n"
+         << "         the last element in the array\n"
+         << "    2. Raise the first number to a power of 2\n"
+         << "    3. Find the array's max value.\n"
+         << "    4. Sort the array in descending order\n"
+         << "    5. Calculate the sum of digits\n"
+         << "    6. Determine if a number is prime (Processes all array\n"
+         << "         values)\n";
 
     while(again) {
         cout << "\n\n"
@@ -46,7 +66,7 @@
         cin.ignore(INT_MAX, '\n');  //Ignore any additional text
 
         if (choice == 'a' || choice == 'A') {
-            bool validArray = false;
+            bool validArray = false;    // Whether the array input is valid
             cout << "\n\n Enter Array Size: ";
 
             while (!validArray) {
@@ -62,6 +82,8 @@
                 }
                 else {
                     validArray = true;
+                    populateArray(Vector<int> origArray, int arraySize);
+                    }
                 }
             }
         }
@@ -76,4 +98,4 @@
 
     cout << "\n\nPatrick Martinez & Blake Hillier - Tweak Programming Developer"
          << "\nApril 2018\n\n";
- }
+}
