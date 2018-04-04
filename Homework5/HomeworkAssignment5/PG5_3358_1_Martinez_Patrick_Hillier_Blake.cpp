@@ -12,35 +12,42 @@ Instructor: Husain Gholoom
 //TODO: Description
 ******************************************************************************/
 
-#include <iostream>
-#include <vector>
+#include <iostream> // For cin/cout statements
+#include <vector>   // For vectors
+#include <ctime>    // For srand, time
+#include <cstdlib>  // For rand
+#include <cassert>  // For debugging
 
 using namespace std;
 
 // Function prototypes
 
 
-void populateArray(Vector<int> origArray, int arraySize);
+void populateArray(vector<int> &origArray, int arraySize);
 
-void displayFirstTen(Vector<int> dispArray);
+void displayFirstTen(vector<int> const &dispArray);
 
-void raiseToPower(int base, int power);
+void displaySquaresToLastNumber(vector<int> const &origArray);
 
-void showMaxElement(Vector<int> origArray);
+void displayRaiseToPower(int base, int power);
 
-void quickSort(Vector<int> origArray);
+void displayMaxElement(vector<int> const &origArray);
 
-void sumOfDigits(int num);
+void displayAndStoreQuickSort(vector<int> const &origArray,
+                              vector<int> &sortedArray);
 
-void checkPrimes(Vector<int> sortedArray);
+void displaySumOfDigits(int num);
+
+void displayPrimes(vector<int> const &sortedArray);
 
 int main() {
 
+    srand(time(NULL)); // Seed random number generator
     bool again = true; // Whether to continue program, or exit
     int arraySize = -1;// The size of the array to be created
     char choice;       // User input choice
-    vector<int> origArray;
-    vector<int> sortedArray
+    vector<int> origArray;  // Holds unsorted array
+    vector<int> sortedArray;// Holds sorted array
 
     cout << "Thinking Recursively\n"
          << "\n"
@@ -67,7 +74,7 @@ int main() {
 
         if (choice == 'a' || choice == 'A') {
             bool validArray = false;    // Whether the array input is valid
-            cout << "\n\n Enter Array Size: ";
+            cout << "\n\nEnter Array Size: ";
 
             while (!validArray) {
                 if (!(cin >> arraySize)) {
@@ -82,8 +89,14 @@ int main() {
                 }
                 else {
                     validArray = true;
-                    populateArray(Vector<int> origArray, int arraySize);
-                    }
+                    populateArray(origArray, arraySize);
+                    displayFirstTen(origArray);
+                    displaySquaresToLastNumber(origArray);
+                    displayRaiseToPower(origArray[0], 2);
+                    displayMaxElement(origArray);
+                    displayAndStoreQuickSort(origArray, sortedArray);
+                    displaySumOfDigits(sortedArray[0]);
+                    displayPrimes(sortedArray);
                 }
             }
         }
@@ -99,3 +112,41 @@ int main() {
     cout << "\n\nPatrick Martinez & Blake Hillier - Tweak Programming Developer"
          << "\nApril 2018\n\n";
 }
+
+//Function definitions
+
+
+void populateArray(vector<int> &origArray, int arraySize) {
+    for (int i = 0; i < arraySize; i++) {
+        origArray.push_back(rand() % 991 + 10);
+    }
+    assert(origArray.size() == arraySize);
+};
+
+void displayFirstTen(vector<int> const &dispArray) {
+
+};
+
+void displaySquaresToLastNumber(vector<int> const &origArray) {
+
+};
+
+void displayRaiseToPower(int base, int power) {
+
+};
+
+void displayMaxElement(vector<int> const &origArray) {
+
+};
+
+void displayAndStoreQuickSort(vector<int> origArray, vector<int> sortedArray) {
+    sortedArray.push_back(-1); // Temporary to allow build
+};
+
+void displaySumOfDigits(int num) {
+
+};
+
+void displayPrimes(vector<int> sortedArray) {
+
+};
