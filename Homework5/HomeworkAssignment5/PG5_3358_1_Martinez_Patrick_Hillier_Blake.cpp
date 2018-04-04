@@ -19,6 +19,7 @@
  int main() {
 
      bool again = true;
+     int arraySize = -1;
      char choice;
 
      cout << "Thinking Recursively\n"
@@ -36,7 +37,41 @@
           << "         values)\n";
 
     while(again) {
-        again = false;
+        cout << "\n\n"
+             << "Select from the following menu\n"
+             << "A.   Enter Array Size that is >=10 and <= 100 >.\n"
+             << "X.   Terminate The Program.     ";
+
+        cin >> choice;              //Get input
+        cin.ignore(INT_MAX, '\n');  //Ignore any additional text
+
+        if (choice == 'a' || choice == 'A') {
+            bool validArray = false;
+            cout << "\n\n Enter Array Size: ";
+
+            while (!validArray) {
+                if (!(cin >> arraySize)) {
+                    cin.clear();
+                    cin.ignore(INT_MAX, '\n');
+                    cout << "\n\n***  Invalid Array Size Value  ***\n"
+                         << "Enter an integer not a char: ";
+                }
+                else if ((arraySize < 10) || (arraySize > 1000)){
+                    cout << "\n\n***  Invalid Array Size Value  ***\n"
+                         << "Enter Array Size That is >= 10 and <= 1000: ";
+                }
+                else {
+                    validArray = true;
+                }
+            }
+        }
+        else if (choice == 'x' || choice == 'X') {
+            again = false;
+        }
+        else {
+            cout << "\n***  Invalid Option  ***\n";
+        }
+
     }
 
     cout << "\n\nPatrick Martinez & Blake Hillier - Tweak Programming Developer"
