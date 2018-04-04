@@ -22,22 +22,29 @@ using namespace std;
 
 // Function prototypes
 
-
+// One liner comment
 void populateArray(vector<int> &origArray, int arraySize);
 
+// One liner comment
 void displayFirstTen(vector<int> const &dispArray);
 
+// One liner comment
 void displaySquaresToLastNumber(vector<int> const &origArray);
 
+// One liner comment
 void displayRaiseToPower(int base, int power);
 
+// One liner comment
 void displayMaxElement(vector<int> const &origArray);
 
+// One liner comment
 void displayAndStoreQuickSort(vector<int> const &origArray,
                               vector<int> &sortedArray);
 
+// One liner comment
 void displaySumOfDigits(int num);
 
+// One liner comment
 void displayPrimes(vector<int> const &sortedArray);
 
 int main() {
@@ -115,38 +122,74 @@ int main() {
 
 //Function definitions
 
-
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
 void populateArray(vector<int> &origArray, int arraySize) {
+
+    if (!origArray.empty()) // If not empty, clear list
+        origArray.clear();
+
     for (int i = 0; i < arraySize; i++) {
         origArray.push_back(rand() % 991 + 10);
     }
-    assert(origArray.size() == arraySize);
+    assert(origArray.size() == (unsigned int)arraySize);
 };
 
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
 void displayFirstTen(vector<int> const &dispArray) {
 
+    cout << "\n\n"
+         << "The first 10 elements are:"
+         << "\n";
+
+    for (int i = 0; i < 10; i++) {
+        cout << dispArray.at(i) << "  ";
+    }
+    cout << "\n";
 };
 
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
 void displaySquaresToLastNumber(vector<int> const &origArray) {
 
 };
 
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
 void displayRaiseToPower(int base, int power) {
 
 };
 
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
 void displayMaxElement(vector<int> const &origArray) {
 
 };
 
-void displayAndStoreQuickSort(vector<int> origArray, vector<int> sortedArray) {
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
+void displayAndStoreQuickSort(vector<int> const &origArray,
+                              vector<int> &sortedArray) {
     sortedArray.push_back(-1); // Temporary to allow build
 };
 
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
 void displaySumOfDigits(int num) {
 
 };
 
-void displayPrimes(vector<int> sortedArray) {
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
+void displayPrimes(vector<int> const &sortedArray) {
 
 };
