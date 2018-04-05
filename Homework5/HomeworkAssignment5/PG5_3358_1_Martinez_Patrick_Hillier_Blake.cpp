@@ -25,46 +25,55 @@ in the array are prime.
 using namespace std;
 
 /*******************************************************************************
-BIG COMMENT FOR CLASS
+OurArray: This class is like a wrapper for a dynamic array. It makes getting
+the size easier. A at method has been implemented to allow easy access to
+memory index data. This class abstracts the dynamic array creation allowing the
+user to only worry about how big they want their data to be.
 *******************************************************************************/
 class OurArray {
 private:
     int* intArray; // Pointer to array
     int  size;   // Holds size of array to make writing other functions easier
 
+    // A private utility for the descending quick sort.
     void decQuickSort(int arr[], int left, int right);
 
+    // Private utility to get exponent
+    int getExponent(int base, int power);
+
 public:
-    // One liner comment
+    // The constructor requires an int for array size. It will be populated
+    // with random integers between 10 - 100
     OurArray(int size);
 
-    // One liner comment
+    // Gets the data at position index
     int at(int index);
 
     // Returns size of array
     int getSize();
 
-    // One liner comment
+    // Displays first ten items in the array.
     void displayFirstTen();
 
-    // One liner comment
+    // Displays the square of all numbers up to index position index
     void displaySquaresTo(int index);
 
-    // One liner comment
+    // Displays the result of raising a base to an exponent
     void displayExponent(int base, int power);
 
-    // One liner comment
+    // Displays the highest element in this array
     void displayMaxElement();
 
-    // One liner comment
+    // Runs a descending sort on this machine and displays data
     void displayAndSort();
 
-    // One liner comment
+    // Displays the sum of the digits in the number num
     void displaySumOfDigits(int num);
 
-    // One liner comment
+    // Displays whether each number in the array is a prime or not.
     void displayPrimes();
 
+    // Frees memory reserved for dynamic array
     ~OurArray();
 };
 
@@ -142,7 +151,12 @@ int main() {
 
 //Function definitions
 /******************************************************************************
-BIG COMMENT
+decQuickSort: A private utility that performs quick sort on an array to sort
+items in decreasing order.
+Inputs: arr[]   The array to sort
+        left    The left index of the array section to sort
+        right   The rightmost index to sort
+Output: None
 ******************************************************************************/
 void OurArray::decQuickSort(int arr[], int left, int right) {
     int i = left;   // Left index to check
@@ -180,7 +194,10 @@ void OurArray::decQuickSort(int arr[], int left, int right) {
 }
 
 /******************************************************************************
-BIG COMMENT
+OurArray: Constructor for OurArray. Takes a int size and creates an array of
+that size randomly populated by integers >9 and <1001
+Input:      Size    The size to make the array
+Outputs:    None
 ******************************************************************************/
 OurArray::OurArray(int size) {
     this->size = size;
@@ -190,21 +207,27 @@ OurArray::OurArray(int size) {
 }
 
 /******************************************************************************
-BIG COMMENT
+at:     Function to get the item at position index.
+Input:  Index   The index to get data from
+Output: Int     The integer at index index
 ******************************************************************************/
 int OurArray::at(int index) {
     return intArray[index];
 }
 
 /******************************************************************************
-BIG COMMENT
+getSize:    Function to return size of array.
+Input:      None
+Output:     Int     Size of the array.
 ******************************************************************************/
 int OurArray::getSize() {
     return size;
 }
 
 /******************************************************************************
-BIG COMMENT
+displayFirstTen(): Displays the first 10 items in the array.
+Input:  None
+Output: None
 ******************************************************************************/
 void OurArray::displayFirstTen() {
 
@@ -224,12 +247,30 @@ BIG COMMENT
 void OurArray::displaySquaresTo(int index) {
 
 }
+/******************************************************************************
+getExponent: Gets the result of raising a base to an exponent.
+Input:  base    The base number to raise
+        power   The power to raise to
+Output: None
+******************************************************************************/
+int OurArray::getExponent(int base, int power) {
+    if (power == 1 || power == 0)
+        return base;
+    return base * getExponent(base, power-1);
+}
 
 /******************************************************************************
-BIG COMMENT
+displayExponent: Displays the result of raising a base to an exponent.
+Input:  base    The base number to raise
+        power   The power to raise to
+Output: None
 ******************************************************************************/
 void OurArray::displayExponent(int base, int power) {
-
+    cout << "\n\n"
+         << "Power Function:"
+         << "\n\n"
+         << base << " raised to the " << power << "nd power is: "
+         << getExponent(base, power) << "\n";
 }
 
 /******************************************************************************
@@ -240,7 +281,10 @@ void OurArray::displayMaxElement() {
 }
 
 /******************************************************************************
-BIG COMMENT
+displayAndSort(): Sorts the array in descending order, displays final list, and
+    displays time information between steps.
+Input:  None
+Output: None
 ******************************************************************************/
 void OurArray::displayAndSort(){
 
@@ -270,6 +314,11 @@ void OurArray::displayPrimes() {
 
 }
 
+/******************************************************************************
+~OurArray: Destroys the dynamically allocated memory for numArray
+Input:  None
+Output: None
+******************************************************************************/
 OurArray::~OurArray() {
-
+    delete[] intArray;
 }
