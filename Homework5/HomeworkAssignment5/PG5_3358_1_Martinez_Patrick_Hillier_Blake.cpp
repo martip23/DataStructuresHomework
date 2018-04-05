@@ -9,7 +9,12 @@ Spring 2018 - CS 3358 - 261
 
 Instructor: Husain Gholoom
 
-//TODO: Description
+This program demonstrates functions done on an array which employ recursion and
+other programming techniques. The program will begin by populating an array of
+user-defined size with random integers from 10-1000. It then raises the first
+element to a power of 2, gets the array's max value, sort's the array in
+descending order, calculates the sum of digits and determines if all numbers
+in the array are prime.
 ******************************************************************************/
 
 #include <iostream> // For cin/cout statements
@@ -27,7 +32,7 @@ private:
     int* intArray; // Pointer to array
     int  size;   // Holds size of array to make writing other functions easier
 
-    void quickSort(int arr[], int left, int right);
+    void decQuickSort(int arr[], int left, int right);
 
 public:
     // One liner comment
@@ -139,7 +144,7 @@ int main() {
 /******************************************************************************
 BIG COMMENT
 ******************************************************************************/
-void OurArray::quickSort(int arr[], int left, int right) {
+void OurArray::decQuickSort(int arr[], int left, int right) {
     int i = left;   // Left index to check
     int j = right;  // Right index to check
     int pivot = arr[right]; // Choose last element for pivot
@@ -147,11 +152,11 @@ void OurArray::quickSort(int arr[], int left, int right) {
 
     // While indexes have not passed each other
     while(i <= j) {
-            // If left index is < pivot, continue
-        while (arr[i] < pivot)
+            // If left index is > pivot, continue
+        while (arr[i] > pivot)
             i++;
-            // If right index is > pivot, continue
-        while (arr[j] > pivot)
+            // If right index is < pivot, continue
+        while (arr[j] < pivot)
             j--;
 
         // Make sure indexes have not touched
@@ -164,13 +169,13 @@ void OurArray::quickSort(int arr[], int left, int right) {
             j--;
         }
 
-        // If there are items in the left array, sort them
+        // If there are items from beginning to pivot, sort them
         if (left < j)
-            quickSort(arr, left, j);
+            decQuickSort(arr, left, j);
 
-        // If there are items in the right array, sort them too
+        // If there are items from end to pivot, sort them too
         if (right > i)
-            quickSort(arr, i, right);
+            decQuickSort(arr, i, right);
     }
 }
 
@@ -243,7 +248,7 @@ void OurArray::displayAndSort(){
          << "Sorting array..."
          << "\n\n";
 
-    quickSort(intArray, 0, size - 1);
+    decQuickSort(intArray, 0, size - 1);
 
     for (int i = 0; i < size; i++) {
         cout << intArray[i] << "  ";
