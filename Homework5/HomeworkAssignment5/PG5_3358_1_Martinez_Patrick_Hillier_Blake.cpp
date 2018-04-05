@@ -23,26 +23,30 @@ using namespace std;
 BIG COMMENT FOR CLASS
 *******************************************************************************/
 class OurArray {
+private:
+    int* intArray; // Pointer to array
+    int  size;   // Holds size of array to make writing other functions easier
 
-    int sizeOf;   // Holds size of array to make writing other functions easier
+    void quickSort(int arr[], int left, int right);
 
+public:
     // One liner comment
     OurArray(int size);
+
+    // One liner comment
+    int at(int index);
 
     // Returns size of array
     int getSize();
 
     // One liner comment
-    void populateArray();
-
-    // One liner comment
     void displayFirstTen();
 
     // One liner comment
-    void displaySquaresToLastNumber();
+    void displaySquaresTo(int index);
 
     // One liner comment
-    void displayPowerOfFirst(int base, int power);
+    void displayExponent(int base, int power);
 
     // One liner comment
     void displayMaxElement();
@@ -51,10 +55,12 @@ class OurArray {
     void displayAndSort();
 
     // One liner comment
-    void displaySumOfDigitsOfFirst();
+    void displaySumOfDigits(int num);
 
     // One liner comment
     void displayPrimes();
+
+    ~OurArray();
 };
 
 int main() {
@@ -104,15 +110,15 @@ int main() {
                 }
                 else {
                     validArray = true;
-                    OurArray ourArray;
-                    ourArray.populateArray();
+                    OurArray ourArray(arraySize);
+
                     ourArray.displayFirstTen();
-                    displaySquaresToLastNumber(origArray);
-                    displayRaiseToPower(origArray[0], 2);
-                    displayMaxElement(origArray);
-                    displayAndStoreQuickSort(origArray, sortedArray);
-                    displaySumOfDigits(sortedArray[0]);
-                    displayPrimes(sortedArray);
+                    ourArray.displaySquaresTo(ourArray.getSize() - 1);
+                    ourArray.displayExponent(ourArray.at(0), 2);
+                    ourArray.displayMaxElement();
+                    ourArray.displayAndSort();
+                    ourArray.displaySumOfDigits(ourArray.at(0));
+                    ourArray.displayPrimes();
                 }
             }
         }
@@ -130,87 +136,135 @@ int main() {
 }
 
 //Function definitions
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
+void OurArray::quickSort(int arr[], int left, int right) {
+    int i = left;   // Left index to check
+    int j = right;  // Right index to check
+    int pivot = arr[right]; // Choose last element for pivot
+    int temp;       // To hold int for swaps
+
+    // While indexes have not passed each other
+    while(i <= j) {
+            // If left index is < pivot, continue
+        while (arr[i] < pivot)
+            i++;
+            // If right index is > pivot, continue
+        while (arr[j] > pivot)
+            j--;
+
+        // Make sure indexes have not touched
+        if (i <= j) {
+            // Swap them bad boys
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
+
+        // If there are items in the left array, sort them
+        if (left < j)
+            quickSort(arr, left, j);
+
+        // If there are items in the right array, sort them too
+        if (right > i)
+            quickSort(arr, i, right);
+    }
+}
+
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
 OurArray::OurArray(int size) {
     this->size = size;
+    intArray = new int[size];
+    for (int i = 0; i < size; i++)
+        intArray[i] = (rand() % 991 + 10);
 }
 
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
+int OurArray::at(int index) {
+    return intArray[index];
+}
+
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
 int OurArray::getSize() {
-    return size
+    return size;
 }
 
-
 /******************************************************************************
 BIG COMMENT
 ******************************************************************************/
-void populateArray(vector<int> &origArray, int arraySize) {
-
-    if (!origArray.empty()) // If not empty, clear list
-        origArray.clear();
-
-    for (int i = 0; i < arraySize; i++) {
-        origArray.push_back(rand() % 991 + 10);
-    }
-    assert(origArray.size() == (unsigned int)arraySize);
-};
-
-/******************************************************************************
-BIG COMMENT
-******************************************************************************/
-void displayFirstTen(vector<int> const &dispArray) {
+void OurArray::displayFirstTen() {
 
     cout << "\n\n"
          << "The first 10 elements are:"
          << "\n";
 
     for (int i = 0; i < 10; i++) {
-        cout << dispArray.at(i) << "  ";
+        cout << intArray[i] << "  ";
     }
     cout << "\n";
-};
+}
 
 /******************************************************************************
 BIG COMMENT
 ******************************************************************************/
-void displaySquaresToLastNumber(vector<int> const &origArray) {
+void OurArray::displaySquaresTo(int index) {
 
-};
-
-/******************************************************************************
-BIG COMMENT
-******************************************************************************/
-void displayRaiseToPower(int base, int power) {
-
-};
+}
 
 /******************************************************************************
 BIG COMMENT
 ******************************************************************************/
-void displayMaxElement(vector<int> const &origArray) {
+void OurArray::displayExponent(int base, int power) {
 
-};
-
-/******************************************************************************
-BIG COMMENT
-******************************************************************************/
-void displayAndStoreQuickSort(vector<int> const &origArray,
-                              vector<int> &sortedArray) {
-    sortedArray.push_back(-1); // Temporary to allow build
-};
+}
 
 /******************************************************************************
 BIG COMMENT
 ******************************************************************************/
-void displaySumOfDigits(int num) {
+void OurArray::displayMaxElement() {
 
-};
+}
 
 /******************************************************************************
 BIG COMMENT
 ******************************************************************************/
-void displayPrimes(vector<int> const &sortedArray) {
+void OurArray::displayAndSort(){
 
-};
+    cout << "\n\n"
+         << "Sorting array..."
+         << "\n\n";
 
-OurArray::~OurArray(); {
+    quickSort(intArray, 0, size - 1);
+
+    for (int i = 0; i < size; i++) {
+        cout << intArray[i] << "  ";
+    }
+    cout << "\n";
+}
+
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
+void OurArray::displaySumOfDigits(int num) {
+
+}
+
+/******************************************************************************
+BIG COMMENT
+******************************************************************************/
+void OurArray::displayPrimes() {
+
+}
+
+OurArray::~OurArray() {
 
 }
