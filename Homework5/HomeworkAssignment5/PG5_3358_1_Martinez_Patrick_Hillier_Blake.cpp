@@ -147,6 +147,8 @@ int main() {
 
     cout << "\n\nPatrick Martinez & Blake Hillier - Tweak Programming Developer"
          << "\nApril 2018\n\n";
+
+     return 0;
 }
 
 //Function definitions
@@ -289,15 +291,28 @@ Output: None
 void OurArray::displayAndSort(){
 
     cout << "\n\n"
-         << "Sorting array..."
+         << "Sorted array"
          << "\n\n";
 
+    time_t begin = time(NULL);
+    struct tm *beginStructure = localtime(&begin);
+    char beginTime [12];
+    strftime(beginTime, 12, "%HH:%MM:%SS", beginStructure);
+
     decQuickSort(intArray, 0, size - 1);
+
+    time_t end = time(NULL);
+    struct tm *endStructure   = localtime(&end);
+    char endTime [12];
+    strftime(endTime, 12, "%HH:%MM:%SS", endStructure);
 
     for (int i = 0; i < size; i++) {
         cout << intArray[i] << "  ";
     }
-    cout << "\n";
+    cout << "\n\n"
+         << "Start Time             :" << beginTime << endl
+         << "End Time               :" << endTime   << endl
+         << "Actual CPU Clock time  :" << difftime(end, begin) << endl;
 }
 
 /******************************************************************************
