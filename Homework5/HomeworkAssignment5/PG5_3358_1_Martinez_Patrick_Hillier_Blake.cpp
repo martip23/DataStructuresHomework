@@ -259,13 +259,17 @@ void OurArray::displaySquares(int index) {
     findSquares(intArray[index]);
 }
 
+/********************************************************************************
+ findSquares: finds all numbers from num to 0 and displays them in reverse order
+ Input: num as the number to square
+ Output: none
+********************************************************************************/
 void OurArray::findSquares(int num) {
     if (num > 0)
         findSquares(num - 1);
 
     cout << num << "     " << num * num << endl;
 }
-
 
 /******************************************************************************
 getExponent: Gets the result of raising a base to an exponent.
