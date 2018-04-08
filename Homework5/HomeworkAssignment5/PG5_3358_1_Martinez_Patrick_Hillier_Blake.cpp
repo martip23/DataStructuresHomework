@@ -312,6 +312,11 @@ void OurArray::displayMaxElement() {
     cout << findMaxNum(0);
 }
 
+/*******************************************************************************
+ findMaxNum: finds maximum number in the array
+ Input: i as the index in the array
+ Output: the max number being compared
+*******************************************************************************/
 int OurArray::findMaxNum(int i) {
     int maxNum = 0;
     if (i == this->getSize() - 1)
