@@ -43,7 +43,10 @@ private:
 
     // Private utility to get squares
     void findSquares(int num);
- 
+
+    // Private utility to get max number 
+    int findMaxNum(int i);
+
 public:
     // The constructor requires an int for array size. It will be populated
     // with random integers between 10 - 100
@@ -301,8 +304,26 @@ void OurArray::displayExponent(int base, int power) {
 BIG COMMENT
 ******************************************************************************/
 void OurArray::displayMaxElement() {
-
+    cout << "Max Number of (";
+    for (int i = 0; i < 10; i++) {
+        cout << intArray[i] << ", ";
+    }
+    cout  << ") is : ";
+    cout << findMaxNum(0);
 }
+
+int OurArray::findMaxNum(int i) {
+    int maxNum = 0;
+    if (i == this->getSize() - 1)
+        return intArray[i];
+    else
+        maxNum = findMaxNum(i + 1);
+
+    if (maxNum > intArray[i])
+        return maxNum;
+    else
+        return intArray[i];
+} 
 
 /******************************************************************************
 displayAndSort(): Sorts the array in descending order, displays final list, and
