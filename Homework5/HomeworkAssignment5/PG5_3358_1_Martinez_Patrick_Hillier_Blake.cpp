@@ -41,6 +41,9 @@ private:
     // Private utility to get exponent
     int getExponent(int base, int power);
 
+    // Private utility to get squares
+    void findSquares(int num);
+ 
 public:
     // The constructor requires an int for array size. It will be populated
     // with random integers between 10 - 100
@@ -55,8 +58,8 @@ public:
     // Displays first ten items in the array.
     void displayFirstTen();
 
-    // Displays the square of all numbers up to index position index
-    void displaySquaresTo(int index);
+    // Displays the square of all numbers from 1 to the last number in the array 
+    void displaySquares(int index);
 
     // Displays the result of raising a base to an exponent
     void displayExponent(int base, int power);
@@ -127,7 +130,7 @@ int main() {
                     OurArray ourArray(arraySize);
 
                     ourArray.displayFirstTen();
-                    ourArray.displaySquaresTo(ourArray.getSize() - 1);
+                    ourArray.displaySquares(ourArray.getSize() - 1);
                     ourArray.displayExponent(ourArray.at(0), 2);
                     ourArray.displayMaxElement();
                     ourArray.displayAndSort();
@@ -244,11 +247,26 @@ void OurArray::displayFirstTen() {
 }
 
 /******************************************************************************
-BIG COMMENT
+ displaySquares: displays the sauare of each item in intArray from 1 to the
+                   last number in the array 
+ Input: Index as the last item to square for the function
+ Output: none
 ******************************************************************************/
-void OurArray::displaySquaresTo(int index) {
+void OurArray::displaySquares(int index) {
+    cout << "\nTable of square values 1 - " << intArray[index] << endl;
+    cout << endl << "N     N Squared" << endl;
 
+    findSquares(intArray[index]);
 }
+
+void OurArray::findSquares(int num) {
+    if (num > 0)
+        findSquares(num - 1);
+
+    cout << num << "     " << num * num << endl;
+}
+
+
 /******************************************************************************
 getExponent: Gets the result of raising a base to an exponent.
 Input:  base    The base number to raise
