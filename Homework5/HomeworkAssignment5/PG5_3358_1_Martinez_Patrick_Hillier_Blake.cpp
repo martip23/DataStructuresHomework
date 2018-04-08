@@ -47,6 +47,8 @@ private:
     // Private utility to get max number 
     int findMaxNum(int i);
 
+    // Private utility to find the sum of a number's digits
+    int sumDigits(int num);
 public:
     // The constructor requires an int for array size. It will be populated
     // with random integers between 10 - 100
@@ -73,8 +75,8 @@ public:
     // Runs a descending sort on this machine and displays data
     void displayAndSort();
 
-    // Displays the sum of the digits in the number num
-    void displaySumOfDigits(int num);
+    // Displays the sum of the digits of the first number in the array 
+    void displaySumOfDigits();
 
     // Displays whether each number in the array is a prime or not.
     void displayPrimes();
@@ -137,7 +139,7 @@ int main() {
                     ourArray.displayExponent(ourArray.at(0), 2);
                     ourArray.displayMaxElement();
                     ourArray.displayAndSort();
-                    ourArray.displaySumOfDigits(ourArray.at(0));
+                    ourArray.displaySumOfDigits();
                     ourArray.displayPrimes();
                 }
             }
@@ -301,7 +303,9 @@ void OurArray::displayExponent(int base, int power) {
 }
 
 /******************************************************************************
-BIG COMMENT
+ displayMaxElement: Displays the largest number in the array
+ Input: none
+ Output: none
 ******************************************************************************/
 void OurArray::displayMaxElement() {
     cout << "Max Number of (";
@@ -364,12 +368,29 @@ void OurArray::displayAndSort(){
 }
 
 /******************************************************************************
-BIG COMMENT
+ displaySumOfDigits: displays the sum of the digits of the first number in the
+                     array
+ Input: none
+ Output: none
 ******************************************************************************/
-void OurArray::displaySumOfDigits(int num) {
+void OurArray::displaySumOfDigits() {
+    int num = intArray[0];
 
+    cout << "\nSum of digits for the number " << num << " is " << sumDigits(num);
+    cout << endl;
 }
 
+/*******************************************************************************
+ sumDigits: finds the sum of the digits of num
+ Input: num as the number you want to sum the digits of
+ Returns: the sum of the digits of num
+*******************************************************************************/
+int OurArray::sumDigits(int num) {
+    if (num > 10)
+        return sumDigits(num/10) + (num % 10);
+    else
+        return num;
+}
 /******************************************************************************
 BIG COMMENT
 ******************************************************************************/
