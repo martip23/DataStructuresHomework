@@ -44,7 +44,7 @@ private:
     // Private utility to get squares
     void findSquares(int num);
 
-    // Private utility to get max number 
+    // Private utility to get max number
     int findMaxNum(int i);
 
     // Private utility to find the sum of a number's digits
@@ -67,7 +67,7 @@ public:
     // Displays first ten items in the array.
     void displayFirstTen();
 
-    // Displays the square of all numbers from 1 to the last number in the array 
+    // Displays the square of all numbers from 1 to the last number in the array
     void displaySquares(int index);
 
     // Displays the result of raising a base to an exponent
@@ -79,7 +79,7 @@ public:
     // Runs a descending sort on this machine and displays data
     void displayAndSort();
 
-    // Displays the sum of the digits of the first number in the array 
+    // Displays the sum of the digits of the first number in the array
     void displaySumOfDigits();
 
     // Displays whether each number in the array is a prime or not.
@@ -257,7 +257,7 @@ void OurArray::displayFirstTen() {
 
 /******************************************************************************
  displaySquares: displays the sauare of each item in intArray from 1 to the
-                   last number in the array 
+                   last number in the array
  Input: Index as the last item to square for the function
  Output: none
 ******************************************************************************/
@@ -268,11 +268,11 @@ void OurArray::displaySquares(int index) {
     findSquares(intArray[index]);
 }
 
-/********************************************************************************
+/*******************************************************************************
  findSquares: finds all numbers from num to 0 and displays them in reverse order
  Input: num as the number to square
  Output: none
-********************************************************************************/
+*******************************************************************************/
 void OurArray::findSquares(int num) {
     if (num > 0)
         findSquares(num - 1);
@@ -336,7 +336,7 @@ int OurArray::findMaxNum(int i) {
         return maxNum;
     else
         return intArray[i];
-} 
+}
 
 /******************************************************************************
 displayAndSort(): Sorts the array in descending order, displays final list, and
@@ -380,7 +380,8 @@ void OurArray::displayAndSort(){
 void OurArray::displaySumOfDigits() {
     int num = intArray[0];
 
-    cout << "\nSum of digits for the number " << num << " is " << sumDigits(num);
+    cout << "\nSum of digits for the number " << num << " is "
+         << sumDigits(num);
     cout << endl;
 }
 
@@ -397,7 +398,7 @@ int OurArray::sumDigits(int num) {
 }
 
 /******************************************************************************
- displayPrimes: displays wether each number in the array is a prime number
+ displayPrimes: displays whether each number in the array is a prime number
  Input: none
  Output: none
 ******************************************************************************/
@@ -413,11 +414,11 @@ void OurArray::displayPrimes() {
 }
 
 /******************************************************************************
- isPrime: Checks if num is a prime number 
+ isPrime: Checks if num is a prime number
  Input: num as the number being checked if prime
-        mod as the current divisor for num 
+        mod as the current divisor for num
  Output: true if num is prime
-         false if num is not prime 
+         false if num is not prime
 ******************************************************************************/
 bool OurArray::isPrime(int num, int mod) {
     if (num == mod)
