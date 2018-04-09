@@ -387,7 +387,7 @@ void OurArray::displaySumOfDigits() {
 /*******************************************************************************
  sumDigits: finds the sum of the digits of num
  Input: num as the number you want to sum the digits of
- Returns: the sum of the digits of num
+ Output: the sum of the digits of num
 *******************************************************************************/
 int OurArray::sumDigits(int num) {
     if (num > 10)
@@ -397,7 +397,9 @@ int OurArray::sumDigits(int num) {
 }
 
 /******************************************************************************
-BIG COMMENT
+ displayPrimes: displays wether each number in the array is a prime number
+ Input: none
+ Output: none
 ******************************************************************************/
 void OurArray::displayPrimes() {
     cout << "\n\nIs it prime: " << endl;
@@ -410,6 +412,13 @@ void OurArray::displayPrimes() {
     }
 }
 
+/******************************************************************************
+ isPrime: Checks if num is a prime number 
+ Input: num as the number being checked if prime
+        mod as the current divisor for num 
+ Output: true if num is prime
+         false if num is not prime 
+******************************************************************************/
 bool OurArray::isPrime(int num, int mod) {
     if (num == mod)
         return true;
