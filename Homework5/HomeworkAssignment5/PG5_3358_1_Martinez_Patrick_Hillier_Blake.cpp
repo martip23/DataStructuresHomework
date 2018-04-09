@@ -113,7 +113,7 @@ int main() {
     while(again) {
         cout << "\n\n"
              << "Select from the following menu\n"
-             << "A.   Enter Array Size that is >=10 and <= 100 >.\n"
+             << "A.   Enter Array Size that is >=10 and <= 100\n"
              << "X.   Terminate The Program.     ";
 
         cin >> choice;              //Get input
