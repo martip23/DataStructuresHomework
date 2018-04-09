@@ -313,11 +313,11 @@ void OurArray::displayExponent(int base, int power) {
 ******************************************************************************/
 void OurArray::displayMaxElement() {
     cout << "Max Number of (";
-    for (int i = 0; i < 10; i++) {
+    int arraySize = this->getSize();
+    for (int i = 0; i < arraySize - 2; i++) {
         cout << intArray[i] << ", ";
     }
-    cout  << ") is : ";
-    cout << findMaxNum(0);
+    cout << intArray[arraySize - 1] << ") is : " << findMaxNum(0);
 }
 
 /*******************************************************************************
