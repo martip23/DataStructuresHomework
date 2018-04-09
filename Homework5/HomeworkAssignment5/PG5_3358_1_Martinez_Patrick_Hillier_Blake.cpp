@@ -49,6 +49,10 @@ private:
 
     // Private utility to find the sum of a number's digits
     int sumDigits(int num);
+
+    // Private utility to find if a number is prime
+    bool isPrime(int num, int mod);
+
 public:
     // The constructor requires an int for array size. It will be populated
     // with random integers between 10 - 100
@@ -391,13 +395,29 @@ int OurArray::sumDigits(int num) {
     else
         return num;
 }
+
 /******************************************************************************
 BIG COMMENT
 ******************************************************************************/
 void OurArray::displayPrimes() {
-
+    cout << "\n\nIs it prime: " << endl;
+    for (int i = 0; i < this->getSize(); i++) {
+        cout << i << " " <<  intArray[i];
+        if (isPrime(intArray[i], 2))
+            cout << " is Prime" << endl;
+        else
+            cout << " is Not Prime" << endl;
+    }
 }
 
+bool OurArray::isPrime(int num, int mod) {
+    if (num == mod)
+        return true;
+    else if (num % mod == 0)
+        return false;
+    else
+        return isPrime(num, ++mod);
+}
 /******************************************************************************
 ~OurArray: Destroys the dynamically allocated memory for numArray
 Input:  None
