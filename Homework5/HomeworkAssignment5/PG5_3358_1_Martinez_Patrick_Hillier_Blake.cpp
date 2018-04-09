@@ -113,7 +113,7 @@ int main() {
     while(again) {
         cout << "\n\n"
              << "Select from the following menu\n"
-             << "A.   Enter Array Size that is >=10 and <= 100 >.\n"
+             << "A.   Enter Array Size that is >=10 and <= 100\n"
              << "X.   Terminate The Program.     ";
 
         cin >> choice;              //Get input
@@ -313,11 +313,11 @@ void OurArray::displayExponent(int base, int power) {
 ******************************************************************************/
 void OurArray::displayMaxElement() {
     cout << "Max Number of (";
-    for (int i = 0; i < 10; i++) {
+    int arraySize = this->getSize();
+    for (int i = 0; i < arraySize - 2; i++) {
         cout << intArray[i] << ", ";
     }
-    cout  << ") is : ";
-    cout << findMaxNum(0);
+    cout << intArray[arraySize - 1] << ") is : " << findMaxNum(0);
 }
 
 /*******************************************************************************
