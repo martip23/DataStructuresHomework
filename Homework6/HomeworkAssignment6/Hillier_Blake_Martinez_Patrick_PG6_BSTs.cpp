@@ -27,16 +27,16 @@ using namespace std;
 
 
 *******************************************************************************/
-class BinarySearchTree() {
+class BinarySearchTree {
 public:
     int size;
     int* array;
 
     // Creates
-    BinarySearchTree(int x);
+    BinarySearchTree(int size);
 
     // Line comment
-    void insertNode(int x);
+    void insertNode(int val);
 
     // Line comment
     void const preOrder();
@@ -51,7 +51,7 @@ public:
     void const displayLSR();
 
     // Line comment
-    void const treeLeavesCount();
+    int const treeLeavesCount();
 
     // Line comment
     void const displayLeafValues();
@@ -122,7 +122,19 @@ int main () {
 BIG COMMENT
 
 *******************************************************************************/
-void BinarySearchTree::insertNode(int x){
+BinarySearchTree::BinarySearchTree(int size){
+    this->size = size;
+    array = new int[size + 1];
+    for (int i = 0; i < size + 1; i++)
+        array[i] = NULL;
+}
+
+/*******************************************************************************
+
+BIG COMMENT
+
+*******************************************************************************/
+void BinarySearchTree::insertNode(int val){
 
 }
 
@@ -167,7 +179,7 @@ void const BinarySearchTree::displayLSR(){
 BIG COMMENT
 
 *******************************************************************************/
-void const BinarySearchTree::treeLeavesCount(){
+int const BinarySearchTree::treeLeavesCount(){
 
 }
 
