@@ -22,10 +22,8 @@
 using namespace std;
 
 /*******************************************************************************
-
-
-
-
+Class: Binary Search Tree
+A class to store an array based BST data structure.
 *******************************************************************************/
 class BinarySearchTree {
 private:
@@ -37,7 +35,6 @@ private:
     // insertNode applications.
     void extendSize();
 
-
 public:
     int size;   //Refers to the size of the array, not data elements in array.
     int* array; //Dynamic array of size size.
@@ -45,22 +42,23 @@ public:
     // Creates an array implementation of size, initializes to NULL.
     BinarySearchTree(int size);
 
-    // Line comment
+    // Inserts a new node at its appropriate location. Rejects numbers already
+    // in list.
     void insertNode(int val);
 
-    // Line comment
-    void const preOrder();
+    // Traverses and displays tree in pre-order form with root index.
+    void const preOrder(int index);
 
     // Line comment
     void const postOrder();
 
-    // Line comment
-    void const displayRSR();
+    // Displays all of the right sub roots of the tree.
+    void const displayRSR(int index);
 
     // Line comment
     void const displayLSR();
 
-    // Line comment
+    // Returns number of leaves in BST.
     int const treeLeavesCount();
 
     // Line comment
@@ -104,7 +102,8 @@ int main () {
 
     // Pre-Order Traversal
     cout << "Pre-Order Traversal of the BST :\n\n";
-    tree.preOrder();
+    tree.preOrder(1);
+    cout << "\n\n";     // Added extra newlines to improve output
 
 
     // Post-Order Traversal
@@ -113,7 +112,7 @@ int main () {
 
     // All right sub root values
     cout << "Here are all the right sub root values for the BST :\n\n";
-    tree.displayRSR();
+    tree.displayRSR(1);
 
     // All left sub root values
     cout << "Here are all the right sub root values for the BST :\n\n";
@@ -153,9 +152,9 @@ BinarySearchTree::BinarySearchTree(int size){
    Consider the worst case scenario when inserting 1 - 5 in order. You would
    need 32 array spots to implement this in an array. This is useful for
    insertNode applications.
+
    Inputs: None
    Outputs :None
-
 *******************************************************************************/
 void BinarySearchTree::extendSize(){
     // Create new array of double size
@@ -167,7 +166,7 @@ void BinarySearchTree::extendSize(){
         tempArray[i] = array[i];
     }
     // Set rest of array to NULL and duplicate size
-    for (int i = size; i < newSize; i++){
+    for (int i = size ; i < newSize; i++){
         tempArray[i] = NULL;
     }
     size = newSize;
@@ -176,9 +175,9 @@ void BinarySearchTree::extendSize(){
 }
 
 /*******************************************************************************
-
-BIG COMMENT
-
+Inserts a new node at its appropriate location. Rejects numbers already in list.
+Input: Val to insert, not already in list.
+Output: None
 *******************************************************************************/
 void BinarySearchTree::insertNode(int val){
     int currentIndex = 1;
@@ -205,12 +204,28 @@ void BinarySearchTree::insertNode(int val){
 }
 
 /*******************************************************************************
-
-BIG COMMENT
-
+Traverses and displays the tree in pre-order form.
+Input: int index - The index to start pre-order at.
+Output: None
 *******************************************************************************/
-void const BinarySearchTree::preOrder(){
+void const BinarySearchTree::preOrder(int index){
 
+    // Do nothing and return if node empty or out of array boundary.
+    //
+    // NOTE: Since array boundary does not == to due to initializing array size
+    // to a passed value. The constructor could round up to nearest log2(x) as a
+    // workaround to keep size consistent with traditional trees, but increasing
+    // array size by two seems to work fine as long as we check that we do not
+    // go out of the array bounds by checking (index > size). Generally, BSTs
+    // are created in linked lists which would have provided a more elegant
+    // solution.
+    if (array[index] == NULL || index > size)
+        return;
+
+    // Standard pre-order structure
+    cout << array[index] << ", ";
+    preOrder(index * 2);
+    preOrder((index * 2) + 1);
 }
 
 /*******************************************************************************
@@ -223,12 +238,22 @@ void const BinarySearchTree::postOrder(){
 }
 
 /*******************************************************************************
-
-BIG COMMENT
-
+Displays all of the right sub roots of the tree.
+Input: Index to start
+Output: None
 *******************************************************************************/
-void const BinarySearchTree::displayRSR(){
-
+void const BinarySearchTree::displayRSR(int index){
+    int rightChild = ((index * 2) + 1);
+    // If main root, don't print and pass child if within range and not null.
+    if (index == 1) {
+        if ((rightChild != NULL) && (rightChild < size))
+            displayRSR(rightChild);
+        cout << "\n\n";
+    } else if ((rightChild != NULL) && (rightChild < size)) {
+        cout << array[index] << ", ";
+        displayRSR(rightChild);
+    }
+    return;
 }
 
 /*******************************************************************************
@@ -241,12 +266,18 @@ void const BinarySearchTree::displayLSR(){
 }
 
 /*******************************************************************************
-
-BIG COMMENT
-
+Counts the number of leaves in the BST.
 *******************************************************************************/
 int const BinarySearchTree::treeLeavesCount(){
-    return -1;
+    int count = 0;
+    for (int i = 1; i < size; i++) {
+        // If node not empty AND left child not there AND right child not there
+        // increment count.
+        if (((array[i * 2 + 1] == NULL) || ((i * 2 + 1) > size)) &&
+            ((array[i*2] == NULL) || ((i * 2) > size)) && (array[i] != NULL))
+            count++;
+    }
+    return count;
 }
 
 /*******************************************************************************
