@@ -28,11 +28,21 @@ using namespace std;
 
 *******************************************************************************/
 class BinarySearchTree {
-public:
-    int size;
-    int* array;
+private:
+    // Doubles the size of the BST (Effectively adds a new row). This will be
+    // necessary since most applications will NOT be the best case scenario
+    // where the size of the array == the data items in the array.
+    // Consider the worst case scenario when inserting 1 - 5 in order. You would
+    // need 32 array spots to implement this in an array. This is useful for
+    // insertNode applications.
+    void extendSize();
 
-    // Creates
+
+public:
+    int size;   //Refers to the size of the array, not data elements in array.
+    int* array; //Dynamic array of size size.
+
+    // Creates an array implementation of size, initializes to NULL.
     BinarySearchTree(int size);
 
     // Line comment
@@ -81,6 +91,12 @@ int main () {
 
     cout << "Building BST is completed.\n\n";
 
+    /********** FOR TESTING, REMOVE ON FINAL ASSIGNMENT***********/
+    for (int i = 0; i < tree.size; i++) {
+        cout << tree.array[i] << ", ";
+    }
+    /********** FOR TESTING, REMOVE ON FINAL ASSIGNMENT***********/
+
     cout << "Values of the Binary Search tree.\n\n";
 
 
@@ -118,15 +134,43 @@ int main () {
 /** IMPLEMENTATIONS **/
 
 /*******************************************************************************
-
-BIG COMMENT
-
+Creates an array implementation of size, initializes to NULL.
+Inputs: None
+Outputs: None
 *******************************************************************************/
 BinarySearchTree::BinarySearchTree(int size){
-    this->size = size;
-    array = new int[size + 1];
-    for (int i = 0; i < size + 1; i++)
+    this->size = size + 1;
+    array = new int[size];
+    for (int i = 0; i < size; i++)
         array[i] = NULL;
+}
+
+/*******************************************************************************
+   Doubles the size of the BST (Effectively adds a new row). This will be
+   necessary since most applications will NOT be the best case scenario
+   where the size of the array == the data items in the array.
+   Consider the worst case scenario when inserting 1 - 5 in order. You would
+   need 32 array spots to implement this in an array. This is useful for
+   insertNode applications.
+   Inputs: None
+   Outputs :None
+
+*******************************************************************************/
+void BinarySearchTree::extendSize(){
+    // Create new array of double size
+    int* tempArray = new int[size*2];
+
+    // Copy into new array
+    for (int i = 0; i < size; i++) {
+        tempArray[i] = array[i];
+    }
+    // Set rest of array to NULL and duplicate size
+    size*=2;
+    for (int i = size; i < size; i++){
+        tempArray[i] = NULL;
+    }
+    delete[] array;
+    array = tempArray;
 }
 
 /*******************************************************************************
@@ -135,7 +179,27 @@ BIG COMMENT
 
 *******************************************************************************/
 void BinarySearchTree::insertNode(int val){
+    int currentIndex = 1;
 
+    while (true) {
+        // Insert here if empty.
+        if (array[currentIndex] == NULL) {
+            array[currentIndex] = val;
+            return;
+        }
+        // Go left if node greater than, cancel if equal
+        else if (array[currentIndex] >= val) {
+            if (array[currentIndex] == val) {
+                cout << "ERROR!-- Repeating element" << endl;
+                return;
+            }
+            currentIndex *= 2;
+        } // Else, go right
+        else
+            currentIndex = ((currentIndex * 2) + 1);
+        if (currentIndex > size)
+            extendSize();
+    }
 }
 
 /*******************************************************************************
