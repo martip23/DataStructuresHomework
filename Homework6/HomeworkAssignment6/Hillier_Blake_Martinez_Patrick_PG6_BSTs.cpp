@@ -93,8 +93,9 @@ int main () {
 
     /********** FOR TESTING, REMOVE ON FINAL ASSIGNMENT***********/
     for (int i = 0; i < tree.size; i++) {
-        cout << tree.array[i] << ", ";
+        cout << i << ":" << tree.array[i] << ", ";
     }
+    cout << "\n\n";
     /********** FOR TESTING, REMOVE ON FINAL ASSIGNMENT***********/
 
     cout << "Values of the Binary Search tree.\n\n";
@@ -159,16 +160,17 @@ BinarySearchTree::BinarySearchTree(int size){
 void BinarySearchTree::extendSize(){
     // Create new array of double size
     int* tempArray = new int[size*2];
+    int newSize = size * 2;
 
     // Copy into new array
     for (int i = 0; i < size; i++) {
         tempArray[i] = array[i];
     }
     // Set rest of array to NULL and duplicate size
-    size*=2;
-    for (int i = size; i < size; i++){
+    for (int i = size; i < newSize; i++){
         tempArray[i] = NULL;
     }
+    size = newSize;
     delete[] array;
     array = tempArray;
 }
@@ -244,7 +246,7 @@ BIG COMMENT
 
 *******************************************************************************/
 int const BinarySearchTree::treeLeavesCount(){
-
+    return -1;
 }
 
 /*******************************************************************************
