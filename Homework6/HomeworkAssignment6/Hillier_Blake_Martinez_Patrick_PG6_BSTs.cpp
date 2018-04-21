@@ -56,7 +56,7 @@ public:
     void const displayRSR(int index);
 
     // Line comment
-    void const displayLSR();
+    void const displayLSR(int index);
 
     // Returns number of leaves in BST.
     int const treeLeavesCount();
@@ -115,8 +115,8 @@ int main () {
     tree.displayRSR(1);
 
     // All left sub root values
-    cout << "Here are all the right sub root values for the BST :\n\n";
-    tree.displayLSR();
+    cout << "Here are all the left sub root values for the BST :\n\n";
+    tree.displayLSR(1);
 
     // Counting Number of Leaves
     cout << "\n\nNumber of Leaves =     " << tree.treeLeavesCount();
@@ -263,12 +263,21 @@ void const BinarySearchTree::displayRSR(int index){
 }
 
 /*******************************************************************************
-
-BIG COMMENT
-
+Displays all of the left sub-roots of the tree.
+Input: int index - The index of the current node
+Output: none
 *******************************************************************************/
-void const BinarySearchTree::displayLSR(){
+void const BinarySearchTree::displayLSR(int index){
+    int leftChild = index * 2;
 
+    if (index == 1) {
+        if ((leftChild != NULL) && (leftChild < size))
+            displayLSR(leftChild);
+        cout << "\n\n";
+    } else if ((leftChild != NULL) && (leftChild < size)) {
+        cout << array[index] << " ";
+        displayLSR(leftChild);
+    }
 }
 
 /*******************************************************************************
