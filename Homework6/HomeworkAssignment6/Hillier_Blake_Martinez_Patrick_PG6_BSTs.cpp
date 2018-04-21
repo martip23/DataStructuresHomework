@@ -61,8 +61,8 @@ public:
     // Returns number of leaves in BST.
     int const treeLeavesCount();
 
-    // Line comment
-    void const displayLeafValues();
+    // Displays all the leafs on the screen.
+    void const displayLeafValues(int index);
 
     // Deallocates dynamic memory
     ~BinarySearchTree();
@@ -123,7 +123,7 @@ int main () {
 
     // Display the leaf values
     cout << "\n\nHere are the leaf values in the BST:\n\n";
-    tree.displayLeafValues();
+    tree.displayLeafValues(1);
 
     cout << "\n\nApril 25, 2018\n\n"
          << "Written by Patrick Martinez & Blake Hillier\n\n";
@@ -296,12 +296,22 @@ int const BinarySearchTree::treeLeavesCount(){
 }
 
 /*******************************************************************************
-
-BIG COMMENT
-
+Displays all the leafs on the screen.
+Input: int index - The index of the active node
+Output: none
 *******************************************************************************/
-void const BinarySearchTree::displayLeafValues(){
+void const BinarySearchTree::displayLeafValues(int index){
+    int leftChild = index * 2;
+    int rightChild = (index * 2) + 1;
 
+    // Check if it's possible for the current node to have a child
+    if ((leftChild > size || array[leftChild] == NULL) && (rightChild > size || array[rightChild] == NULL)) {
+        if (array[index] != NULL)
+             cout << array[index] << " ";
+    } else { 
+        displayLeafValues(leftChild);
+        displayLeafValues(rightChild);
+    }
 }
 
 /*******************************************************************************
