@@ -315,7 +315,7 @@ void const BinarySearchTree::displayLeafValues(int index){
 
     // Check if it's possible for the current node to have a child
     if ((leftChild > size || array[leftChild] == -1) && (rightChild > size || array[rightChild] == -1)) {
-        if (array[index] != -1)
+        if (array[index] != -1 && index < size)
              cout << array[index] << " ";
     } else { 
         displayLeafValues(leftChild);
