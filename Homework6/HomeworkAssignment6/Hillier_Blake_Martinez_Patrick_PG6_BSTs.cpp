@@ -39,13 +39,16 @@ public:
     int size;   //Refers to the size of the array, not data elements in array.
     int* array; //Dynamic array of size size.
 
-    // Creates an array implementation of size, initializes to NULL.
+    // Creates an array implementation of size, initializes to -1.
     BinarySearchTree(int size);
 
     // Inserts a new node at its appropriate location. Rejects numbers already
     // in list.
     void insertNode(int val);
 
+    // Prints the contents of the tree
+    void const printTree();
+    
     // Traverses and displays tree in pre-order form with root index.
     void const preOrder(int index);
 
@@ -134,15 +137,15 @@ int main () {
 /** IMPLEMENTATIONS **/
 
 /*******************************************************************************
-Creates an array implementation of size, initializes to NULL.
+Creates an array implementation of size, initializes to -1.
 Inputs: None
 Outputs: None
 *******************************************************************************/
 BinarySearchTree::BinarySearchTree(int size){
     this->size = size + 1;
     array = new int[size];
-    for (int i = 0; i < size; i++)
-        array[i] = NULL;
+    for (int i = 0; i < this->size; i++)
+        array[i] = -1;
 }
 
 /*******************************************************************************
@@ -165,9 +168,9 @@ void BinarySearchTree::extendSize(){
     for (int i = 0; i < size; i++) {
         tempArray[i] = array[i];
     }
-    // Set rest of array to NULL and duplicate size
+    // Set rest of array to -1 and duplicate size
     for (int i = size ; i < newSize; i++){
-        tempArray[i] = NULL;
+        tempArray[i] = -1;
     }
     size = newSize;
     delete[] array;
@@ -184,7 +187,7 @@ void BinarySearchTree::insertNode(int val){
 
     while (true) {
         // Insert here if empty.
-        if (array[currentIndex] == NULL) {
+        if (array[currentIndex] == -1) {
             array[currentIndex] = val;
             return;
         }
@@ -198,9 +201,15 @@ void BinarySearchTree::insertNode(int val){
         } // Else, go right
         else
             currentIndex = ((currentIndex * 2) + 1);
+        
         if (currentIndex > size)
             extendSize();
     }
+}
+
+void const BinarySearchTree::printTree(){
+    for (int i = 0; i < size; i++)
+        cout << array[i] << "  ";
 }
 
 /*******************************************************************************
@@ -219,7 +228,7 @@ void const BinarySearchTree::preOrder(int index){
     // go out of the array bounds by checking (index > size). Generally, BSTs
     // are created in linked lists which would have provided a more elegant
     // solution.
-    if (array[index] == NULL || index > size)
+    if (array[index] == -1 || index > size)
         return;
 
     // Standard pre-order structure
@@ -235,7 +244,7 @@ OutPut: none
 *******************************************************************************/
 void const BinarySearchTree::postOrder(int index){
     // Check if node is empty or if index is out of bounds of the array
-    if (array[index] == NULL || index > size)
+    if (array[index] == -1 || index > size)
         return;
 
     postOrder((index * 2));
@@ -252,10 +261,10 @@ void const BinarySearchTree::displayRSR(int index){
     int rightChild = ((index * 2) + 1);
     // If main root, don't print and pass child if within range and not null.
     if (index == 1) {
-        if ((rightChild != NULL) && (rightChild < size))
+        if ((rightChild != -1) && (rightChild < size))
             displayRSR(rightChild);
         cout << "\n\n";
-    } else if ((rightChild != NULL) && (rightChild < size)) {
+    } else if ((rightChild != -1) && (rightChild < size)) {
         cout << array[index] << ", ";
         displayRSR(rightChild);
     }
@@ -271,10 +280,10 @@ void const BinarySearchTree::displayLSR(int index){
     int leftChild = index * 2;
 
     if (index == 1) {
-        if ((leftChild != NULL) && (leftChild < size))
+        if ((leftChild != -1) && (leftChild < size))
             displayLSR(leftChild);
         cout << "\n\n";
-    } else if ((leftChild != NULL) && (leftChild < size)) {
+    } else if ((leftChild != -1) && (leftChild < size)) {
         cout << array[index] << " ";
         displayLSR(leftChild);
     }
@@ -288,8 +297,8 @@ int const BinarySearchTree::treeLeavesCount(){
     for (int i = 1; i < size; i++) {
         // If node not empty AND left child not there AND right child not there
         // increment count.
-        if (((array[i * 2 + 1] == NULL) || ((i * 2 + 1) > size)) &&
-            ((array[i*2] == NULL) || ((i * 2) > size)) && (array[i] != NULL))
+        if (((array[i * 2 + 1] == -1) || ((i * 2 + 1) > size)) &&
+            ((array[i*2] == -1) || ((i * 2) > size)) && (array[i] != -1))
             count++;
     }
     return count;
@@ -305,8 +314,8 @@ void const BinarySearchTree::displayLeafValues(int index){
     int rightChild = (index * 2) + 1;
 
     // Check if it's possible for the current node to have a child
-    if ((leftChild > size || array[leftChild] == NULL) && (rightChild > size || array[rightChild] == NULL)) {
-        if (array[index] != NULL)
+    if ((leftChild > size || array[leftChild] == -1) && (rightChild > size || array[rightChild] == -1)) {
+        if (array[index] != -1)
              cout << array[index] << " ";
     } else { 
         displayLeafValues(leftChild);
