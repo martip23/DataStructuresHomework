@@ -48,7 +48,7 @@ public:
 
     // Prints the contents of the tree
     void const printTree();
-    
+
     // Traverses and displays tree in pre-order form with root index.
     void const preOrder(int index);
 
@@ -91,13 +91,6 @@ int main () {
     tree.insertNode(62);
 
     cout << "Building BST is completed.\n\n";
-
-    /********** FOR TESTING, REMOVE ON FINAL ASSIGNMENT***********/
-    for (int i = 0; i < tree.size; i++) {
-        cout << i << ":" << tree.array[i] << ", ";
-    }
-    cout << "\n\n";
-    /********** FOR TESTING, REMOVE ON FINAL ASSIGNMENT***********/
 
     cout << "Values of the Binary Search tree.\n\n";
 
@@ -201,7 +194,7 @@ void BinarySearchTree::insertNode(int val){
         } // Else, go right
         else
             currentIndex = ((currentIndex * 2) + 1);
-        
+
         if (currentIndex > size)
             extendSize();
     }
@@ -317,7 +310,7 @@ void const BinarySearchTree::displayLeafValues(int index){
     if ((leftChild > size || array[leftChild] == -1) && (rightChild > size || array[rightChild] == -1)) {
         if (array[index] != -1 && index < size)
              cout << array[index] << " ";
-    } else { 
+    } else {
         displayLeafValues(leftChild);
         displayLeafValues(rightChild);
     }
