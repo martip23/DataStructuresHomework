@@ -49,8 +49,8 @@ public:
     // Traverses and displays tree in pre-order form with root index.
     void const preOrder(int index);
 
-    // Line comment
-    void const postOrder();
+    // Traverses and displays the tree in post-order form with root index.
+    void const postOrder(int index);
 
     // Displays all of the right sub roots of the tree.
     void const displayRSR(int index);
@@ -105,10 +105,10 @@ int main () {
     tree.preOrder(1);
     cout << "\n\n";     // Added extra newlines to improve output
 
-
     // Post-Order Traversal
     cout << "Post-Order Traversal of the BST :\n\n";
-    tree.postOrder();
+    tree.postOrder(1);
+    cout << "\n\n";     // Added extra newlines to improve output
 
     // All right sub root values
     cout << "Here are all the right sub root values for the BST :\n\n";
@@ -154,7 +154,7 @@ BinarySearchTree::BinarySearchTree(int size){
    insertNode applications.
 
    Inputs: None
-   Outputs :None
+   Outputs: None
 *******************************************************************************/
 void BinarySearchTree::extendSize(){
     // Create new array of double size
@@ -229,12 +229,18 @@ void const BinarySearchTree::preOrder(int index){
 }
 
 /*******************************************************************************
-
-BIG COMMENT
-
+Traverses and displays the tree in post-order form.
+Input: int index - The index to start the pre-order traversal at.
+OutPut: none
 *******************************************************************************/
-void const BinarySearchTree::postOrder(){
+void const BinarySearchTree::postOrder(int index){
+    // Check if node is empty or if index is out of bounds of the array
+    if (array[index] == NULL || index > size)
+        return;
 
+    postOrder((index * 2));
+    postOrder((index * 2) + 1);
+    cout << array[index] << " ";
 }
 
 /*******************************************************************************
