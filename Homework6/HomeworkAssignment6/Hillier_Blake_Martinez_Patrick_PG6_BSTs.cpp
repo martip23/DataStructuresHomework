@@ -90,11 +90,9 @@ int main () {
     tree.insertNode(25);
     tree.insertNode(62);
 
-    cout << "Building BST is completed.\n\n";
+    cout << "\nBuilding BST is completed.\n\n";
 
     cout << "Values of the Binary Search tree.\n\n";
-
-
 
     // Pre-Order Traversal
     cout << "Pre-Order Traversal of the BST :\n\n";
@@ -121,7 +119,7 @@ int main () {
     cout << "\n\nHere are the leaf values in the BST:\n\n";
     tree.displayLeafValues(1);
 
-    cout << "\n\nApril 25, 2018\n\n"
+    cout << "\n\n\nApril 25, 2018\n\n"
          << "Written by Patrick Martinez & Blake Hillier\n\n";
 
     return 0;
@@ -182,6 +180,7 @@ void BinarySearchTree::insertNode(int val){
         // Insert here if empty.
         if (array[currentIndex] == -1) {
             array[currentIndex] = val;
+            printTree();
             return;
         }
         // Go left if node greater than, cancel if equal
@@ -200,9 +199,17 @@ void BinarySearchTree::insertNode(int val){
     }
 }
 
+/*******************************************************************************
+Prints the elements of the binary search tree.
+Input: none
+Output: none
+*******************************************************************************/
 void const BinarySearchTree::printTree(){
-    for (int i = 0; i < size; i++)
-        cout << array[i] << "  ";
+    for (int i = 0; i < size; i++) {
+        if (array[i] != -1)
+            cout << array[i] << "  ";
+    }
+    cout << endl;
 }
 
 /*******************************************************************************
@@ -225,7 +232,7 @@ void const BinarySearchTree::preOrder(int index){
         return;
 
     // Standard pre-order structure
-    cout << array[index] << ", ";
+    cout << array[index] << " ";
     preOrder(index * 2);
     preOrder((index * 2) + 1);
 }
@@ -258,7 +265,7 @@ void const BinarySearchTree::displayRSR(int index){
             displayRSR(rightChild);
         cout << "\n\n";
     } else if ((rightChild != -1) && (rightChild < size)) {
-        cout << array[index] << ", ";
+        cout << array[index] << " ";
         displayRSR(rightChild);
     }
     return;
