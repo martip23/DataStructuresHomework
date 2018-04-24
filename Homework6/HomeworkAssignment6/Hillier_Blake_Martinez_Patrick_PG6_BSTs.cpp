@@ -93,6 +93,7 @@ int main () {
     cout << "\nBuilding BST is completed.\n\n";
 
     cout << "Values of the Binary Search tree.\n\n";
+    tree.printTree();
 
     // Pre-Order Traversal
     cout << "Pre-Order Traversal of the BST :\n\n";
@@ -180,7 +181,6 @@ void BinarySearchTree::insertNode(int val){
         // Insert here if empty.
         if (array[currentIndex] == -1) {
             array[currentIndex] = val;
-            printTree();
             return;
         }
         // Go left if node greater than, cancel if equal
@@ -209,7 +209,7 @@ void const BinarySearchTree::printTree(){
         if (array[i] != -1)
             cout << array[i] << "  ";
     }
-    cout << endl;
+    cout << endl << endl;
 }
 
 /*******************************************************************************
